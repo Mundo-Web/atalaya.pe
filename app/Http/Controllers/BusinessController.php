@@ -105,7 +105,7 @@ class BusinessController extends BasicController
                 'Content-Type' => 'application/octet-stream'
             ]);
         } catch (\Throwable $th) {
-            $content = Storage::get('utils/user-404.svg');
+            $content = Storage::get('utils/business-404.svg');
             return response($content, 200, [
                 'Content-Type' => 'image/svg+xml'
             ]);
