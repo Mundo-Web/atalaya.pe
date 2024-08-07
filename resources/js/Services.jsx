@@ -135,7 +135,8 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
     })
     if (!result) return
 
-    window.open(`${APP_PROTOCOL}://${correlative}.${APP_DOMAIN}/home`)
+    location.href = `${APP_PROTOCOL}://${correlative}.${APP_DOMAIN}/home`
+    // window.open(`${APP_PROTOCOL}://${correlative}.${APP_DOMAIN}/home`)
   }
 
   return (

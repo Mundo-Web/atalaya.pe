@@ -17,7 +17,8 @@ const BusinessIWorkCard = ({ uuid, name, APP_PROTOCOL, owner, my_services, APP_D
     })
     if (!result) return
 
-    window.open(`${APP_PROTOCOL}://${correlative}.${APP_DOMAIN}/home`)
+    location.href = `${APP_PROTOCOL}://${correlative}.${APP_DOMAIN}/home`
+    // window.open(`${APP_PROTOCOL}://${correlative}.${APP_DOMAIN}/home`)
   }
 
   return <div key={`business-${uuid}`} className="card mb-0 border" style={{ width: '240px', minHeight: '120px' }}>
