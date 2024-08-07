@@ -135,4 +135,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/users-by-services-by-business', [UsersByServicesByBusinessController::class, 'inviteUser']);
     Route::delete('/users-by-services-by-business/{id}', [UsersByServicesByBusinessController::class, 'delete']);
     Route::post('/users-by-services-by-business/authorize', [UsersByServicesByBusinessController::class, 'activeService']);
+
+    Route::get('/logo/{uuid}', [BusinessController::class, 'full']);
+    Route::get('/logo/thumbnail/{uuid}', [BusinessController::class, 'thumbnail']);
 });

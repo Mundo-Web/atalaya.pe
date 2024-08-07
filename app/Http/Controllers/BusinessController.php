@@ -95,4 +95,36 @@ class BusinessController extends BasicController
     {
         return $jpa->person->document_number;
     }
+
+    public function thumbnail(Request $request, $uuid)
+    {
+        try {
+            $content = Storage::get('logo/thumbnail/' . $uuid . '.img');
+            if (!$content) throw new Exception('Logo no encontrado');
+            return response($content, 200, [
+                'Content-Type' => 'application/octet-stream'
+            ]);
+        } catch (\Throwable $th) {
+            $content = Storage::get('utils/user-404.svg');
+            return response($content, 200, [
+                'Content-Type' => 'image/svg+xml'
+            ]);
+        }
+    }
+
+    public function full(Request $request, $uuid)
+    {
+        try {
+            $content = Storage::get('logo/' . $uuid . '.img');
+            if (!$content) throw new Exception('Logo no encontrado');
+            return response($content, 200, [
+                'Content-Type' => 'application/octet-stream'
+            ]);
+        } catch (\Throwable $th) {
+            $content = Storage::get('utils/business-404.svg');
+            return response($content, 200, [
+                'Content-Type' => 'image/svg+xml'
+            ]);
+        }
+    }
 }
