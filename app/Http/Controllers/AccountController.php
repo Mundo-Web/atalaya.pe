@@ -10,8 +10,9 @@ use SoDe\Extend\Response;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response as HttpResponse;
 
-class AccountController extends Controller
+class AccountController extends BasicController
 {
+  public $reactView = 'Account';
   public function email(Request $request): HttpResponse|ResponseFactory
   {
     $response = new Response();

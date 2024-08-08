@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\BusinessController;
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/services', [ServiceController::class, 'reactView'])->name('Services.jsx');
 
     Route::get('/profile', [ProfileController::class, 'reactView'])->name('Profile.jsx');
+    Route::get('/account', [AccountController::class, 'reactView'])->name('Account.jsx');
 });
 
 // Mundo web
