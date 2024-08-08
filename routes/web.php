@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Mundo web
-Route::get('/', fn () => view('Homepage'))->name('inicio');
+Route::get('/', fn () => view('home'))->name('inicio');
 Route::post('/', [FormController::class, 'store5'])->name('formhome');
 Route::post('/save/crm', [FormController::class, 'saveInAtalaya'])->name('save.crm');
 
