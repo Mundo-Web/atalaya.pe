@@ -38,6 +38,8 @@
 
     #logo-second {
       padding-bottom: 10px;
+      object-fit: contain;
+      object-position: center
       fill: none;
       stroke: #000938;
       stroke-width: 1px;
