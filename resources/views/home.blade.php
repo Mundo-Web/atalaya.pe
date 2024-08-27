@@ -37,7 +37,7 @@
     }
 
     #logo-second {
-      padding-bottom: 10px;
+      /* padding-bottom: 10px; */
       object-fit: contain;
       object-position: center
       fill: none;
