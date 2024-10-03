@@ -18,18 +18,29 @@
 
   <link href="/lte/assets/css/config/default/bootstrap.min.css" rel="stylesheet" type="text/css"
     id="bs-default-stylesheet" />
-  <link href="/lte/assets/css/config/default/app.min.css" rel="stylesheet" type="text/css"
+  <link href="/lte/assets/css/config/default/app.css" rel="stylesheet" type="text/css"
     id="app-default-stylesheet" />
 
   <link href="/lte/assets/css/config/default/bootstrap-dark.min.css" rel="stylesheet" type="text/css"
     id="bs-dark-stylesheet" disabled="disabled" />
-  <link href="/lte/assets/css/config/default/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"
+  <link href="/lte/assets/css/config/default/app-dark.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"
     disabled="disabled" />
 
   <link href="/lte/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
   @vite(['resources/css/app.css', 'resources/js/' . Route::currentRouteName()])
   @inertiaHead
+
+  <style>
+    body * {
+      font-family: 'Comfortaa', sans-serif;
+    }
+
+    body code,
+    body pre {
+      font-family: monospace;
+    }
+  </style>
 </head>
 
 <body class="loading authentication-bg-pattern">

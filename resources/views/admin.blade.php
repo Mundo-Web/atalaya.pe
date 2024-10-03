@@ -43,6 +43,15 @@
   @inertiaHead
 
   <style>
+    body * {
+      font-family: 'Comfortaa', sans-serif;
+    }
+
+    body code,
+    body pre {
+      font-family: monospace;
+    }
+    
     .tippy-tooltip {
       padding: 0;
     }
