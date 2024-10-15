@@ -32,7 +32,7 @@ const BusinessIWorkCard = ({ uuid, name, APP_PROTOCOL, owner, my_services, APP_D
       </p>
       {
         my_services.length == 1
-          ? <Tippy>
+          ? <Tippy content={`Abrir ${my_services[0].name}`}>
             <button className="btn btn-xs btn-white" onClick={() => beforeRedirect(my_services[0])}>
               {my_services[0].name} {
                 !my_services[0].invitation_accepted && <i className="text-muted" style={{ fontSize: 'small' }}>Pendiente</i>
