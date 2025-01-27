@@ -174,14 +174,12 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                     <div className="project-members mb-0">
                       {
                         !sbb ? (
-                          service.status ?
-                            <Tippy content="Habilitar servicio">
-                              <button type="button" className="btn btn-sm btn-soft-primary rounded-pill waves-effect waves-light" onClick={(e) => onEnableService(e, service.correlative)}>
-                                <i className='mdi mdi-plus'></i> Habilitar
-                              </button>
-                            </Tippy>
-                            :
-                            <span className='text-warning'>Proximamente</span>
+                          service.status ? <Tippy content="Habilitar servicio">
+                            <button type="button" className="btn btn-sm btn-soft-primary rounded-pill waves-effect waves-light" onClick={(e) => onEnableService(e, service.correlative)}>
+                              <i className='mdi mdi-plus'></i> Habilitar
+                            </button>
+                          </Tippy>
+                            : <span className='text-warning'>Proximamente</span>
                         ) : (
                           <>
                             <h5 className="float-start me-3">Equipo :</h5>
