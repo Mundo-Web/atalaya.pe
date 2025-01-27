@@ -185,7 +185,7 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                               display: 'block',
                               backgroundColor: '#f9c851',
                               color: '#343a40',
-                              padding: '.28rem 1.28rem',
+                              padding: '.28rem 1.56rem',
                               width: 'max-content',
                               borderRadius: '0 25px 25px 0',
                             }}>Proximamente</span>
