@@ -153,7 +153,7 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
           <hr className='mx-auto' style={{ width: '180px' }} />
           <div className='d-flex flex-wrap align-items-center justify-content-center gap-3'>
             {
-              services.sort((a, b) => a.status - b.status).map((service, i) => {
+              services.sort((a, b) => b.status - a.status).map((service, i) => {
                 const sbb = servicesByBusiness[service.correlative]
                 return <div key={`service-${i}`} className="card mb-0" style={{ width: '100%', maxWidth: '360px' }}>
                   <div className="card-body project-box">
