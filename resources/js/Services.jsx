@@ -159,7 +159,7 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                   <div className="card-body project-box">
                     <div className="badge bg-primary float-end">Gratis</div>
                     <h4 className="mt-0"><a href="#" className="text-dark" onClick={() => onServiceOpen(service)}>{service.name} <i className="mdi mdi-arrow-top-right"></i></a></h4>
-                    <p className="text-success text-uppercase font-13">{service.correlative}</p>
+                    <p className="text-success text-lowercase font-13">{service.correlative}.{APP_DOMAIN}</p>
                     <p className="text-muted font-13" style={{
                       display: '-webkit-box',
                       WebkitLineClamp: 2,
@@ -174,11 +174,14 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                     <div className="project-members mb-0">
                       {
                         !sbb ? (
-                          <Tippy content="Habilitar servicio">
-                            <button type="button" className="btn btn-sm btn-soft-primary rounded-pill waves-effect waves-light" onClick={(e) => onEnableService(e, service.correlative)}>
-                              <i className='mdi mdi-plus'></i> Habilitar
-                            </button>
-                          </Tippy>
+                          service.status ?
+                            <Tippy content="Habilitar servicio">
+                              <button type="button" className="btn btn-sm btn-soft-primary rounded-pill waves-effect waves-light" onClick={(e) => onEnableService(e, service.correlative)}>
+                                <i className='mdi mdi-plus'></i> Habilitar
+                              </button>
+                            </Tippy>
+                            :
+                            <span className='text-warning'>Proximamente</span>
                         ) : (
                           <>
                             <h5 className="float-start me-3">Equipo :</h5>
