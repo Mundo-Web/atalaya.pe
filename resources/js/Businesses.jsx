@@ -135,7 +135,7 @@ const Businesses = ({ businesses, businessesIWork, economic_sectors = [], busine
               </div>
             </div>
             {
-              businesses.map(business => <BusinessCard {...business} session={session} />)
+              businesses.map((business, index) => <BusinessCard key={index} {...business} session={session} />)
             }
           </div>
         </div>
@@ -145,7 +145,7 @@ const Businesses = ({ businesses, businessesIWork, economic_sectors = [], busine
           <h5 className="card-header">Empresas en las que trabajo</h5>
           <div className="card-body d-flex gap-2 justify-content-center flex-wrap">
             {
-              businessesIWork.map(business => <BusinessIWorkCard {...business} session={session} APP_DOMAIN={APP_DOMAIN} APP_PROTOCOL={APP_PROTOCOL}/>)
+              businessesIWork.map((business, index) => <BusinessIWorkCard key={index} {...business} session={session} APP_DOMAIN={APP_DOMAIN} APP_PROTOCOL={APP_PROTOCOL}/>)
             }
           </div>
         </div>
@@ -183,12 +183,12 @@ const Businesses = ({ businesses, businessesIWork, economic_sectors = [], busine
             <InputFormGroup eRef={tradenameRef} label='Nombre comercial' col='col-8' required />
             <InputFormGroup eRef={businessnameRef} label='Razon social' col='col-12' required />
             <SelectFormGroup eRef={economicSectorRef} label='Sector Economico' col='col-md-5' dropdownParent='#business-data' required>
-              {economic_sectors.map(item => (<option key={item.id} value={item.id}>
+              {economic_sectors.map((item, index) => (<option key={index} value={item.id}>
                 {item.name}
               </option>))}
             </SelectFormGroup>
             <SelectFormGroup eRef={businessActivityRef} label='Actividad comercial' col='col-md-7' dropdownParent='#business-data' required>
-              {business_activities.map(item => (<option key={item.id} value={item.id}>
+              {business_activities.map((item, index) => (<option key={index} value={item.id}>
                 {item.name}
               </option>))}
             </SelectFormGroup>
