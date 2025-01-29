@@ -45,7 +45,13 @@ const BusinessIWorkCard = ({ uuid, name, APP_PROTOCOL, owner, my_services, APP_D
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdown-services-button">
               {my_services.map((service, i) => {
-                return <button key={`service-${i}`} className="dropdown-item" target="_blank" onClick={() => beforeRedirect(service)}>
+                return <button key={`service-${i}`} className="dropdown-item d-flex align-items-center gap-1" target="_blank" onClick={() => beforeRedirect(service)}>
+                  <img src={`//${service.correlative}.${APP_DOMAIN}/assets/img/icon.svg`} alt={service.name} style={{
+                    height: '16px',
+                    aspectRatio: 1,
+                    objectFit: 'contain',
+                    objectPosition: 'center'
+                  }} />
                   {service.name} {
                     !service.invitation_accepted && <i className="text-muted" style={{ fontSize: 'small' }}>Pendiente</i>
                   }

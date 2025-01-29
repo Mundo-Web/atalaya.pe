@@ -26,6 +26,7 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
   const [servicesByBusiness, setServicesByBusiness] = useState({})
   const [serviceLoaded, setServiceLoaded] = useState(null)
   const [usersResult, setUsersResult] = useState([])
+  const [serviceEnabling, setServiceEnabling] = useState(null);
 
   useEffect(() => {
     getServicesByBusiness()
@@ -82,13 +83,12 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
       cancelButtonText: "Cancelar"
     })
     if (!isConfirmed) return
-
+    setServiceEnabling(service)
     e.target.disabled = true
     const result = await servicesByBusinessesRest.enableService(businessRuc, service)
     e.target.disabled = false
+    setServiceEnabling(null)
     if (!result) return
-    // const res = await Fetch(`${APP_PROTOCOL}://${result.data.service}.${APP_DOMAIN}/api/start/${result.data.business}`);
-    console.log(result)
     getServicesByBusiness()
   }
 
@@ -158,7 +158,16 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                 return <div key={`service-${i}`} className="card mb-0" style={{ width: '100%', maxWidth: '360px' }}>
                   <div className="card-body project-box">
                     <div className="badge bg-primary float-end">Gratis</div>
-                    <h4 className="mt-0"><a href="#" className="text-dark" onClick={() => onServiceOpen(service)}>{service.name} <i className="mdi mdi-arrow-top-right"></i></a></h4>
+                    <h4 className="mt-0">
+                      <a href="#" className="text-dark d-flex gap-1 align-items-center" onClick={() => onServiceOpen(service)}>
+                        <img src={`//${service.correlative}.${APP_DOMAIN}/assets/img/icon.svg`} alt={service.name} style={{
+                          height: '20px',
+                          aspectRatio: 1,
+                          objectFit: 'contain',
+                          objectPosition: 'center'
+                        }} onError={e => e.target.src = '/assets/img/icon.svg'}/> {service.name} <i className="mdi mdi-arrow-top-right"></i>
+                      </a>
+                    </h4>
                     <p className="text-success text-lowercase font-13">{service.correlative}.{APP_DOMAIN}</p>
                     <p className="text-muted font-13" style={{
                       display: '-webkit-box',
@@ -176,7 +185,12 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                         !sbb ? (
                           service.status ? <Tippy content="Habilitar servicio">
                             <button type="button" className="btn btn-sm btn-soft-primary rounded-pill waves-effect waves-light" onClick={(e) => onEnableService(e, service.correlative)}>
-                              <i className='mdi mdi-plus'></i> Habilitar
+                              {
+                                serviceEnabling
+                                  ? <><i className='mdi mdi-spin mdi-shape-circle-plus'></i> Habilitando</>
+                                  : <><i className='mdi mdi-plus'></i> Habilitar</>
+                              }
+
                             </button>
                           </Tippy>
                             : <span style={{
