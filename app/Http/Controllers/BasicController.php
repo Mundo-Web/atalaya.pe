@@ -36,7 +36,7 @@ class BasicController extends Controller
   {
     $properties = [
       'session' => Auth::user(),
-      'permissions' => Auth::user()->getAllPermissions(),
+      'permissions' => Auth::check() ? Auth::user()->getAllPermissions(): [],
       'PUBLIC_RSA_KEY' => Controller::$PUBLIC_RSA_KEY,
       'APP_URL' => env('APP_URL'),
       'APP_DOMAIN' => env('APP_DOMAIN'),

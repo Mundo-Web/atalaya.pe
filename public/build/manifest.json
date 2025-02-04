@@ -1,7 +1,7 @@
 {
-  "_Adminto-!~{00f}~.js": {
+  "_Adminto-!~{00h}~.js": {
     "file": "Adminto.css",
-    "src": "_Adminto-!~{00f}~.js"
+    "src": "_Adminto-!~{00h}~.js"
   },
   "_Adminto-bn_s-0E8.js": {
     "file": "assets/Adminto-bn_s-0E8.js",
@@ -169,6 +169,15 @@
       "_JSEncrypt-D3I3x59l.js"
     ]
   },
+  "resources/js/DataUsage.jsx": {
+    "file": "assets/DataUsage-DY__K4l9.js",
+    "name": "DataUsage",
+    "src": "resources/js/DataUsage.jsx",
+    "isEntry": true,
+    "imports": [
+      "_CreateReactScript-fryF6WsV.js"
+    ]
+  },
   "resources/js/Home.jsx": {
     "file": "assets/Home-C--6sG_m.js",
     "name": "Home",
@@ -281,6 +290,15 @@
       "_InputFormGroup-h37C16bz.js",
       "_TippyButton-m_hbpx03.js",
       "_sweetalert2.all-uggxmCrK.js"
+    ]
+  },
+  "resources/js/Terms.jsx": {
+    "file": "assets/Terms-Z_Nw_IKj.js",
+    "name": "Terms",
+    "src": "resources/js/Terms.jsx",
+    "isEntry": true,
+    "imports": [
+      "_CreateReactScript-fryF6WsV.js"
     ]
   },
   "resources/js/Users.jsx": {

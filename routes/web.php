@@ -6,11 +6,13 @@ use App\Http\Controllers\BasicController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DataUsageController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TermsController;
 use App\Http\Controllers\UsersByServicesByBusinessController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,34 +48,34 @@ Route::middleware('auth')->group(function () {
 });
 
 // Mundo web
-Route::get('/', fn () => view('home'))->name('inicio');
+Route::get('/', fn() => view('home'))->name('inicio');
 Route::post('/', [FormController::class, 'store5'])->name('formhome');
 Route::post('/save/crm', [FormController::class, 'saveInAtalaya'])->name('save.crm');
 
-Route::get('/servicios', fn () => view('Services'))->name('servicios');
-Route::get('/servicios/onepage', fn () => view('Onepage'))->name('onepage');
-Route::get('/servicios/landing', fn () => view('Landingpage'))->name('landingpage');
-Route::get('/servicios/ecommerce', fn () => view('Ecommercepage'))->name('ecommercepage');
-Route::get('/servicios/aplicativos', fn () => view('Aplicativospage'))->name('aplicativospage');
+Route::get('/servicios', fn() => view('Services'))->name('servicios');
+Route::get('/servicios/onepage', fn() => view('Onepage'))->name('onepage');
+Route::get('/servicios/landing', fn() => view('Landingpage'))->name('landingpage');
+Route::get('/servicios/ecommerce', fn() => view('Ecommercepage'))->name('ecommercepage');
+Route::get('/servicios/aplicativos', fn() => view('Aplicativospage'))->name('aplicativospage');
 Route::post('/servicios/ecommerce', [FormController::class, 'store'])->name('guardarpopup');
 Route::post('/servicios/landing', [FormController::class, 'store2'])->name('guardarpopup2');
 Route::post('/servicios/onepage', [FormController::class, 'store3'])->name('guardarpopup3');
 Route::post('/servicios/aplicativos', [FormController::class, 'store4'])->name('guardarpopup4');
 
-Route::get('/contacto', fn () => view('Contactopage'))->name('contacto');
+Route::get('/contacto', fn() => view('Contactopage'))->name('contacto');
 Route::post('/contacto', [ContactoController::class, 'storeContacto'])->name('guardarcontacto');
 
-Route::get('/proyectos', fn () => view('Proyectos'))->name('proyectos');
+Route::get('/proyectos', fn() => view('Proyectos'))->name('proyectos');
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 Route::get('/blog/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/thankyoupage', [FormController::class, 'thankyoupage'])->name('thankyoupage');
 
-Route::get('/landingaplicativos', fn () => view('Landing/Landingaplicativos'))->name('landingaplicativos');
-Route::get('/landingmundoweb', fn () => view('Landing/Landingmundoweb'))->name('landingmundoweb');
-Route::get('/landingecommerce', fn () => view('Landing/Landingecommerce'))->name('landingecommerce');
-Route::get('/landingwebsite', fn () => view('Landing/Landingwebsite'))->name('landingwebsite');
-Route::get('/website', fn () => view('Landing/Landingmundowebfinal'))->name('ultimalanding');
+Route::get('/landingaplicativos', fn() => view('Landing/Landingaplicativos'))->name('landingaplicativos');
+Route::get('/landingmundoweb', fn() => view('Landing/Landingmundoweb'))->name('landingmundoweb');
+Route::get('/landingecommerce', fn() => view('Landing/Landingecommerce'))->name('landingecommerce');
+Route::get('/landingwebsite', fn() => view('Landing/Landingwebsite'))->name('landingwebsite');
+Route::get('/website', fn() => view('Landing/Landingmundowebfinal'))->name('ultimalanding');
 
 Route::post('/landingaplicativos/form', [LandingController::class, 'storeAplicativos'])->name('guardarlandingaplicativos');
 Route::post('/landingmundoweb/form', [LandingController::class, 'storeLanding'])->name('guardarlandingmundoweb');
@@ -83,3 +85,6 @@ Route::post('/landingwebsite/form', [LandingController::class, 'storeWebsite'])-
 Route::get('/csrf-token', function () {
     return response()->json(['token' => csrf_token()]);
 });
+
+Route::get('/terms', [TermsController::class, 'reactView'])->name('Terms.jsx');
+Route::get('/data-usage', [DataUsageController::class, 'reactView'])->name('DataUsage.jsx');
