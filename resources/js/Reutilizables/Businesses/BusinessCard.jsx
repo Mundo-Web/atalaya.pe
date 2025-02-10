@@ -11,7 +11,7 @@ const BusinessCard = ({ id, name, owner, person }) => {
       <p className="text-muted mb-1 font-13 text-truncate">
         {(`${owner?.name} ${owner?.lastname}`).trim() || 'Sin propietario'}
       </p>
-      <Link href={`/services?business=${person?.document_number}`} className="text-small text-blue"><b>Administrar</b></Link>
+      <a href={`/services?business=${person?.document_number}`} className="text-small text-blue"><b>Administrar</b></a>
     </div>
   </div>
 }

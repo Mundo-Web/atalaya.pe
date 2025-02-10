@@ -61,9 +61,9 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-6 col-xl-4">
               <div className="text-center">
-                <Link href="/">
+                <a href="/">
                   <img src="/assets/img/logo-dark.svg" alt="" height="22" className="mx-auto" style={{ height: '22px' }} />
-                </Link>
+                </a>
                 <p className="text-muted mt-2 mb-4">Atalaya by Mundo Web</p>
               </div>
               <div className="card">
@@ -96,10 +96,10 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
               </div>
               <div className="row mt-3">
                 <div className="col-12 text-center">
-                  <p> <Link href="/recovery" className="text-muted ms-1"><i
-                    className="fa fa-lock me-1"></i>Olvidaste tu contraseña?</Link></p>
-                  <p className="text-muted">No tienes una cuenta aun? <Link href="/register"
-                    className="text-dark ms-1"><b>Registrate</b></Link></p>
+                  <p> <a href="/recovery" className="text-muted ms-1"><i
+                    className="fa fa-lock me-1"></i>Olvidaste tu contraseña?</a></p>
+                  <p className="text-muted">No tienes una cuenta aun? <a href="/register"
+                    className="text-dark ms-1"><b>Registrate</b></a></p>
                 </div>
               </div>
             </div>

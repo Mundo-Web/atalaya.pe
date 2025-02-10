@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import JSEncrypt from 'jsencrypt'
 import CreateReactScript from './Utils/CreateReactScript'
 import AuthRest from './actions/AuthRest'
-import { Link } from '@inertiajs/react'
+import { a } from '@inertiajs/react'
 
 const ConfirmEmail = ({ email }) => {
 
@@ -16,9 +16,9 @@ const ConfirmEmail = ({ email }) => {
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-6 col-xl-4">
               <div className="text-center">
-                <Link href="/">
+                <a href="/">
                   <img src="/assets/img/logo-dark.svg" alt="" height="22" className="mx-auto" style={{ height: '22px' }} />
-                </Link>
+                </a>
                 <p className="text-muted mt-2 mb-4">Atalaya by Mundo Web</p>
               </div>
               <div className="card text-center">
@@ -28,7 +28,7 @@ const ConfirmEmail = ({ email }) => {
                   </div>
                   <img src="/lte/assets/images/mail_confirm.png" alt="img" width="86" className="mx-auto d-block" />
                   <p className="text-muted font-14 mt-2">Se ha enviado un correo electrónico a <b>{email}</b>. Por favor, verifica si has recibido un mensaje de la empresa y haz clic en el enlace incluido para continuar con el registro.</p>
-                  <Link href="/login" className="btn d-block btn-pink waves-effect waves-light mt-3">Iniciar sesion</Link>
+                  <a href="/login" className="btn d-block btn-pink waves-effect waves-light mt-3">Iniciar sesion</a>
                 </div>
               </div>
             </div>

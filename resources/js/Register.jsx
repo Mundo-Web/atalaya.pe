@@ -171,8 +171,8 @@ const Register = ({ PUBLIC_RSA_KEY, RECAPTCHA_SITE_KEY, token, terms = 'Terminos
             </div>
             <div className="row mt-3">
               <div className="col-12 text-center">
-                <p className="text-muted">Ya tienes una cuenta? <Link href="/login"
-                  className="text-dark ms-1"><b>Iniciar sesion</b></Link></p>
+                <p className="text-muted">Ya tienes una cuenta? <a href="/login"
+                  className="text-dark ms-1"><b>Iniciar sesion</b></a></p>
               </div>
             </div>
           </div>

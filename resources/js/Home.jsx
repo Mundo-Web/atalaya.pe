@@ -10,7 +10,7 @@ const Home = () => {
       <div className='d-flex align-items-center justify-content-center' style={{ height: 'calc(100vh - 135px)' }}>
         <div className='text-center'>
           <h1 className='mb-4'>Bienvenido a atalaya</h1>
-          <Link href='/businesses' className='btn btn-primary'>Ver empresas</Link>
+          <a href='/businesses' className='btn btn-primary'>Ver empresas</a>
         </div>
       </div>
     </>
