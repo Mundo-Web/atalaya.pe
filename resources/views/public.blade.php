@@ -12,6 +12,8 @@
 
   <title>Atalaya</title>
 
+  <link rel="shortcut icon" href="/assets/img/icon.svg" type="image/png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
