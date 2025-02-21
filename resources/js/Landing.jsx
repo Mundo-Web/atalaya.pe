@@ -44,7 +44,7 @@ const Landing = ({ services }) => {
             </h1>
 
             <div className="mt-4">
-              <a href="/login" className="inline-flex items-center px-8 py-3 text-base font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors duration-200">
+              <a href="/login" className="inline-flex items-center px-8 py-3 text-base font-medium text-white bg-[#00ac9e] rounded-lg transition-colors duration-200">
                 Empecemos
                 <i className="mdi mdi-arrow-right ml-2 text-xl"></i>
               </a>
