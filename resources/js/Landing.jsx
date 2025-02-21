@@ -76,7 +76,8 @@ const Landing = ({ services }) => {
               loop={true}
               navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
-              className="w-full h-full overflow-hidden"
+              className="relative w-full h-full overflow-hidden top-0"
+              wrapperClass='mt-[150px]'
             >{
                 services.map((service, index) => {
                   return <SwiperSlide key={index} className="grid grid-cols-4 gap-4 items-center justify-center border w-[360px] mx-auto px-4">
