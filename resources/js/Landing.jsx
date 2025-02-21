@@ -14,7 +14,7 @@ const Landing = ({ services }) => {
     <main className='min-h-screen flex flex-col gap-8 w-full'>
       <header className='max-w-6xl w-full mx-auto flex justify-between items-center pt-8 pb-6 px-4 sm:px-6 lg:px-8 border-b-4 border-[#00ac9e]'>
         <a href="/">
-          <img src="/assets/img/logo-dark.svg" alt="" style={{ height: '50px' }} />
+          <img src="/assets/img/logo-dark.svg" alt="" style={{ height: '40px' }} />
         </a>
         <nav>
           <ul className="flex space-x-4 text-[#323a46] font-bold">
