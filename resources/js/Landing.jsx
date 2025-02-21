@@ -20,21 +20,21 @@ const Landing = ({ services }) => {
           <ul className="flex space-x-4 text-[#323a46] font-bold">
             <li>
               <a href="/login">
-              <i className='mdi mdi-login me-2'></i>
-                Iniciar sesion
+                <i className='mdi mdi-login me-2'></i>
+                <span className='hidden md:block'>Iniciar sesion</span>
               </a>
             </li>
             <li>|</li>
             <li>
               <a href="/register" >
                 <i className='mdi mdi-account-plus me-2'></i>
-                Registro
+                <span className='hidden md:block'>Registro</span>
               </a>
             </li>
           </ul>
         </nav>
       </header>
-      <div className="flex items-center justify-between min-h-[calc(100vh-200px)] ">
+      <div className="flex items-center justify-between min-h-[calc(100vh-200px)] py-8 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-6xl mx-auto grid items-center md:grid-cols-2 gap-8">
           <div className="text-center space-y-8">
             <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
