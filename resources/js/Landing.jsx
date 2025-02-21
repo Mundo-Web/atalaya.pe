@@ -38,7 +38,7 @@ const Landing = ({ services }) => {
         <div className="max-w-6xl mx-auto grid items-center md:grid-cols-2 gap-8">
           <div className="text-center md:text-start space-y-8">
             <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
-              Tu espacio <span className="text-amber-500 me-1">DIGITAL</span>
+              Tu espacio <span className="text-amber-500 me-2">DIGITAL</span>
               <br className='hidden md:block' />
               en un solo Lugar
             </h1>
