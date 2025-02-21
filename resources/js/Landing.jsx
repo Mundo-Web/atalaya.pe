@@ -19,16 +19,16 @@ const Landing = ({ services }) => {
         <nav>
           <ul className="flex space-x-4 text-[#323a46] font-bold">
             <li>
-              <a href="/login">
+              <a href="/login" className='w-max'>
                 <i className='mdi mdi-login me-2'></i>
-                <span className='hidden md:block'>Iniciar sesion</span>
+                <span className='hidden md:inline-block'>Iniciar sesion</span>
               </a>
             </li>
             <li>|</li>
             <li>
-              <a href="/register" >
+              <a href="/register"  className='w-max'>
                 <i className='mdi mdi-account-plus me-2'></i>
-                <span className='hidden md:block'>Registro</span>
+                <span className='hidden md:inline-block'>Registro</span>
               </a>
             </li>
           </ul>
