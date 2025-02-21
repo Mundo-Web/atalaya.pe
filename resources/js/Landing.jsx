@@ -36,10 +36,10 @@ const Landing = ({ services }) => {
       </header>
       <div className="flex items-center justify-between min-h-[calc(100vh-200px)] py-8 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-6xl mx-auto grid items-center md:grid-cols-2 gap-8">
-          <div className="space-y-8">
+          <div className="text-center md:text-start space-y-8">
             <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
-              Tu espacio <span className="text-amber-500">DIGITAL</span>
-              <br />
+              Tu espacio <span className="text-amber-500 me-1">DIGITAL</span>
+              <br className='hidden md:block' />
               en un solo Lugar
             </h1>
 
