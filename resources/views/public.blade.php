@@ -27,6 +27,8 @@
     }
   </style>
 
+  <link href="/lte/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
   @vite(['resources/css/app.css', 'resources/js/' . $route])
   @inertiaHead
 </head>

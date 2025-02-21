@@ -1,5 +1,6 @@
 import { createInertiaApp } from '@inertiajs/react'
 import { Cookies, FetchParams } from 'sode-extend-react'
+import Global from './Global';
 
 const CreateReactScript = (render) => {
 
@@ -7,6 +8,12 @@ const CreateReactScript = (render) => {
     resolve: name => `/${name}.jsx`,
     setup: ({ el, props }) => {
       const properties = props.initialPage.props
+
+      const _global = properties.global ?? {}
+      for (const name in _global) {
+        Global.set(name, _global[name])
+      }
+
       const can = (page, ...keys) => {
         const keys2validate = []
         if (Array.isArray(page)) {
