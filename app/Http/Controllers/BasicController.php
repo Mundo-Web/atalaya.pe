@@ -41,6 +41,9 @@ class BasicController extends Controller
       'APP_URL' => env('APP_URL'),
       'APP_DOMAIN' => env('APP_DOMAIN'),
       'APP_PROTOCOL' => env('APP_PROTOCOL', 'https'),
+      'global' => [
+        'APP_DOMAIN' => \env('APP_DOMAIN')
+      ]
     ];
     foreach ($this->setReactViewProperties() as $key => $value) {
       $properties[$key] = $value;
