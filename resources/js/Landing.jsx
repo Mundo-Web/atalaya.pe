@@ -80,11 +80,11 @@ const Landing = ({ services }) => {
               wrapperClass='mt-[150px]'
             >{
                 services.map((service, index) => {
-                  return <SwiperSlide key={index} className="grid grid-cols-4 gap-4 items-center justify-center border w-[360px] mx-auto px-4">
+                  return <SwiperSlide key={index} className="grid grid-cols-4 gap-4 items-center justify-center shadow-xl rounded-2xl w-[360px] mx-auto px-4">
                     <img
                       alt={service.name}
                       src={`//${service.correlative}.atalaya.pe/assets/img/icon.svg`}
-                      className="object-contain h-10 aspect-square mx-auto"
+                      className="object-contain h-12 aspect-square mx-auto"
                       onError={e => e.target.src = '/assets/img/icon.svg'} />
                     <div className='col-span-3'>
                       <h3 className="text-lg font-semibold">{service.name}</h3>
