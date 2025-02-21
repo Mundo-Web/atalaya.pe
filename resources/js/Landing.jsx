@@ -83,7 +83,7 @@ const Landing = ({ services }) => {
                   return <SwiperSlide key={index} className="grid grid-cols-4 gap-4 items-center justify-center shadow-xl rounded-2xl w-[360px] mx-auto px-4">
                     <img
                       alt={service.name}
-                      src={`//${service.correlative}.atalaya.pe/assets/img/icon.svg`}
+                      src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
                       className="object-contain h-12 aspect-square mx-auto"
                       onError={e => e.target.src = '/assets/img/icon.svg'} />
                     <div className='col-span-3'>
