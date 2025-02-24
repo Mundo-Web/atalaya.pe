@@ -12,7 +12,7 @@ const Landing = ({ session, services }) => {
 
   return (
     <main className='min-h-screen flex flex-col gap-8 w-full'>
-      <header className='max-w-7xl w-full mx-auto flex justify-between items-center pt-8 pb-6 px-4 sm:px-6 lg:px-8 border-b-4 border-[#00ac9e]'>
+      <header className='max-w-7xl w-full mx-auto flex justify-between items-center pt-8 px-4 sm:px-6 lg:px-8 relative'>
         <a href="/">
           <img src="/assets/img/logo-dark.svg" alt="" style={{ height: '40px' }} />
         </a>
@@ -47,6 +47,9 @@ const Landing = ({ session, services }) => {
           </ul>
         </nav>
       </header>
+      <div className='relative mb-6 w-full h-[3px]' style={{
+        background: 'linear-gradient(to right, transparent, #00ac9e 50%, transparent)'
+      }}></div>
       <div className="flex items-center justify-between min-h-[calc(100vh-200px)] py-8 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-7xl mx-auto grid items-center md:grid-cols-2 gap-8">
           <div className="text-center md:text-start space-y-8">
