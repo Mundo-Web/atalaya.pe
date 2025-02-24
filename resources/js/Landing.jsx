@@ -117,8 +117,15 @@ const Landing = ({ session, services }) => {
                           <h3 className="text-lg font-semibold">{service.name}</h3>
                           <p className='line-clamp-2 h-13'>{service.description}</p>
                           {
-                            service.status == 0 &&
-                            <small className='bg-red-500 px-2 py-1 rounded-full text-white mt-2 block w-max'>Proximamente</small>
+                            service.status == 0
+                              ? <span className='text-sm bg-red-500 px-3 py-1 rounded-full text-white mt-2 block w-max'>
+                                Proximamente
+                                <i className='mdi mdi-timer-sand ms-2'></i>
+                                </span>
+                              : <a href={`/login?service=${service.correlative}`} className='text-sm bg-[#00ac9e] px-3 py-1 rounded-full text-white mt-2 block w-max'>
+                                Vamos alla
+                                <i className='mdi mdi-arrow-top-right ms-2'></i>
+                              </a>
                           }
                         </div>
                       </div>
