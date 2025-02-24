@@ -104,7 +104,7 @@ const Landing = ({ session, services }) => {
                 services.map((service, index) => {
                   return <SwiperSlide key={index}>
                     {({ isPrev }) => (
-                      <div className={`grid grid-cols-4 gap-4 items-center justify-center shadow-xl rounded-2xl w-[360px] mx-auto px-4 py-3 transition-all duration-300 ${isPrev ? 'scale-110 bg-white' : 'scale-90 opacity-50'}`}>
+                      <div className={`grid grid-cols-4 gap-4 items-center justify-center shadow-xl rounded-2xl w-[360px] h-auto mx-auto px-4 py-3 transition-all duration-300 ${isPrev ? 'scale-110 bg-white' : 'scale-90 opacity-50'}`}>
                         <img
                           alt={service.name}
                           src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
@@ -115,7 +115,7 @@ const Landing = ({ session, services }) => {
                           <p>{service.description}</p>
                           {
                             service.status == 0 &&
-                            <small className='text-red-500'>Proximamente</small>
+                            <small className='bg-red-500 px-2 py-1 rounded-full text-white mt-2 block w-max'>Proximamente</small>
                           }
                         </div>
                       </div>
