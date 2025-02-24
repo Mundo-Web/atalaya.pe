@@ -112,7 +112,7 @@ const Landing = ({ session, services }) => {
                           onError={e => e.target.src = '/assets/img/icon.svg'} />
                         <div className='col-span-3'>
                           <h3 className="text-lg font-semibold">{service.name}</h3>
-                          <p>{service.description}</p>
+                          <p className='line-clamp-2 h-13'>{service.description}</p>
                           {
                             service.status == 0 &&
                             <small className='bg-red-500 px-2 py-1 rounded-full text-white mt-2 block w-max'>Proximamente</small>
