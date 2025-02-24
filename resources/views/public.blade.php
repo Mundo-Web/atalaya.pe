@@ -24,7 +24,7 @@
     * {
       margin: 0;
       padding: 0;
-      font-family: "Montserrat", serif;
+      font-family: "Comfortaa", serif;
       box-sizing: border-box;
     }
   </style>
