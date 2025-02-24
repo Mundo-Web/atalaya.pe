@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Classes\EmailConfig;
 use App\Http\Services\ReCaptchaService;
 use App\Models\Constant;
-use App\Models\ModelHasRoles;
 use App\Models\User;
 use App\Models\Person;
 use App\Models\PreUser;

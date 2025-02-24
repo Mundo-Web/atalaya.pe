@@ -122,7 +122,7 @@ const Landing = ({ session, services }) => {
                                 Proximamente
                                 <i className='mdi mdi-timer-sand ms-2'></i>
                                 </span>
-                              : <a href={`/login?service=${service.correlative}`} className='text-sm bg-[#00ac9e] px-3 py-1 rounded-full text-white mt-2 block w-max'>
+                              : <a href={`//${service.correlative}.${Global.APP_DOMAIN}/home`} className='text-sm bg-[#00ac9e] px-3 py-1 rounded-full text-white mt-2 block w-max'>
                                 Vamos alla
                                 <i className='mdi mdi-arrow-top-right ms-2'></i>
                               </a>
