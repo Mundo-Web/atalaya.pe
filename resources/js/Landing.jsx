@@ -86,7 +86,7 @@ const Landing = ({ session, services }) => {
             <Swiper
               direction="vertical"
               slidesPerView={3}
-              spaceBetween={30}
+              spaceBetween={20}
               centeredSlides={true}
               autoplay={{
                 delay: 2500,
@@ -113,6 +113,10 @@ const Landing = ({ session, services }) => {
                         <div className='col-span-3'>
                           <h3 className="text-lg font-semibold">{service.name}</h3>
                           <p>{service.description}</p>
+                          {
+                            service.status == 0 &&
+                            <small className='text-red-500'>Proximamente</small>
+                          }
                         </div>
                       </div>
                     )}
