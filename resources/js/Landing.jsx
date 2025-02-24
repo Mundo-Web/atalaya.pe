@@ -6,36 +6,49 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Global from './Utils/Global';
 
-const Landing = ({ services }) => {
+const Landing = ({ session, services }) => {
 
-  console.log(services)
+  console.log(session)
 
   return (
     <main className='min-h-screen flex flex-col gap-8 w-full'>
-      <header className='max-w-6xl w-full mx-auto flex justify-between items-center pt-8 pb-6 px-4 sm:px-6 lg:px-8 border-b-4 border-[#00ac9e]'>
+      <header className='max-w-7xl w-full mx-auto flex justify-between items-center pt-8 pb-6 px-4 sm:px-6 lg:px-8 border-b-4 border-[#00ac9e]'>
         <a href="/">
           <img src="/assets/img/logo-dark.svg" alt="" style={{ height: '40px' }} />
         </a>
         <nav>
           <ul className="flex space-x-4 text-[#323a46] font-bold">
-            <li>
-              <a href="/login" className='w-max'>
-                <i className='mdi mdi-login me-2'></i>
-                <span className='hidden md:inline-block'>Iniciar sesion</span>
-              </a>
-            </li>
-            <li>|</li>
-            <li>
-              <a href="/register"  className='w-max'>
-                <i className='mdi mdi-account-plus me-2'></i>
-                <span className='hidden md:inline-block'>Registro</span>
-              </a>
-            </li>
+            {
+              session
+                ? <>
+                  <li>
+                    <a href="/login" className='w-max flex items-center justify-center gap-2'>
+                      <img src={`/api/profile/thumbnail/${session.uuid}`} alt="" className='w-8 rounded-full object-center object-cover' />
+                      <span className=''>{session.name.split(' ')[0]} {session.lastname?.split(' ')?.[0]}</span>
+                    </a>
+                  </li>
+                </>
+                : <>
+                  <li>
+                    <a href="/login" className='w-max'>
+                      <i className='mdi mdi-login me-2'></i>
+                      <span className='hidden md:inline-block'>Iniciar sesion</span>
+                    </a>
+                  </li>
+                  <li>|</li>
+                  <li>
+                    <a href="/register" className='w-max'>
+                      <i className='mdi mdi-account-plus me-2'></i>
+                      <span className='hidden md:inline-block'>Registro</span>
+                    </a>
+                  </li>
+                </>
+            }
           </ul>
         </nav>
       </header>
       <div className="flex items-center justify-between min-h-[calc(100vh-200px)] py-8 px-4 sm:px-6 lg:px-8 ">
-        <div className="max-w-6xl mx-auto grid items-center md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto grid items-center md:grid-cols-2 gap-8">
           <div className="text-center md:text-start space-y-8">
             <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
               Tu espacio <span className="text-amber-500 me-2">DIGITAL</span>
@@ -44,9 +57,18 @@ const Landing = ({ services }) => {
             </h1>
 
             <div className="mt-4">
-              <a href="/login" className="inline-flex items-center px-8 py-3 text-base font-medium text-white bg-[#00ac9e] rounded-lg transition-colors duration-200">
-                Empecemos
-                <i className="mdi mdi-arrow-right ml-2 text-xl"></i>
+              <a href={session ? "/home" : "/login"} className="inline-flex items-center px-8 py-3 text-xl font-medium text-white bg-[#00ac9e] rounded-lg transition-colors duration-200">
+                {
+                  session
+                    ? <>
+                      Ver panel
+                      <i className="mdi mdi-view-dashboard ml-2"></i>
+                    </>
+                    : <>
+                      Empecemos
+                      <i className="mdi mdi-arrow-right ml-2"></i>
+                    </>
+                }
               </a>
             </div>
 
@@ -80,16 +102,20 @@ const Landing = ({ services }) => {
               wrapperClass='mt-[150px]'
             >{
                 services.map((service, index) => {
-                  return <SwiperSlide key={index} className="grid grid-cols-4 gap-4 items-center justify-center shadow-xl rounded-2xl w-[360px] mx-auto px-4">
-                    <img
-                      alt={service.name}
-                      src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
-                      className="object-contain h-12 aspect-square mx-auto"
-                      onError={e => e.target.src = '/assets/img/icon.svg'} />
-                    <div className='col-span-3'>
-                      <h3 className="text-lg font-semibold">{service.name}</h3>
-                      <p>{service.description}</p>
-                    </div>
+                  return <SwiperSlide key={index}>
+                    {({ isPrev }) => (
+                      <div className={`grid grid-cols-4 gap-4 items-center justify-center shadow-xl rounded-2xl w-[360px] mx-auto px-4 py-3 transition-all duration-300 ${isPrev ? 'scale-110 bg-white' : 'scale-90 opacity-50'}`}>
+                        <img
+                          alt={service.name}
+                          src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
+                          className="object-contain h-12 aspect-square mx-auto"
+                          onError={e => e.target.src = '/assets/img/icon.svg'} />
+                        <div className='col-span-3'>
+                          <h3 className="text-lg font-semibold">{service.name}</h3>
+                          <p>{service.description}</p>
+                        </div>
+                      </div>
+                    )}
                   </SwiperSlide>
                 })
               }
