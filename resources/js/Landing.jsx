@@ -23,7 +23,7 @@ const Landing = ({ session, services }) => {
                 ? <>
                   <li>
                     <a href="/login" className='w-max flex items-center justify-center gap-2'>
-                      <img src={`/api/profile/thumbnail/${session.uuid}`} alt="" className='w-8 rounded-full object-center object-cover' />
+                      <img src={`/api/profile/thumbnail/${session.relative_id}`} alt="" className='w-8 rounded-full object-center object-cover' />
                       <span className=''>{session.name.split(' ')[0]} {session.lastname?.split(' ')?.[0]}</span>
                     </a>
                   </li>
