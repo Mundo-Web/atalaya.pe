@@ -1,7 +1,7 @@
 {
-  "_Adminto-!~{00i}~.js": {
+  "_Adminto-!~{00j}~.js": {
     "file": "Adminto.css",
-    "src": "_Adminto-!~{00i}~.js"
+    "src": "_Adminto-!~{00j}~.js"
   },
   "_Adminto-UMlEkIC_.js": {
     "file": "assets/Adminto-UMlEkIC_.js",
@@ -199,7 +199,7 @@
     ]
   },
   "resources/js/Login.jsx": {
-    "file": "assets/Login-C1YvSMqG.js",
+    "file": "assets/Login-BQzwY29Z.js",
     "name": "Login",
     "src": "resources/js/Login.jsx",
     "isEntry": true,
@@ -238,8 +238,17 @@
       "_sweetalert2.all-Bk_3k_yg.js"
     ]
   },
+  "resources/js/Recovery.jsx": {
+    "file": "assets/Recovery-CX_bAjJL.js",
+    "name": "Recovery",
+    "src": "resources/js/Recovery.jsx",
+    "isEntry": true,
+    "imports": [
+      "_CreateReactScript-DsytWm7H.js"
+    ]
+  },
   "resources/js/Register.jsx": {
-    "file": "assets/Register-Ck1mUaPW.js",
+    "file": "assets/Register-BcmxaSxK.js",
     "name": "Register",
     "src": "resources/js/Register.jsx",
     "isEntry": true,

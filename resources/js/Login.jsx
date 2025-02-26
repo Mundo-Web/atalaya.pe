@@ -58,7 +58,9 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
       <div className="account-pages my-5">
         <div className="container">
 
-          <div className="row justify-content-center">
+          <div className="row justify-content-center align-items-center" style={{
+            minHeight: 'calc(100vh - 150px)',
+          }}>
             <div className="col-md-8 col-lg-6 col-xl-4">
               <div className="text-center">
                 <a href="/">

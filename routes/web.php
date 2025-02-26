@@ -11,6 +11,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecoveryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TermsController;
 use App\Http\Controllers\UsersByServicesByBusinessController;
@@ -33,6 +34,7 @@ use Inertia\Inertia;
 Route::get('/', [LandingController::class, 'reactView'])->name('Landing.jsx');
 Route::get('/login', [AuthController::class, 'loginView'])->name('Login.jsx');
 Route::get('/register', [AuthController::class, 'registerView'])->name('Register.jsx');
+Route::get('/recovery', [RecoveryController::class, 'reactView'])->name('Recovery.jsx');
 Route::get('/confirm-email/{token}', [AuthController::class, 'confirmEmailView'])->name('ConfirmEmail.jsx');
 
 Route::get('/confirmation/{token}', [AuthController::class, 'loginView']);
