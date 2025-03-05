@@ -34,8 +34,15 @@ const BusinessIWorkCard = ({ uuid, name, APP_PROTOCOL, owner, my_services, APP_D
         my_services.length == 1
           ? <Tippy content={`Abrir ${my_services[0].name}`}>
             <button className="btn btn-xs btn-white" onClick={() => beforeRedirect(my_services[0])}>
-              {my_services[0].name} {
-                !my_services[0].invitation_accepted && <i className="text-muted" style={{ fontSize: 'small' }}>Pendiente</i>
+              <img src={`//${my_services[0].correlative}.${APP_DOMAIN}/assets/img/icon.svg`} alt={my_services[0].name} style={{
+                height: '16px',
+                aspectRatio: 1,
+                objectFit: 'contain',
+                objectPosition: 'center'
+              }} />
+              <span className="ms-1">{my_services[0].name}</span>
+              {
+                !my_services[0].invitation_accepted && <i className="text-muted ms-1" style={{ fontSize: 'small' }}>Pendiente</i>
               }
             </button>
           </Tippy>
@@ -52,8 +59,9 @@ const BusinessIWorkCard = ({ uuid, name, APP_PROTOCOL, owner, my_services, APP_D
                     objectFit: 'contain',
                     objectPosition: 'center'
                   }} />
-                  {service.name} {
-                    !service.invitation_accepted && <i className="text-muted" style={{ fontSize: 'small' }}>Pendiente</i>
+                  <span className="ms-1">{service.name}</span>
+                  {
+                    !service.invitation_accepted && <i className="text-muted ms-1" style={{ fontSize: 'small' }}>Pendiente</i>
                   }
                 </button>
               })}
