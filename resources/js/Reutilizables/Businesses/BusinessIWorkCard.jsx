@@ -39,7 +39,7 @@ const BusinessIWorkCard = ({ uuid, name, APP_PROTOCOL, owner, my_services, APP_D
                 aspectRatio: 1,
                 objectFit: 'contain',
                 objectPosition: 'center'
-              }} />
+              }} onError={e => e.target.src = '/assets/img/icon.svg'} />
               <span className="ms-1">{my_services[0].name}</span>
               {
                 !my_services[0].invitation_accepted && <i className="text-muted ms-1" style={{ fontSize: 'small' }}>Pendiente</i>
@@ -58,7 +58,7 @@ const BusinessIWorkCard = ({ uuid, name, APP_PROTOCOL, owner, my_services, APP_D
                     aspectRatio: 1,
                     objectFit: 'contain',
                     objectPosition: 'center'
-                  }} />
+                  }} onError={e => e.target.src = '/assets/img/icon.svg'} />
                   <span className="ms-1">{service.name}</span>
                   {
                     !service.invitation_accepted && <i className="text-muted ms-1" style={{ fontSize: 'small' }}>Pendiente</i>
