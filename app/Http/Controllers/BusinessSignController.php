@@ -74,4 +74,9 @@ class BusinessSignController extends BasicController
             'business_id' => $business->id
         ];
     }
+
+    public function afterSave(Request $request, object $jpa)
+    {
+        return $jpa->sign;
+    }
 }
