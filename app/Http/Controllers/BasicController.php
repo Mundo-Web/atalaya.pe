@@ -40,7 +40,6 @@ class BasicController extends Controller
       } else {
         $route = "images/{$snake_case}/{$uuid}.img";
       }
-      dump($route);
       $content = Storage::get($route);
       if (!$content) throw new Exception('Imagen no encontrado');
       return response($content, 200, [
