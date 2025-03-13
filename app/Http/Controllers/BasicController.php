@@ -40,6 +40,7 @@ class BasicController extends Controller
       } else {
         $route = "images/{$snake_case}/{$uuid}.img";
       }
+      dump($route);
       $content = Storage::get($route);
       if (!$content) throw new Exception('Imagen no encontrado');
       return response($content, 200, [
@@ -189,6 +190,9 @@ class BasicController extends Controller
         $uuid = Crypto::randomUUID();
         $ext = $full->getClientOriginalExtension();
         $path = "images/{$snake_case}/{$uuid}.{$ext}";
+
+        dump($path);
+
         Storage::put($path, file_get_contents($full));
         $body[$field] = "{$uuid}.{$ext}";
       }
