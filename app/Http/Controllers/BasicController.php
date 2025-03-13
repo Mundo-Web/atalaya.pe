@@ -30,7 +30,6 @@ class BasicController extends Controller
   public $ignorePrefix = [];
   public $throwMediaError = false;
   public $imageFields = [];
-  public $publicMedia = false;
 
   public function media(Request $request, string $uuid)
   {
@@ -189,15 +188,8 @@ class BasicController extends Controller
         $full = $request->file($field);
         $uuid = Crypto::randomUUID();
         $ext = $full->getClientOriginalExtension();
-        $path = $this->publicMedia
-          ? public_path("repository/{$snake_case}")
-          : storage_path("app/images/{$snake_case}");
-
-        if (!file_exists($path)) {
-          mkdir($path, 0777, true);
-        }
-
-        File::save("{$path}/{$uuid}.{$ext}", file_get_contents($full));
+        $path = "images/{$snake_case}/{$uuid}.{$ext}";
+        Storage::put($path, file_get_contents($full));
         $body[$field] = "{$uuid}.{$ext}";
       }
 
