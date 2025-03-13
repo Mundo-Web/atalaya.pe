@@ -64,6 +64,7 @@ const Users = ({ session }) => {
         {
           dataField: 'user.name',
           caption: 'Usuario',
+          width: '500px',
           cellTemplate: (container, { data }) => {
             const fullname = data.user.name + ' ' + data.user.lastname
             ReactAppend(container, <div className='d-flex gap-2'>
