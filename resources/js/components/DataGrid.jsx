@@ -1,16 +1,28 @@
 import React, { useEffect } from 'react'
-import { Local } from 'sode-extend-react'
 
-const DataGrid = ({ gridRef: dataGridRef, rest, columns, toolBar, masterDetail, filterValue }) => {
+const DataGrid = ({ gridRef: dataGridRef, rest, columns, toolBar, masterDetail, filterValue, defaultRows, selection, allowedPageSizes = [5, 10, 25, 50, 100], pageSize = 100, exportable, exportableName, customizeCell = () => { }, reloadWith = [null], height = 'calc(100vh - 185px)' }) => {
   useEffect(() => {
     DevExpress.localization.locale(navigator.language);
+    if ($(dataGridRef.current).data('dxDataGrid')) {
+      $(dataGridRef.current)?.dxDataGrid('instance')?.dispose()
+    }
     $(dataGridRef.current).dxDataGrid({
       language: "es",
       dataSource: {
         load: async (params) => {
-          const data = await rest.paginate(params)
-          return data
-        },
+          const data = (await rest.paginate(params)) ?? {};
+          let newData = data?.data || [];
+
+          if (defaultRows) {
+            const defaultKeys = defaultRows.map(row => Object.keys(row));
+            const combinedData = newData.concat(defaultRows.filter(row => {
+              return !newData.some(dataRow => defaultKeys.some(keys => keys.every(key => dataRow[key] == row[key])));
+            }));
+            data.data = combinedData;
+          }
+
+          return data;
+        }
       },
       onToolbarPreparing: (e) => {
         const { items } = e.toolbarOptions;
@@ -41,26 +53,32 @@ const DataGrid = ({ gridRef: dataGridRef, rest, columns, toolBar, masterDetail, 
       filterPanel: { visible: true },
       searchPanel: { visible: true },
       headerFilter: { visible: true, search: { enabled: true } },
-      height: 'calc(100vh - 185px)',
+      height,
       filterValue,
-      // export: {
-      //   enabled: true
-      // },
-      // onExporting: function (e) {
-      //   var workbook = new ExcelJS.Workbook();
-      //   var worksheet = workbook.addWorksheet('Main sheet');
-      //   DevExpress.excelExporter.exportDataGrid({
-      //     worksheet: worksheet,
-      //     component: e.component,
-      //     customizeCell: function (options) {
-      //       options.excelCell.alignment = { horizontal: 'left' };
-      //     }
-      //   }).then(function () {
-      //     workbook.xlsx.writeBuffer().then(function (buffer) {
-      //       saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `types.${SERVICE}.xlsx`);
-      //     });
-      //   });
-      // },
+      selection: selection || null,
+      export: {
+        enabled: exportable
+      },
+      onExporting: function (e) {
+        var workbook = new ExcelJS.Workbook();
+        var worksheet = workbook.addWorksheet('Main sheet');
+        DevExpress.excelExporter.exportDataGrid({
+          worksheet: worksheet,
+          component: e.component,
+          customizeCell: function (options) {
+            customizeCell(options)
+            options.excelCell.alignment = {
+              horizontal: 'left',
+              vertical: 'top',
+              ...options.excelCell.alignment
+            };
+          }
+        }).then(function () {
+          workbook.xlsx.writeBuffer().then(function (buffer) {
+            saveAs(new Blob([buffer], { type: 'application/octet-stream' }), `${exportableName}.xlsx`);
+          });
+        });
+      },
       rowAlternationEnabled: true,
       showBorders: true,
       filterRow: {
@@ -74,11 +92,11 @@ const DataGrid = ({ gridRef: dataGridRef, rest, columns, toolBar, masterDetail, 
         },
       },
       paging: {
-        pageSize: 10,
+        pageSize,
       },
       pager: {
         visible: true,
-        allowedPageSizes: [5, 10, 25, 50, 100],
+        allowedPageSizes,
         showPageSizeSelector: true,
         showInfo: true,
         showNavigationButtons: true,
@@ -100,7 +118,7 @@ const DataGrid = ({ gridRef: dataGridRef, rest, columns, toolBar, masterDetail, 
       masterDetail,
       onContentReady: (...props) => {
         tippy('.tippy-here', { arrow: true, animation: 'scale' })
-      }
+      },
       // onColumnsChanging: () => {
       //   const dataGrid = $(dataGridRef.current).dxDataGrid('instance')
       //   const state = dataGrid.state()
@@ -117,6 +135,16 @@ const DataGrid = ({ gridRef: dataGridRef, rest, columns, toolBar, masterDetail, 
 
       //   Local.set('dxSettings', dxSettings)
       // }
+      onOptionChanged: (e) => {
+        if (e.fullName === 'filterValue') {
+          const path = location.pathname;
+          const dxSettings = Local.get('dxSettings') || {};
+          dxSettings[path] = {
+            filterValue: e.value
+          };
+          Local.set('dxSettings', dxSettings);
+        }
+      },
     }).dxDataGrid('instance')
 
     tippy('.dx-button', { arrow: true })
@@ -125,7 +153,11 @@ const DataGrid = ({ gridRef: dataGridRef, rest, columns, toolBar, masterDetail, 
     // if (dxSettings[location.pathname]) {
     //   $(dataGridRef.current).dxDataGrid('instance').state(dxSettings[location.pathname])
     // }
-  }, [null])
+    const dxSettings = Local.get('dxSettings') || {};
+    if (dxSettings[location.pathname]?.filterValue) {
+      $(dataGridRef.current).dxDataGrid('instance').option('filterValue', dxSettings[location.pathname].filterValue);
+    }
+  }, reloadWith)
 
   return (
     <div ref={dataGridRef}></div>

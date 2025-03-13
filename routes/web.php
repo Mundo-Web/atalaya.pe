@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecoveryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TermsController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersByServicesByBusinessController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', [BasicController::class, 'reactView'])->name('Home.jsx');
     Route::get('/businesses', [BusinessController::class, 'reactView'])->name('Businesses.jsx');
     Route::get('/signs', [BusinessSignController::class, 'reactView'])->name('Signs.jsx');
+    Route::get('/users', [UserController::class, 'reactView'])->name('Users.jsx');
     Route::get('/services', [ServiceController::class, 'reactView'])->name('Services.jsx');
 
     Route::get('/profile', [ProfileController::class, 'reactView'])->name('Profile.jsx');

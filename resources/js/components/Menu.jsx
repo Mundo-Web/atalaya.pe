@@ -77,6 +77,7 @@ const Menu = ({ session, can }) => {
           <MenuItem href="/home" icon='mdi mdi-home'>Inicio</MenuItem>
           <MenuItem href="/businesses" icon='mdi mdi-bag-checked'>Empresas</MenuItem>
           <MenuItem href="/signs" icon='mdi mdi-signature-freehand'>Firmas</MenuItem>
+          <MenuItem href="/users" icon='mdi mdi-account-group'>Colaboradores</MenuItem>
 
           <li className="menu-title">Configuracion</li>
           <MenuItem href="/profile" icon='mdi mdi-account'>Mi perfil</MenuItem>

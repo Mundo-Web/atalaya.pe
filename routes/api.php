@@ -16,6 +16,7 @@ use App\Http\Controllers\ServicesByBusinessController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserByProjectController;
 use App\Http\Controllers\UserController;
@@ -48,14 +49,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/users/status', [UserController::class, 'status']);
     Route::delete('/users/{id}', [UserController::class, 'delete']);
 
-    // Users routes
+    // Roles routes
     Route::get('/roles/user/{id}', [RoleController::class, 'byUser']);
     Route::post('/roles', [RoleController::class, 'save']);
     Route::post('/roles/paginate', [RoleController::class, 'paginate']);
     Route::patch('/roles/status', [RoleController::class, 'status']);
     Route::delete('/roles/{id}', [RoleController::class, 'delete']);
 
-    // Users routes
+    // Permissions routes
     Route::post('/permissions', [PermissionController::class, 'save']);
     Route::post('/permissions/paginate', [PermissionController::class, 'paginate']);
     Route::get('/permissions/role/{id}', [PermissionController::class, 'byRole']);
@@ -63,7 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/permissions/status', [PermissionController::class, 'status']);
     Route::delete('/permissions/{id}', [PermissionController::class, 'delete']);
 
-    // Clients routes
+    // Businesses routes
     Route::post('/business', [BusinessController::class, 'save']);
     Route::put('/business/assign', [BusinessController::class, 'assign']);
     Route::delete('/business/assign', [BusinessController::class, 'assign']);
@@ -76,6 +77,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/signs', [BusinessSignController::class, 'save']);
     Route::post('/signs/paginate', [BusinessSignController::class, 'paginate']);
     Route::delete('/signs/{id}', [BusinessSignController::class, 'delete']);
+
+    Route::post('/team/paginate', [TeamController::class, 'paginate']);
+    Route::delete('/team/{id}', [TeamController::class, 'delete']);
 
     // Types routes
     Route::post('/types', [TypeController::class, 'save']);

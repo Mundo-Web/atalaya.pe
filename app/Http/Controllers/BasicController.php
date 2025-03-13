@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use SoDe\Extend\Crypto;
@@ -25,6 +26,8 @@ class BasicController extends Controller
   public $softDeletion = true;
   public $reactView = 'Home';
   public $reactRootView = 'admin';
+  public $prefix4filter = null;
+  public $ignorePrefix = [];
   public $imageFields = [];
   public $publicMedia = false;
 
@@ -68,21 +71,19 @@ class BasicController extends Controller
         [$grouping] = $request->group;
         // $selector = str_replace('.', '__', $grouping['selector']);
         $selector = $grouping['selector'];
-        $instance = $this->model::select([
-          "{$selector} AS key"
-        ])
-          ->groupBy($selector);
+        if (!str_contains($selector, '.') && $this->prefix4filter && !Text::startsWith($selector, '!') && !in_array($selector, $this->ignorePrefix)) {
+          $selector = "{$this->prefix4filter}.{$selector}";
+        }
+        // $instance = $this->model::select(DB::raw("{$selector} AS key"))
+        $instance = $instance->select(DB::raw("{$selector} AS `key`"))
+          ->groupBy(str_replace('!', '', $selector));
       }
 
       $userJpa = User::find(Auth::id());
 
-      if (!$userJpa->can('general.root')) {
-        $instance->whereNotNull('status');
-      }
-
       if ($request->filter) {
         $instance->where(function ($query) use ($request) {
-          dxDataGrid::filter($query, $request->filter ?? [], false);
+          dxDataGrid::filter($query, $request->filter ?? [], false, $this->prefix4filter, $this->ignorePrefix);
         });
       }
 
@@ -90,16 +91,38 @@ class BasicController extends Controller
         foreach ($request->sort as $sorting) {
           // $selector = \str_replace('.', '__', $sorting['selector']);
           $selector = $sorting['selector'];
+          if (!str_contains($selector, '.') && $this->prefix4filter && !Text::startsWith($selector, '!') && !in_array($selector, $this->ignorePrefix)) {
+            $selector = "{$this->prefix4filter}.{$selector}";
+          }
           $instance->orderBy(
-            $selector,
+            str_replace('!', '', $selector),
             $sorting['desc'] ? 'DESC' : 'ASC'
           );
         }
       } else {
-        $instance->orderBy('id', 'DESC');
+        if ($this->prefix4filter) {
+          $instance->orderBy("{$this->prefix4filter}.id", 'DESC');
+        } else {
+          $instance->orderBy('id', 'DESC');
+        }
       }
 
-      $totalCount = $instance->count('*');
+      $totalCount = 0;
+      if ($request->requireTotalCount) {
+        try {
+          $instance4count = clone $instance;
+          $instance4count->getQuery()->groups = null;
+          // $totalCount = $instance->count();
+          if ($this->prefix4filter) {
+            $totalCount = $instance4count->select(DB::raw("COUNT(DISTINCT({$this->prefix4filter}.id)) as total_count"))->value('total_count');
+          } else {
+            $totalCount = $instance4count->select(DB::raw('COUNT(DISTINCT(id)) as total_count'))->value('total_count');
+          }
+        } catch (\Throwable $th) {
+          //throw $th;
+        }
+      }
+
       $jpas = $request->isLoadingAll
         ? $instance->get()
         : $instance
