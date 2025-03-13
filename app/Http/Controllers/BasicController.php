@@ -28,8 +28,33 @@ class BasicController extends Controller
   public $reactRootView = 'admin';
   public $prefix4filter = null;
   public $ignorePrefix = [];
+  public $throwMediaError = false;
   public $imageFields = [];
   public $publicMedia = false;
+
+  public function media(Request $request, string $uuid)
+  {
+    try {
+      $snake_case = Text::camelToSnakeCase(str_replace('App\\Models\\', '', $this->model));
+      if (Text::has($uuid, '.')) {
+        $route = "images/{$snake_case}/{$uuid}";
+      } else {
+        $route = "images/{$snake_case}/{$uuid}.img";
+      }
+      $content = Storage::get($route);
+      if (!$content) throw new Exception('Imagen no encontrado');
+      return response($content, 200, [
+        'Content-Type' => 'application/octet-stream'
+      ]);
+    } catch (\Throwable $th) {
+      $content = Storage::get('utils/cover-404.svg');
+      $status = 200;
+      if ($this->throwMediaError) return null;
+      return response($content, $status, [
+        'Content-Type' => 'image/svg+xml'
+      ]);
+    }
+  }
 
   public function setPaginationInstance(string $model)
   {

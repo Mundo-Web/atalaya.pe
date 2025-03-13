@@ -16,7 +16,7 @@ class BusinessSignController extends BasicController
     public $model = BusinessSign::class;
     public $reactView = 'Signs.jsx';
     public $imageFields = ['sign'];
-    public $publicMedia = true;
+    // public $publicMedia = true;
     public $softDeletion = false;
 
     public function setPaginationInstance(string $model)

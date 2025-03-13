@@ -102,7 +102,7 @@ const Signs = ({ businesses = [] }) => {
                       ? <>
                         <label htmlFor={uuid}>
                           <img
-                            src={`/repository/business_sign/${sign.sign}`}
+                            src={`/api/signs/media/${sign.sign}`}
                             alt={`${business.name} signature`}
                             className="w-100"
                             style={{
