@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\BusinessSignController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingFormController;
 use App\Http\Controllers\PaymentController;
@@ -70,6 +71,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/business/status', [BusinessController::class, 'status']);
     Route::patch('/business/client-status', [BusinessController::class, 'clientStatus']);
     Route::delete('/business/{id}', [BusinessController::class, 'delete']);
+
+    // Signs routes
+    Route::post('/signs', [BusinessSignController::class, 'save']);
+    Route::post('/signs/paginate', [BusinessSignController::class, 'paginate']);
+    Route::delete('/signs/{id}', [BusinessSignController::class, 'delete']);
 
     // Types routes
     Route::post('/types', [TypeController::class, 'save']);

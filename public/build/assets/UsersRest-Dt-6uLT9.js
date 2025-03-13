@@ -1,0 +1,1 @@
+var r=Object.defineProperty;var o=(e,s,t)=>s in e?r(e,s,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[s]=t;var a=(e,s,t)=>o(e,typeof s!="symbol"?s+"":s,t);import{B as p}from"./BasicRest-CK88Dw_V.js";class m extends p{constructor(){super(...arguments);a(this,"path","users")}}export{m as U};

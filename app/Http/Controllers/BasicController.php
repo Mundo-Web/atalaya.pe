@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Classes\dxResponse;
 use App\Models\dxDataGrid;
+use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use SoDe\Extend\Crypto;
+use SoDe\Extend\File;
 use SoDe\Extend\JSON;
 use SoDe\Extend\Response;
+use SoDe\Extend\Text;
 
 class BasicController extends Controller
 {
@@ -20,7 +25,8 @@ class BasicController extends Controller
   public $softDeletion = true;
   public $reactView = 'Home';
   public $reactRootView = 'admin';
-
+  public $imageFields = [];
+  public $publicMedia = false;
 
   public function setPaginationInstance(string $model)
   {
@@ -34,9 +40,10 @@ class BasicController extends Controller
 
   public function reactView()
   {
+    $userJpa = User::find(Auth::id());
     $properties = [
-      'session' => Auth::user(),
-      'permissions' => Auth::check() ? Auth::user()?->getAllPermissions() : [],
+      'session' => $userJpa,
+      'permissions' => Auth::check() ? $userJpa->getAllPermissions() : [],
       'PUBLIC_RSA_KEY' => Controller::$PUBLIC_RSA_KEY,
       'APP_URL' => env('APP_URL'),
       'APP_DOMAIN' => env('APP_DOMAIN'),
@@ -67,7 +74,9 @@ class BasicController extends Controller
           ->groupBy($selector);
       }
 
-      if (!Auth::user()->can('general.root')) {
+      $userJpa = User::find(Auth::id());
+
+      if (!$userJpa->can('general.root')) {
         $instance->whereNotNull('status');
       }
 
@@ -124,6 +133,26 @@ class BasicController extends Controller
     try {
 
       $body = $this->beforeSave($request);
+
+      $snake_case = Text::camelToSnakeCase(str_replace('App\\Models\\', '', $this->model));
+
+      foreach ($this->imageFields as $field) {
+        if (!$request->hasFile($field)) continue;
+        $full = $request->file($field);
+        $uuid = Crypto::randomUUID();
+        $ext = $full->getClientOriginalExtension();
+        $path = $this->publicMedia
+          ? public_path("repository/{$snake_case}")
+          : storage_path("app/images/{$snake_case}");
+
+        if (!file_exists($path)) {
+          mkdir($path, 0777, true);
+        }
+
+        File::save("{$path}/{$uuid}.{$ext}", file_get_contents($full));
+        $body[$field] = "{$uuid}.{$ext}";
+      }
+
       $jpa = $this->model::find(isset($body['id']) ? $body['id'] : null);
 
       if (!$jpa) {

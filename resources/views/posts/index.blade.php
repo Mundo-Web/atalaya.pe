@@ -54,12 +54,12 @@
     <!-- Encabezado superpuesto -->
     <header class=" text-white px-[5%]  w-full z-10 h-[15%]  flex justify-between items-center ">
       <div class="items-center inline-flex xs:w-6/12 xl:w-3/12 z-50 py-7 "> 
-        <a href="{{ route('inicio') }}"> <img src="{{ asset('img/logomundoweb.svg') }}" class="h-full xs:w-64 xl:w-64 "> </a>
+        <a href="{{ route('Landing.jsx') }}"> <img src="{{ asset('img/logomundoweb.svg') }}" class="h-full xs:w-64 xl:w-64 "> </a>
       </div>
     
       <nav class="inline-flex items-center xs:w-0/12 xl:w-6/12 xs:hidden xl:block py-7"> 
         <ul class="flex space-x-6 font-MontserratSemibold font-normal">
-          <li class="hover:text-mwnaranja"><a href="{{ route('inicio') }}" >Inicio</a></li>
+          <li class="hover:text-mwnaranja"><a href="{{ route('Landing.jsx') }}" >Inicio</a></li>
           <li class="hover:text-mwnaranja"><a href="{{ route('servicios') }}" >Servicios</a></li>
           <li class="hover:text-mwnaranja"><a href="{{ route('proyectos') }}" >Proyectos</a></li>
           <li class="hover:text-mwnaranja"><a href="{{ route('posts.index') }}" >Blog</a></li>
@@ -94,7 +94,7 @@
     <div id="menu" class="fixed z-40 w-0 h-0 flex justify-center items-center bg-azulanding opacity-0 duration-700 ">
      
         <nav class="flex flex-col text-white text-left text-4xl font-bold space-y-4 font-RightgroteskMedium tracking-wider">
-            <a class="hover:underline duration-300" href="{{ route('inicio') }}">Inicio</a>
+            <a class="hover:underline duration-300" href="{{ route('Landing.jsx') }}">Inicio</a>
             <a class="hover:underline duration-300" href="{{ route('servicios') }}">Servicios</a>
             <a class="hover:underline duration-300" href="{{ route('proyectos') }}">Proyectos</a>
             <a class="hover:underline duration-300" href="{{ route('posts.index') }}">Blog</a>
@@ -275,7 +275,7 @@
         <div class="grid xs:grid-cols-1 lg:grid-cols-4 px-[5%]   py-10  gap-10 text-white  bg-fondofooter">
      
           <div class="flex flex-col items-start">
-            <a href="{{ route('inicio') }}"> <img src="{{ asset('img/logomundoweb.svg') }}" class="h-full xs:w-40 "> </a>
+            <a href="{{ route('Landing.jsx') }}"> <img src="{{ asset('img/logomundoweb.svg') }}" class="h-full xs:w-40 "> </a>
           </div>
       
           <div>

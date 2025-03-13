@@ -4,21 +4,15 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\BusinessController;
-use App\Http\Controllers\ContactoController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BusinessSignController;
 use App\Http\Controllers\DataUsageController;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\LandingController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecoveryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TermsController;
 use App\Http\Controllers\UsersByServicesByBusinessController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +37,7 @@ Route::get('/invitation/{token}', [UsersByServicesByBusinessController::class, '
 Route::middleware('auth')->group(function () {
     Route::get('/home', [BasicController::class, 'reactView'])->name('Home.jsx');
     Route::get('/businesses', [BusinessController::class, 'reactView'])->name('Businesses.jsx');
+    Route::get('/signs', [BusinessSignController::class, 'reactView'])->name('Signs.jsx');
     Route::get('/services', [ServiceController::class, 'reactView'])->name('Services.jsx');
 
     Route::get('/profile', [ProfileController::class, 'reactView'])->name('Profile.jsx');
