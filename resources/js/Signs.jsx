@@ -66,7 +66,11 @@ const Signs = ({ businesses = [] }) => {
 
   const getSigns = async () => {
     const result = await businessSignsRest.paginate({
-      isLoadingAll: true
+      isLoadingAll: true,
+      sort: [{
+        selector: 'created_at',
+        desc: false 
+      }]
     })
     if (!result) return
     setSigns(result.data)

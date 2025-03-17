@@ -62,8 +62,12 @@ class BusinessSignController extends BasicController
             ->where('users_by_services_by_businesses.user_id', Auth::user()->id)
             ->where('users_by_services_by_businesses.invitation_accepted', true)
             ->first();
-
         if (!$business) throw new Exception('No está autorizado para realizar esta acción');
+
+        $sign = BusinessSign::find($request->id);
+        if (!$sign && BusinessSign::where('business_id', $business->id)->count() >= 4) {
+            throw new Exception('No puede registrar más de 4 firmas');
+        }
 
         return [
             // 'id' => BusinessSign::select('id')
