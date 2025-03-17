@@ -18,7 +18,5 @@ class BusinessSign extends Model
         'sign',
         'user_id',
         'business_id',
-        'email',
-        'whatsapp',
     ];
 }
