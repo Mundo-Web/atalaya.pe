@@ -55,17 +55,18 @@ class BusinessSignController extends BasicController
     {
         $body = $request->all();
 
-        $business = Business::select('businesses.id')
+        $business = Business::select(['businesses.id', 'businesses.name'])
             ->join('services_by_businesses', 'services_by_businesses.business_id', 'businesses.id')
             ->join('users_by_services_by_businesses', 'users_by_services_by_businesses.service_by_business_id', 'services_by_businesses.id')
             ->where('businesses.uuid', $body['business_id'])
-            ->where('users_by_services_by_businesses.user_id', Auth::user()->id)
+            ->where('users_by_services_by_businesses.user_id', Auth::id())
             ->where('users_by_services_by_businesses.invitation_accepted', true)
             ->first();
         if (!$business) throw new Exception('No está autorizado para realizar esta acción');
 
         $sign = BusinessSign::find($request->id);
-        if (!$sign && BusinessSign::where('business_id', $business->id)->count() >= 4) {
+        $signsCount = BusinessSign::where('business_id', $business->id)->where('user_id', Auth::id())->count();
+        if (!$sign && $signsCount >= 4) {
             throw new Exception('No puede registrar más de 4 firmas');
         }
 
