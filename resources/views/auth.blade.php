@@ -1,11 +1,12 @@
 @php
-  $component = Route::currentRouteName();
+$component = Route::currentRouteName();
 @endphp
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+  @viteReactRefresh
   <meta charset="utf-8" />
   <title>Login | Atalaya</title>
   <link rel="shortcut icon" href="/img/isotipo.svg" type="image/x-icon">
@@ -51,4 +52,5 @@
   <script src="/lte/assets/js/app.min.js"></script>
 
 </body>
+
 </html>

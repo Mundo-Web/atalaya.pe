@@ -69,7 +69,7 @@ const Signs = ({ businesses = [] }) => {
       isLoadingAll: true,
       sort: [{
         selector: 'created_at',
-        desc: false 
+        desc: false
       }]
     })
     if (!result) return
@@ -145,14 +145,15 @@ const Signs = ({ businesses = [] }) => {
         <div className="d-flex flex-wrap justify-content-center gap-3" style={{ maxWidth: "960px" }}>
           {businesses.map((business, i) => {
             const businessSigns = signsByBusiness[business.id] || [];
+            const signsArray = new Array(businessSigns.length < 4 ? businessSigns.length + 1 : 4).fill(null)
             return (
               <div
                 key={`business-${i}`}
                 className="card mb-0"
                 style={{ width: "280px" }}>
                 <div className="card-body position-relative p-0">
-                  <div className="d-flex flex-wrap">
-                    {[0, 1, 2, 3].map((index) => renderSignatureSlot(business, businessSigns[index], index))}
+                  <div className="d-flex">
+                    {signsArray.map((_,index) => renderSignatureSlot(business, businessSigns[index], index))}
                   </div>
                 </div>
                 <div className="card-footer bg-light">
