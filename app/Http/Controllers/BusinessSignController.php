@@ -76,6 +76,7 @@ class BusinessSignController extends BasicController
             //     ->where('business_id', $business->id)
             //     ->first()?->id,
             'id' => BusinessSign::find($request->id)?->id,
+            'name' => $request->name,
             'user_id' => Auth::id(),
             'business_id' => $business->id
         ];

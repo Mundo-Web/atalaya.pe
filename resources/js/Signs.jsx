@@ -5,12 +5,24 @@ import Adminto from "./components/Adminto.jsx";
 import Swal from "sweetalert2";
 import BusinessSignsRest from "./actions/BusinessSignsRest.js";
 import Tippy from "@tippyjs/react";
+import Modal from "./components/Modal.jsx";
+import InputFormGroup from "./components/form/InputFormGroup.jsx";
+import QuillFormGroup from "./components/form/QuillFormGroup.jsx";
+import ImageFormGroup from "./components/form/ImageFormGroup.jsx";
 
 const businessSignsRest = new BusinessSignsRest()
 
 const Signs = ({ businesses = [] }) => {
+
+  const modalRef = useRef()
+
+  const idRef = useRef()
+  const nameRef = useRef()
+  const signRef = useRef()
+
   const [isUploading, setIsUploading] = useState(false);
   const [signs, setSigns] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   // Group signs by business as an array
   const signsByBusiness = signs.reduce((acc, sign) => {
@@ -18,6 +30,10 @@ const Signs = ({ businesses = [] }) => {
     acc[sign.business_id].push(sign);
     return acc;
   }, {});
+
+  const onModalSubmit = async (e) => {
+    e.preventDefault()
+  }
 
   const onSignUpload = async (e) => {
     const file = e.target.files[0];
@@ -32,6 +48,21 @@ const Signs = ({ businesses = [] }) => {
       });
       return;
     }
+
+    const { value: name } = await Swal.fire({
+      title: 'Nombre de la firma',
+      input: 'text',
+      inputLabel: 'Ingrese un nombre para identificar esta firma',
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return 'Debe ingresar un nombre'
+        }
+      }
+    })
+
+    if (!name) return;
+
     const business_id = e.target.getAttribute("data-id");
     const sign_id = e.target.getAttribute("data-sign");
 
@@ -39,6 +70,7 @@ const Signs = ({ businesses = [] }) => {
     if (sign_id) formData.append("id", sign_id);
     formData.append("sign", file);
     formData.append("business_id", business_id);
+    formData.append("name", name);
 
     setIsUploading(true);
     const result = await businessSignsRest.save(formData)
@@ -95,9 +127,13 @@ const Signs = ({ businesses = [] }) => {
                   objectFit: "cover",
                   objectPosition: 'center',
                   cursor: isUploading ? 'not-allowed' : 'pointer',
-                  // padding: '0.5rem'
                 }}
               />
+              <div className="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-1">
+                <small className="d-block text-center text-truncate">
+                  {sign.name || 'Sin nombre'}
+                </small>
+              </div>
             </label>
             <Tippy content="Quitar firma">
               <i
@@ -153,7 +189,7 @@ const Signs = ({ businesses = [] }) => {
                 style={{ width: "280px" }}>
                 <div className="card-body position-relative p-0">
                   <div className="d-flex">
-                    {signsArray.map((_,index) => renderSignatureSlot(business, businessSigns[index], index))}
+                    {signsArray.map((_, index) => renderSignatureSlot(business, businessSigns[index], index))}
                   </div>
                 </div>
                 <div className="card-footer bg-light">
@@ -167,6 +203,13 @@ const Signs = ({ businesses = [] }) => {
           })}
         </div>
       </div>
+      <Modal modalRef={modalRef} title={isEditing ? 'Editar firmga' : 'Agregar firmga'} onSubmit={onModalSubmit} size='md'>
+        <div className='row' id='settings-crud-container'>
+          <input ref={idRef} type='hidden' />
+          <InputFormGroup eRef={nameRef} label='Alias' col='col-12' required />
+          <ImageFormGroup eRef={signRef} label='Firma' col='col-12' required />
+        </div>
+      </Modal>
     </>
   );
 };
