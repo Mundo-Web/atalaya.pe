@@ -1,13 +1,14 @@
 @php
-  $route = Route::currentRouteName();
-  // $component = Router::components[$route];
-  // $admintoInstance = isset($component['adminto-instance']) ? $component['adminto-instance'] : false;
+$route = Route::currentRouteName();
+// $component = Router::components[$route];
+// $admintoInstance = isset($component['adminto-instance']) ? $component['adminto-instance'] : false;
 @endphp
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+  @viteReactRefresh
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Panel | Atalaya</title>
@@ -51,7 +52,7 @@
     body pre {
       font-family: monospace;
     }
-    
+
     .tippy-tooltip {
       padding: 0;
     }
@@ -76,7 +77,7 @@
   <script src="/lte/assets/js/vendor.min.js"></script>
 
   @if ($route == 'home')
-    <script src="/lte/assets/libs/jquery-knob/jquery.knob.min.js"></script>
+  <script src="/lte/assets/libs/jquery-knob/jquery.knob.min.js"></script>
   @endif
   <script src="/lte/assets/libs/quill/quill.min.js"></script>
   <script src="/lte/assets/libs/select2/js/select2.full.min.js"></script>

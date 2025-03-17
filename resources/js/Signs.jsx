@@ -4,6 +4,7 @@ import CreateReactScript from "./Utils/CreateReactScript.jsx";
 import Adminto from "./components/Adminto.jsx";
 import Swal from "sweetalert2";
 import BusinessSignsRest from "./actions/BusinessSignsRest.js";
+import Tippy from "@tippyjs/react";
 
 const businessSignsRest = new BusinessSignsRest()
 
@@ -11,9 +12,10 @@ const Signs = ({ businesses = [] }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [signs, setSigns] = useState([]);
 
-  // Group signs by business
+  // Group signs by business as an array
   const signsByBusiness = signs.reduce((acc, sign) => {
-    acc[sign.business_id] = sign;
+    if (!acc[sign.business_id]) acc[sign.business_id] = [];
+    acc[sign.business_id].push(sign);
     return acc;
   }, {});
 
@@ -31,7 +33,10 @@ const Signs = ({ businesses = [] }) => {
       return;
     }
     const business_id = e.target.getAttribute("data-id");
+    const sign_id = e.target.getAttribute("data-sign");
+
     const formData = new FormData();
+    if (sign_id) formData.append("id", sign_id);
     formData.append("sign", file);
     formData.append("business_id", business_id);
 
@@ -71,72 +76,80 @@ const Signs = ({ businesses = [] }) => {
     getSigns()
   }, [null])
 
+  const renderSignatureSlot = (business, sign, index) => {
+    const uuid = `file-${business.uuid}-${index}`;
+    return (
+      <div className="position-relative" style={{ width: '25%', aspectRatio: '.5' }}>
+        {sign ? (
+          <>
+            <label htmlFor={uuid} className="w-100 h-100">
+              <img
+                src={`/repository/signs/${sign.sign}`}
+                alt={`${business.name} signature ${index + 1}`}
+                className="w-100 h-100"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: 'center',
+                  cursor: isUploading ? 'not-allowed' : 'pointer',
+                  // padding: '0.5rem'
+                }}
+              />
+            </label>
+            <Tippy content="Quitar firma">
+              <i
+                className="mdi mdi-trash-can mdi-24px position-absolute text-danger"
+                style={{
+                  top: "0.25rem",
+                  right: "0.25rem",
+                }}
+                type="button"
+                onClick={() => onDeleteClicked(sign.id)}>
+              </i>
+            </Tippy>
+          </>
+        ) : (
+          <label
+            htmlFor={uuid}
+            className="d-flex align-items-center justify-content-center w-100 h-100"
+            style={{
+              cursor: isUploading ? 'not-allowed' : 'pointer'
+            }}
+          >
+            <div className="text-center text-muted">
+              <i className="fa fa-plus fa-lg"></i>
+            </div>
+          </label>
+        )}
+        <input
+          id={uuid}
+          type="file"
+          className="form-control"
+          accept="image/*"
+          hidden
+          data-id={business.uuid}
+          data-sign={sign?.id}
+          onChange={onSignUpload}
+          disabled={isUploading || (signsByBusiness[business.id]?.length >= 4 && !sign)}
+        />
+      </div>
+    );
+  };
+
   return (
     <>
-      <div
-        className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "calc(100vh - 135px)" }}>
-        <div
-          className="d-flex flex-wrap justify-content-center gap-3"
-          style={{ maxWidth: "960px" }}>
+      <div className="d-flex align-items-center justify-content-center" style={{ minHeight: "calc(100vh - 135px)" }}>
+        <div className="d-flex flex-wrap justify-content-center gap-3" style={{ maxWidth: "960px" }}>
           {businesses.map((business, i) => {
-            const sign = signsByBusiness[business.id];
-            const uuid = `file-${business.uuid}`;
+            const businessSigns = signsByBusiness[business.id] || [];
             return (
               <div
                 key={`business-${i}`}
                 className="card mb-0"
                 style={{ width: "280px" }}>
-                <input
-                  id={uuid}
-                  type="file"
-                  className="form-control"
-                  accept="image/*"
-                  hidden
-                  data-id={business.uuid}
-                  onChange={onSignUpload}
-                  disabled={isUploading} />
                 <div className="card-body position-relative p-0">
-                  {
-                    sign
-                      ? <>
-                        <label htmlFor={uuid}>
-                          <img
-                            src={`/repository/signs/${sign.sign}`}
-                            alt={`${business.name} signature`}
-                            className="w-100"
-                            style={{
-                              aspectRatio: 5 / 2,
-                              objectFit: "contain",
-                              cursor: isUploading ? 'not-allowed' : 'pointer'
-                            }} />
-                        </label>
-                        <button
-                          className="btn btn-soft-danger btn-xs position-absolute waves-effect rounded-pill"
-                          style={{
-                            top: "0.5rem",
-                            right: "0.5rem",
-                          }}
-                          type="button"
-                          onClick={() => onDeleteClicked(sign.id)}>
-                          <i className="mdi mdi-trash-can"></i>
-                        </button>
-                      </>
-                      : <label htmlFor={uuid}
-                        className="d-flex align-items-center justify-content-center"
-                        style={{
-                          aspectRatio: 5 / 2,
-                          cursor: isUploading ? 'not-allowed' : 'pointer'
-                        }}
-                      >
-                        <div className="text-center text-muted">
-                          <i className="fa fa-signature fa-2x mb-2 d-block"></i>
-                          <p className="mb-0">
-                            Agregar firma
-                          </p>
-                        </div>
-                      </label>
-                  }
+                  <div className="d-flex flex-wrap">
+                    {[0, 1, 2, 3].map((index) => renderSignatureSlot(business, businessSigns[index], index))}
+                  </div>
                 </div>
                 <div className="card-footer bg-light">
                   <h6 className="text-center my-0 text-truncate">

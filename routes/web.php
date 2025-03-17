@@ -48,3 +48,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/terms', [TermsController::class, 'reactView'])->name('Terms.jsx');
 Route::get('/data-usage', [DataUsageController::class, 'reactView'])->name('DataUsage.jsx');
+
+if (env('APP_ENV') == 'local') {
+    Route::get('/repository/signs/{uuid}', [BusinessSignController::class, 'media']);
+}

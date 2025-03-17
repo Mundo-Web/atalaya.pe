@@ -66,10 +66,11 @@ class BusinessSignController extends BasicController
         if (!$business) throw new Exception('No está autorizado para realizar esta acción');
 
         return [
-            'id' => BusinessSign::select('id')
-                ->where('user_id', Auth::id())
-                ->where('business_id', $business->id)
-                ->first()?->id,
+            // 'id' => BusinessSign::select('id')
+            //     ->where('user_id', Auth::id())
+            //     ->where('business_id', $business->id)
+            //     ->first()?->id,
+            'id' => BusinessSign::find($request->id)?->id,
             'user_id' => Auth::id(),
             'business_id' => $business->id
         ];
