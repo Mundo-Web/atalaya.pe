@@ -17,6 +17,7 @@ const Signs = ({ businesses = [] }) => {
   const modalRef = useRef()
 
   const idRef = useRef()
+  const businessRef = useRef()
   const nameRef = useRef()
   const signRef = useRef()
 
@@ -30,6 +31,15 @@ const Signs = ({ businesses = [] }) => {
     acc[sign.business_id].push(sign);
     return acc;
   }, {});
+
+  const onModalOpen = (data) => {
+    idRef.current.value = data?.id || ''
+    businessRef.current.value = data?.business_id || ''
+    nameRef.current.value = data?.name || ''
+    signRef.current.value = data?.sign || ''
+    setIsEditing(!!data)
+    modalRef.current.show()
+  }
 
   const onModalSubmit = async (e) => {
     e.preventDefault()
@@ -203,9 +213,10 @@ const Signs = ({ businesses = [] }) => {
           })}
         </div>
       </div>
-      <Modal modalRef={modalRef} title={isEditing ? 'Editar firmga' : 'Agregar firmga'} onSubmit={onModalSubmit} size='md'>
-        <div className='row' id='settings-crud-container'>
-          <input ref={idRef} type='hidden' />
+      <Modal modalRef={modalRef} title={isEditing ? 'Editar firma' : 'Agregar firma'} onSubmit={onModalSubmit} size='md'>
+        <input ref={idRef} type='hidden' />
+        <input ref={businessRef} type='hidden' />
+        <div className='row' id='signs-crud-container'>
           <InputFormGroup eRef={nameRef} label='Alias' col='col-12' required />
           <ImageFormGroup eRef={signRef} label='Firma' col='col-12' required />
         </div>
