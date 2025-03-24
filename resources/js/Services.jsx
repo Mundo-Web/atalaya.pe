@@ -100,6 +100,10 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
   const onUserSearch = async () => {
     const filter = [
       ['email', 'contains', userRef.current.value],
+      'or',
+      ['name', 'contains', userRef.current.value],
+      'or',
+      ['lastname', 'contains', userRef.current.value],
     ]
     if (serviceLoaded?.users?.length) filter.push('and', [
       '!',
@@ -165,7 +169,7 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                           aspectRatio: 1,
                           objectFit: 'contain',
                           objectPosition: 'center'
-                        }} onError={e => e.target.src = '/assets/img/icon.svg'}/> {service.name} <i className="mdi mdi-arrow-top-right"></i>
+                        }} onError={e => e.target.src = '/assets/img/icon.svg'} /> {service.name} <i className="mdi mdi-arrow-top-right"></i>
                       </a>
                     </h4>
                     <p className="text-success text-lowercase font-13">{service.correlative}.{APP_DOMAIN}</p>
@@ -243,7 +247,7 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
               usersResult.map((user, i) => {
                 return <>
                   <a key={`user-${i}`} className="dropdown-item py-1 px-2 border-t" href="#" onClick={() => onInviteUser(user.email)}>
-                    <p className='mb-0 text-bold text-truncate'>{user?.person?.name || user?.name} {user?.person?.lastname || user?.lastname}</p>
+                    <p className='mb-0 text-bold text-truncate'>{user?.name} {user?.lastname}</p>
                     <p className='mb-0 text-muted text-truncate' style={{ fontSize: 'small' }}>{user.email}</p>
                   </a>
                 </>
