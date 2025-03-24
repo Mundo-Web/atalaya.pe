@@ -93,7 +93,8 @@ class BusinessController extends BasicController
 
     public function afterSave(Request $request, object $jpa)
     {
-        return $jpa->person->document_number;
+        $body = $request->all();
+        return $body['business']['ruc'];
     }
 
     public function thumbnail(Request $request, $uuid)
