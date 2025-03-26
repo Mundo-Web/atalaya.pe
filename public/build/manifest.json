@@ -174,7 +174,7 @@
     ]
   },
   "resources/js/Login.jsx": {
-    "file": "assets/Login-CZNk3wVX.js",
+    "file": "assets/Login-CPbEPjux.js",
     "name": "Login",
     "src": "resources/js/Login.jsx",
     "isEntry": true,
@@ -183,6 +183,9 @@
       "_JSEncrypt-D3I3x59l.js",
       "_AuthRest-mX2r9z5e.js",
       "_sweetalert2.esm.all-B0Dix5B2.js"
+    ],
+    "css": [
+      "Login.css"
     ]
   },
   "resources/js/Permissions.jsx": {

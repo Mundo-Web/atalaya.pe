@@ -6,6 +6,7 @@ import AuthRest from './actions/AuthRest'
 import { Link } from '@inertiajs/react'
 import Swal from 'sweetalert2'
 import { GET } from 'sode-extend-react'
+import '../css/login.css'
 
 const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
 
@@ -61,26 +62,35 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
           <div className="row justify-content-center align-items-center" style={{
             minHeight: 'calc(100vh - 150px)',
           }}>
-            <div className="col-md-8 col-lg-6 col-xl-4">
+            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-12">
               <div className="text-center">
-                <a href="/">
-                  <img src="/assets/img/logo-dark.svg" alt="" height="22" className="mx-auto" style={{ height: '22px' }} />
-                </a>
-                <p className="text-muted mt-2 mb-4">Atalaya by Mundo Web</p>
+                <p className="text-muted mt-2 mb-3">Atalaya by Mundo Web</p>
               </div>
               <div className="card">
-                <div className="card-body p-4">
-                  <div className="text-center mb-4">
-                    <h4 className="text-uppercase mt-0 font-bold">Inicia Sesión</h4>
+                <div className="card-header border-bottom bg-white">
+                  <a href="/" className='my-1 d-block'>
+                    <img src="/assets/img/logo-dark.svg" alt="Atalaya" className="mx-auto" style={{ height: '35px' }} />
+                  </a>
+                </div>
+                <div className="card-body p-3">
+                  <div className="text-center mb-3">
+                    <h4 className="header-title mt-0 font-bold mb-1">Hola, listo para generar!</h4>
+                    <small className="text-muted mb-4">Ingresa tus datos para iniciar sesión.</small>
                   </div>
                   <form onSubmit={onLoginSubmit}>
                     <div className="mb-3">
-                      <label htmlFor="email" className="form-label">Correo o Usuario</label>
+                      <label htmlFor="email" className="form-label mb-1">
+                        Correo o Usuario
+                        <span className='ms-1' style={{ color: '#ff6c37' }}>*</span>
+                      </label>
                       <input ref={emailRef} className="form-control" type="email" id="email" required
                         placeholder="Ingrese su correo o usuario" />
                     </div>
                     <div className="mb-3">
-                      <label htmlFor="password" className="form-label">Contraseña</label>
+                      <label htmlFor="password" className="form-label mb-1">
+                        Contraseña
+                        <span className='ms-1' style={{ color: '#ff6c37' }}>*</span>
+                      </label>
                       <input ref={passwordRef} className="form-control" type="password" required id="password"
                         placeholder="Ingrese su contraseña" />
                     </div>
@@ -90,20 +100,21 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
                         <label className="form-check-label" htmlFor="checkbox-signin" style={{ cursor: 'pointer' }}>Recuerdame</label>
                       </div>
                     </div>
-                    <div className="mb-3 d-grid text-center">
+                    <div className="d-grid gap-1 text-center">
                       <button className="btn btn-primary" type="submit"> Iniciar Sesión </button>
+                      <a href="/register" className="btn btn-outline-primary" type="submit"> Crear cuenta </a>
                     </div>
                   </form>
                 </div>
               </div>
-              <div className="row mt-3">
+              {/* <div className="row mt-3">
                 <div className="col-12 text-center">
                   <p> <a href="/recovery" className="text-muted ms-1"><i
                     className="fa fa-lock me-1"></i>Olvidaste tu contraseña?</a></p>
                   <p className="text-muted">No tienes una cuenta aun? <a href="/register"
                     className="text-dark ms-1"><b>Registrate</b></a></p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
