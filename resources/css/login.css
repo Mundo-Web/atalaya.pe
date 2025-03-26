@@ -26,6 +26,10 @@ body {
     border-color: #315afe;
 }
 
+.btn-primary:disabled {
+    opacity: 0.5;
+}
+
 .btn-outline-primary {
     color: #315afe;
     border-color: #315afe;

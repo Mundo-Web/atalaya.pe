@@ -16,7 +16,7 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
   jsEncrypt.setPublicKey(PUBLIC_RSA_KEY)
 
   // Estados
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -84,7 +84,7 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
                         <span className='ms-1' style={{ color: '#ff6c37' }}>*</span>
                       </label>
                       <input ref={emailRef} className="form-control" type="email" id="email" required
-                        placeholder="Ingrese su correo o usuario" />
+                        placeholder="Ingrese su correo o usuario" disabled={loading} />
                     </div>
                     <div className="mb-3">
                       <label htmlFor="password" className="form-label mb-1">
@@ -92,7 +92,7 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
                         <span className='ms-1' style={{ color: '#ff6c37' }}>*</span>
                       </label>
                       <input ref={passwordRef} className="form-control" type="password" required id="password"
-                        placeholder="Ingrese su contraseña" />
+                        placeholder="Ingrese su contraseña" disabled={loading} />
                     </div>
                     <div className="mb-3">
                       <div className="form-check">
@@ -101,8 +101,20 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL }) => {
                       </div>
                     </div>
                     <div className="d-grid gap-1 text-center">
-                      <button className="btn btn-primary" type="submit"> Iniciar Sesión </button>
-                      <a href="/register" className="btn btn-outline-primary" type="submit"> Crear cuenta </a>
+                      <button className="btn btn-primary" type="submit" disabled={loading}>
+                        {
+                          loading
+                            ? <>
+                            <i className='mdi mdi-spin mdi-loading me-1'></i>
+                            Verificando
+                            </>
+                            : <>Iniciar Sesión</>
+                        }
+                      </button>
+                      <button className="btn btn-outline-primary" type="submit" disabled={loading}
+                        onClick={() => location.href = '/register'}>
+                        Crear cuenta
+                      </button>
                     </div>
                   </form>
                 </div>
