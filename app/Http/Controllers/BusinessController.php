@@ -95,6 +95,7 @@ class BusinessController extends BasicController
     public function afterSave(Request $request, object $jpa)
     {
         $body = $request->all();
+        dump($body);
         return $body['business']['ruc'];
     }
 

@@ -113,7 +113,7 @@ const Businesses = ({ businesses, businessesIWork, economic_sectors = [], busine
     if (!result) return
 
     $(modalRef.current).modal('hide')
-    location.href = `/services?business=${result.data}`
+    location.href = `/services?business=${result}`
   }
 
   const onRucChange = async (e) => {
@@ -125,28 +125,48 @@ const Businesses = ({ businesses, businessesIWork, economic_sectors = [], busine
   return (<>
     <div className='row'>
       <div className="col-md-6">
-        <div className="card">
-          <h5 className="card-header">Mis empresas</h5>
-          <div className="card-body d-flex gap-2 justify-content-center flex-wrap">
-            <div key='business-create' className="card mb-0 border" style={{ width: '240px', minHeight: '120px', cursor: 'pointer' }} onClick={onModalOpen}>
-              <div className="card-body d-flex gap-2 align-items-center justify-content-center flex-column">
-                <i className='fa fa-plus'></i>
-                <div> Crear empresa</div>
+        <div className="card h-100">
+          <h5 className="card-header d-flex align-items-center">
+            <i className="fa fa-building me-2 text-primary"></i>
+            Mis empresas
+          </h5>
+          <div className="card-body p-3">
+            <div className="d-flex gap-3 justify-content-center flex-wrap">
+              <div key='business-create' 
+                className="card mb-0 border-2 border-primary border-dashed" 
+                style={{ 
+                  width: '240px', 
+                  minHeight: '120px', 
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }} 
+                onClick={onModalOpen}>
+                <div className="card-body d-flex gap-2 align-items-center justify-content-center flex-column">
+                  <div className="rounded-circle bg-primary bg-opacity-10 p-3">
+                    <i className='fa fa-plus text-primary'></i>
+                  </div>
+                  <div className="text-primary"> Crear empresa</div>
+                </div>
               </div>
+              {
+                businesses.map((business, index) => <BusinessCard key={index} {...business} session={session} />)
+              }
             </div>
-            {
-              businesses.map((business, index) => <BusinessCard key={index} {...business} session={session} />)
-            }
           </div>
         </div>
       </div>
       <div className="col-md-6">
-        <div className="card">
-          <h5 className="card-header">Empresas en las que trabajo</h5>
-          <div className="card-body d-flex gap-2 justify-content-center flex-wrap">
-            {
-              businessesIWork.map((business, index) => <BusinessIWorkCard key={index} {...business} session={session} APP_DOMAIN={APP_DOMAIN} APP_PROTOCOL={APP_PROTOCOL}/>)
-            }
+        <div className="card h-100">
+          <h5 className="card-header d-flex align-items-center">
+            <i className="fa fa-briefcase me-2 text-info"></i>
+            Empresas en las que trabajo
+          </h5>
+          <div className="card-body p-3">
+            <div className="d-flex gap-3 justify-content-center flex-wrap">
+              {
+                businessesIWork.map((business, index) => <BusinessIWorkCard key={index} {...business} session={session} APP_DOMAIN={APP_DOMAIN} APP_PROTOCOL={APP_PROTOCOL}/>)
+              }
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { Fetch, Notify } from "sode-extend-react"
 
-const Logout = async () => {
+const Logout = async (reload = true) => {
   try {
     const { status, result } = await Fetch('./api/logout', { method: 'DELETE' })
     if (!status) throw new Error(result?.message || 'Ocurrio un error al cerrar sesion')
@@ -9,7 +9,7 @@ const Logout = async () => {
       title: 'Cierre de sesion exitoso',
       body: 'Sera enviado a la pantalla de autenticacion',
     })
-    location.reload()
+    if (reload) location.reload()
   } catch (error) {
     Notify.add({
       icon: '/assets/img/icon.svg',

@@ -146,93 +146,162 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
   return (
     <>
       <div className='d-flex align-items-center justify-content-center' style={{ minHeight: 'calc(100vh - 135px)' }}>
-        <div>
-          <div className='mx-auto' style={{ width: '240px' }}>
-            <SelectFormGroup eRef={businessRef} templateResult={businessTemplate} templateSelection={businessTemplate} onChange={onBusinessChange}>
+        <div style={{ width: '100%', maxWidth: '1200px' }}>
+          <div className='mx-auto' style={{ width: '280px', marginBottom: '2rem' }}>
+            <SelectFormGroup 
+              eRef={businessRef} 
+              templateResult={businessTemplate} 
+              templateSelection={businessTemplate} 
+              onChange={onBusinessChange}
+              className="shadow-sm"
+            >
               {businesses.map((business, i) => {
                 return <option key={`business-${i}`} value={business.id} data={JSON.stringify(business)} selected={GET.business == business.person.document_number}>{business.name}</option>
               })}
             </SelectFormGroup>
           </div>
-          <hr className='mx-auto' style={{ width: '180px' }} />
-          <div className='d-flex flex-wrap align-items-center justify-content-center gap-3'>
-            {
-              services.sort((a, b) => b.status - a.status).map((service, i) => {
-                const sbb = servicesByBusiness[service.correlative]
-                return <div key={`service-${i}`} className="card mb-0" style={{ width: '100%', maxWidth: '360px' }}>
-                  <div className="card-body project-box">
-                    <div className="badge bg-primary float-end">Gratis</div>
-                    <h4 className="mt-0">
-                      <a href="#" className="text-dark d-flex gap-1 align-items-center" onClick={() => onServiceOpen(service)}>
-                        <img src={`//${service.correlative}.${APP_DOMAIN}/assets/img/icon.svg`} alt={service.name} style={{
-                          height: '20px',
-                          aspectRatio: 1,
-                          objectFit: 'contain',
-                          objectPosition: 'center'
-                        }} onError={e => e.target.src = '/assets/img/icon.svg'} /> {service.name} <i className="mdi mdi-arrow-top-right"></i>
-                      </a>
-                    </h4>
-                    <p className="text-success text-lowercase font-13">{service.correlative}.{APP_DOMAIN}</p>
-                    <p className="text-muted font-13" style={{
+
+          <div className='d-flex flex-wrap justify-content-center gap-4'>
+            {services.sort((a, b) => b.status - a.status).map((service, i) => {
+              const sbb = servicesByBusiness[service.correlative]
+              return (
+                <div 
+                  key={`service-${i}`} 
+                  className="card mb-0" 
+                  style={{ 
+                    width: '100%', 
+                    maxWidth: '360px',
+                    transition: 'all 0.3s ease',
+                    transform: 'translateY(0)',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                    e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                  }}
+                >
+                  <div className="card-body" style={{ padding: '1.5rem' }}>
+                    <div className="d-flex justify-content-between align-items-start mb-3">
+                      <div className="d-flex align-items-center gap-2">
+                        <img 
+                          src={`//${service.correlative}.${APP_DOMAIN}/assets/img/icon.svg`} 
+                          alt={service.name} 
+                          style={{
+                            height: '32px',
+                            width: '32px',
+                            objectFit: 'contain',
+                            padding: '4px',
+                            borderRadius: '8px',
+                            backgroundColor: 'rgba(0,172,158,0.1)'
+                          }} 
+                          onError={e => e.target.src = '/assets/img/icon.svg'} 
+                        />
+                        <div>
+                          <h4 className="mb-0" style={{ fontSize: '1.1rem' }}>
+                            <a href="#" 
+                              className="text-dark d-flex align-items-center gap-2" 
+                              onClick={() => onServiceOpen(service)}
+                              style={{ textDecoration: 'none' }}
+                            >
+                              {service.name}
+                              <i className="mdi mdi-arrow-top-right text-muted"></i>
+                            </a>
+                          </h4>
+                          <p className="text-success mb-0 font-13">{service.correlative}.{APP_DOMAIN}</p>
+                        </div>
+                      </div>
+                      <div className="badge bg-primary" style={{ padding: '0.5rem 1rem', borderRadius: '20px' }}>Gratis</div>
+                    </div>
+
+                    <p className="text-muted" style={{
+                      fontSize: '0.9rem',
+                      lineHeight: '1.5',
                       display: '-webkit-box',
                       WebkitLineClamp: 2,
-                      textOverflow: 'ellipsis',
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden',
-                      height: '38px'
+                      height: '42px',
+                      marginBottom: '1.5rem'
                     }}>
                       {service.description}
                     </p>
 
-                    <div className="project-members mb-0">
-                      {
-                        !sbb ? (
-                          service.status ? <Tippy content="Habilitar servicio">
-                            <button type="button" className="btn btn-sm btn-soft-primary rounded-pill waves-effect waves-light" onClick={(e) => onEnableService(e, service.correlative)}>
-                              {
-                                serviceEnabling
-                                  ? <><i className='mdi mdi-spin mdi-shape-circle-plus'></i> Habilitando</>
-                                  : <><i className='mdi mdi-plus'></i> Habilitar</>
-                              }
-
-                            </button>
-                          </Tippy>
-                            : <span style={{
-                              position: 'relative',
-                              marginLeft: '-24px',
-                              display: 'block',
-                              backgroundColor: '#f9c851',
-                              color: '#343a40',
-                              padding: '.28rem 1.56rem',
-                              width: 'max-content',
-                              borderRadius: '0 25px 25px 0',
-                            }}>Proximamente</span>
+                    <div className="d-flex align-items-center justify-content-between">
+                      {!sbb ? (
+                        service.status ? (
+                          <button 
+                            type="button" 
+                            className="btn btn-primary rounded-pill w-100" 
+                            style={{ 
+                              background: 'linear-gradient(45deg, #00ac9e, #00c9b7)',
+                              border: 'none',
+                              boxShadow: '0 2px 6px rgba(0,172,158,0.2)'
+                            }}
+                            onClick={(e) => onEnableService(e, service.correlative)}
+                          >
+                            {serviceEnabling ? (
+                              <><i className='mdi mdi-spin mdi-loading me-1'></i> Habilitando</>
+                            ) : (
+                              <><i className='mdi mdi-rocket-launch-outline me-1'></i> Habilitar servicio</>
+                            )}
+                          </button>
                         ) : (
-                          <>
-                            <h5 className="float-start me-3">Equipo :</h5>
-                            <div className="avatar-group">
-                              {
-                                sbb.users.map((user, i) => (<div key={`user-${i}`} className="avatar-group-item mb-0">
-                                  <Tippy content={`${user?.person?.name || user?.name} ${user?.person?.lastname || user?.lastname} ${session.id == user.id && '(Tú)'}`}>
-                                    <img src={`/api/profile/thumbnail/${user.relative_id}`} className="rounded-circle avatar-sm" alt={`${user.name} ${user.lastname}`} />
-                                  </Tippy>
-                                </div>))
-                              }
-                              <div className="avatar-group-item mb-0" style={{ cursor: 'pointer' }} onClick={() => onOpenManagement(sbb)}>
-                                <Tippy content='Gestionar usuarios'>
-                                  <img src="/assets/img/plus.svg" className="rounded-circle avatar-sm" alt="Gestionar usuarios" style={{ backgroundColor: 'rgba(255, 255, 255, .5)', border: '1px solid transparent' }} />
+                          <div className="badge bg-warning text-dark" style={{
+                            padding: '0.75rem 1.5rem',
+                            borderRadius: '20px',
+                            fontSize: '0.9rem',
+                            width: '100%',
+                            textAlign: 'center'
+                          }}>
+                            <i className="mdi mdi-clock-outline me-1"></i>
+                            Próximamente
+                          </div>
+                        )
+                      ) : (
+                        <div className="w-100">
+                          <div className="d-flex align-items-center justify-content-between mb-2">
+                            <h6 className="mb-0">Equipo</h6>
+                            <Tippy content='Gestionar usuarios'>
+                              <button 
+                                className="btn btn-soft-primary btn-sm rounded-circle" 
+                                style={{ width: '32px', height: '32px', padding: 0 }}
+                                onClick={() => onOpenManagement(sbb)}
+                              >
+                                <i className="mdi mdi-account-plus-outline"></i>
+                              </button>
+                            </Tippy>
+                          </div>
+                          <div className="avatar-group">
+                            {sbb.users.map((user, i) => (
+                              <div key={`user-${i}`} className="avatar-group-item mb-0">
+                                <Tippy content={`${user?.person?.name || user?.name} ${user?.person?.lastname || user?.lastname} ${session.id == user.id && '(Tú)'}`}>
+                                  <img 
+                                    src={`/api/profile/thumbnail/${user.relative_id}`} 
+                                    className="rounded-circle" 
+                                    alt={`${user.name} ${user.lastname}`}
+                                    style={{
+                                      width: '32px',
+                                      height: '32px',
+                                      objectFit: 'cover',
+                                      border: '2px solid white'
+                                    }}
+                                  />
                                 </Tippy>
                               </div>
-
-                            </div>
-                          </>
-                        )
-                      }
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-              })
-            }
+              );
+            })}
           </div>
         </div>
       </div>
