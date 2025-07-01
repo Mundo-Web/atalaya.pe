@@ -92,6 +92,56 @@ const wavesBenefits = [
   }
 ]
 
+const faqs = [
+  {
+    "question": "¿Qué es un Lead en el CRM?",
+    "answer": "Un Lead es un posible cliente que ha mostrado interés en tus productos o servicios y ha compartido sus datos de contacto, como correo electrónico, teléfono o redes sociales."
+  },
+  {
+    "question": "¿Cómo puedo registrar un Lead en el CRM?",
+    "answer": "Puedes registrar un Lead manualmente agregando nombre, correo, teléfono y fuente de captación, o de forma automática mediante formularios en tu web, integraciones con WhatsApp, redes sociales o landing pages conectadas al CRM."
+  },
+  {
+    "question": "¿Cómo se clasifican los Leads en el CRM?",
+    "answer": "Los Leads pueden clasificarse según estado (Nuevo, Contactado, En Seguimiento, Convertido, No Interesado), fuente (Web, redes sociales, referidos, eventos) y prioridad (Alta, Media, Baja)."
+  },
+  {
+    "question": "¿Puedo asignar Leads a un asesor específico?",
+    "answer": "Sí, puedes asignar manual o automáticamente Leads a tus asesores para que gestionen el seguimiento según sus tareas y zonas asignadas."
+  },
+  {
+    "question": "¿Cómo hago seguimiento de un Lead?",
+    "answer": "Puedes agendar llamadas, reuniones o visitas, registrar notas de cada contacto, configurar recordatorios automáticos y visualizar el historial completo de interacciones con cada Lead."
+  },
+  {
+    "question": "¿El CRM me notifica sobre seguimientos pendientes?",
+    "answer": "Sí, recibirás notificaciones automáticas por correo o dentro del CRM para recordarte seguimientos pendientes, llamadas o correos programados."
+  },
+  {
+    "question": "¿Puedo enviar correos o WhatsApp desde el CRM?",
+    "answer": "Dependerá de tu plan, pero generalmente puedes enviar correos directamente desde el CRM e integrar WhatsApp para enviar mensajes y registrar conversaciones en el historial del Lead."
+  },
+  {
+    "question": "¿Cómo convierto un Lead en Cliente?",
+    "answer": "Cuando se concreta una venta, puedes cambiar el estado del Lead a 'Convertido' y pasarlo al módulo de Clientes para su gestión en contratos, ventas o facturación."
+  },
+  {
+    "question": "¿Puedo importar una lista de Leads al CRM?",
+    "answer": "Sí, puedes importar archivos CSV o Excel con tus Leads, asegurándote de mantener el formato correcto de columnas como nombre, correo, teléfono y fuente."
+  },
+  {
+    "question": "¿Cómo mido la efectividad de mis Leads?",
+    "answer": "El CRM permite generar reportes de conversión de Leads por asesor, fuente y periodo, tiempo promedio de conversión y actividades de tu equipo comercial."
+  },
+  {
+    "question": "¿El CRM me ayuda a evitar duplicados?",
+    "answer": "Sí, el CRM valida y evita duplicados utilizando correo electrónico y teléfono como referencias principales."
+  },
+  {
+    "question": "¿Puedo personalizar las etapas de mi pipeline de Leads?",
+    "answer": "Sí, puedes configurar las etapas de tu pipeline según tu proceso de ventas para adaptarlo a tu flujo comercial."
+  }
+]
 
 const Landing = ({ session: sessionDB, services }) => {
   const [session, setSession] = useState(sessionDB);
