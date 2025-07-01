@@ -112,6 +112,30 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/img/home/crm-image.png": {
+    "file": "crm-image.png",
+    "src": "resources/img/home/crm-image.png"
+  },
+  "resources/img/home/curved-arrow.svg": {
+    "file": "curved-arrow.svg",
+    "src": "resources/img/home/curved-arrow.svg"
+  },
+  "resources/img/home/graphs.png": {
+    "file": "graphs.png",
+    "src": "resources/img/home/graphs.png"
+  },
+  "resources/img/home/projects-image.png": {
+    "file": "projects-image.png",
+    "src": "resources/img/home/projects-image.png"
+  },
+  "resources/img/home/underline.svg": {
+    "file": "underline.svg",
+    "src": "resources/img/home/underline.svg"
+  },
+  "resources/img/home/waves-image.png": {
+    "file": "waves-image.png",
+    "src": "resources/img/home/waves-image.png"
+  },
   "resources/js/Account.jsx": {
     "file": "assets/Account-7Do80xV4.js",
     "name": "Account",
@@ -176,13 +200,21 @@
     ]
   },
   "resources/js/Landing.jsx": {
-    "file": "assets/Landing-sWML1zmA.js",
+    "file": "assets/Landing-BmKrv88e.js",
     "name": "Landing",
     "src": "resources/js/Landing.jsx",
     "isEntry": true,
     "imports": [
       "_CreateReactScript-BRu_lQJW.js",
       "_Logout-BCl13GlR.js"
+    ],
+    "assets": [
+      "underline.svg",
+      "curved-arrow.svg",
+      "graphs.png",
+      "crm-image.png",
+      "projects-image.png",
+      "waves-image.png"
     ]
   },
   "resources/js/Login.jsx": {

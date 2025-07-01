@@ -5,6 +5,93 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Global from './Utils/Global';
 import Logout from './actions/Logout';
+import Underline from '../img/home/underline.svg';
+import CurvedArrow from '../img/home/curved-arrow.svg';
+import Graphs from '../img/home/graphs.png';
+import CRMImage from '../img/home/crm-image.png';
+import ProjectsImage from '../img/home/projects-image.png';
+import WavesImage from '../img/home/waves-image.png';
+
+const benefits = [
+  {
+    "icon": "mdi-robot-outline",
+    "title": "Automatización total",
+    "description": "Optimiza procesos, reduce trabajo manual, evita errores y retrabajos."
+  },
+  {
+    "icon": "mdi-chart-line",
+    "title": "Más productividad diaria",
+    "description": "Gestiona todo en un solo lugar con rapidez, eficiencia y control total."
+  },
+  {
+    "icon": "mdi-shield-lock-outline",
+    "title": "Seguridad garantizada",
+    "description": "Protegemos tus datos con cifrado, respaldo y acceso seguro."
+  },
+  {
+    "icon": "mdi-flash-outline",
+    "title": "Interfaz intuitiva",
+    "description": "Usa la plataforma sin capacitación y sin complicaciones."
+  }
+]
+
+const crmBenefits = [
+  {
+    "title": "Gestión centralizada",
+    "description": "Organiza clientes y contactos fácilmente."
+  },
+  {
+    "title": "Seguimiento automático",
+    "description": "Recibe recordatorios de tareas clave."
+  },
+  {
+    "title": "Reportes avanzados",
+    "description": "Analiza métricas de ventas en segundos."
+  },
+  {
+    "title": "Integración total",
+    "description": "Conéctalo con emails y WhatsApp."
+  }
+]
+
+const projectsBenefits = [
+  {
+    "title": "Tareas asignadas",
+    "description": "Define responsables y plazos de entrega."
+  },
+  {
+    "title": "Calendario visual",
+    "description": "Ve el progreso en tableros Kanban."
+  },
+  {
+    "title": "Colaboración fácil",
+    "description": "Comparte archivos y comentarios."
+  },
+  {
+    "title": "Monitoreo constante",
+    "description": "Analiza tiempos y rendimiento."
+  }
+]
+
+const wavesBenefits = [
+  {
+    "title": "Mensajes instantáneos",
+    "description": "Mantente en contacto con tu equipo."
+  },
+  {
+    "title": "Canales privados",
+    "description": "Organiza la comunicación por áreas."
+  },
+  {
+    "title": "Videollamadas rápidas",
+    "description": "Reúnete sin salir de la plataforma."
+  },
+  {
+    "title": "Integración total",
+    "description": "Conéctalo con CRM y Proyectos."
+  }
+]
+
 
 const Landing = ({ session: sessionDB, services }) => {
   const [session, setSession] = useState(sessionDB);
@@ -23,7 +110,7 @@ const Landing = ({ session: sessionDB, services }) => {
   }, []);
 
   return (
-    <main className='min-h-screen flex flex-col w-full bg-gradient-to-b from-white via-[#f8fffe] to-white'>
+    <main className='min-h-screen flex flex-col w-full bg-gradient-to-b from-white via-[#f8fffe] to-white text-[#000938]'>
       <header className='max-w-7xl w-full mx-auto flex justify-between items-center pt-8 px-4 sm:px-6 lg:px-8 relative'>
         <a href="/" className="transition-transform hover:scale-105">
           <img src="/assets/img/logo-dark.svg" alt="" style={{ height: '40px' }} />
@@ -33,15 +120,15 @@ const Landing = ({ session: sessionDB, services }) => {
             {session ? (
               <li className="relative">
                 <div className="relative inline-block text-left" ref={dropdownRef}>
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     className="w-max flex items-center justify-center gap-2 px-4 py-2 rounded-full hover:bg-gray-100 transition-all"
                     onClick={() => setIsOpen(!isOpen)}
                   >
-                    <img 
-                      src={`/api/profile/thumbnail/${session.relative_id}`} 
-                      alt="" 
-                      className='w-8 h-8 rounded-full object-center object-cover ring-2 ring-[#00ac9e]' 
+                    <img
+                      src={`/api/profile/thumbnail/${session.relative_id}`}
+                      alt=""
+                      className='w-8 h-8 rounded-full object-center object-cover ring-2 ring-[#00ac9e]'
                     />
                     <span className='text-[#00ac9e]'>
                       {session.name.split(' ')[0]} {session.lastname?.split(' ')?.[0]}
@@ -49,11 +136,10 @@ const Landing = ({ session: sessionDB, services }) => {
                     <i className={`mdi mdi-chevron-down text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''}`}></i>
                   </button>
 
-                  <div className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-gray-100 transition-all duration-200 ${
-                    isOpen 
-                      ? 'transform opacity-100 scale-100 visible' 
-                      : 'transform opacity-0 scale-95 invisible'
-                  }`}>
+                  <div className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-gray-100 transition-all duration-200 ${isOpen
+                    ? 'transform opacity-100 scale-100 visible'
+                    : 'transform opacity-0 scale-95 invisible'
+                    }`}>
                     <div className="py-1">
                       <a
                         href="/home"
@@ -103,7 +189,7 @@ const Landing = ({ session: sessionDB, services }) => {
         background: 'linear-gradient(to right, transparent, #00ac9e 50%, transparent)'
       }}></div>
 
-      <div className="flex items-center justify-between max-w-7xl mx-auto min-h-[calc(100vh-200px)] py-8 px-4 sm:px-6 lg:px-8">
+      {/* <div className="flex items-center justify-between max-w-7xl mx-auto min-h-[calc(100vh-200px)] py-8 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto grid items-center md:grid-cols-2 gap-12">
           <div className="text-center md:text-start space-y-8 relative">
             <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#00ac9e] rounded-full opacity-10 blur-3xl"></div>
@@ -210,6 +296,171 @@ const Landing = ({ session: sessionDB, services }) => {
                 </SwiperSlide>
               ))}
             </Swiper>
+          </div>
+        </div>
+      </div> */}
+
+      <div className='max-w-7xl w-full mx-auto py-8 px-4 sm:px-6 lg:px-8'>
+        <span className='bg-[#5e4dff] text-white text-xs px-2 py-1 rounded-lg block mx-auto w-max'>Powered by Manuel</span>
+        <h1 className='text-6xl font-bold text-center my-6'>
+          La Plataforma <br />
+          <span className='relative text-[#fe4611]'>
+            Flexible
+            <img src={Underline} alt={Global.APP_NAME} className='absolute left-0 bottom-1 h-2 right-0 block w-full' />
+          </span> para Gestionar <br />
+          tu Negocio
+        </h1>
+        <p className='text-center max-w-xl w-full mx-auto'>Automatiza y optimiza tus procesos con nuestras soluciones en CRM, Facturación, Proyectos y más.</p>
+        <div className='flex gap-4 my-8 justify-center'>
+          <div className='relative'>
+            <a href='/register' className='block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl'>¡Registrate Gratis!</a>
+            <span className='font-[Fresca] absolute block w-max -bottom-12 left-6 text-lg -rotate-2'>
+              <img src={CurvedArrow} alt={Global.APP_NAME} className='absolute w-4 -left-6 -top-6' />
+              Elige tu servicio y comienza a gestionar con Atalaya
+            </span>
+          </div>
+          <button className='px-6 py-2 border-2 border-[#315af3] text-[#315af3] rounded-xl'>Hablar con ventas</button>
+        </div>
+        <img src={Graphs} alt="" className='w-full mt-12 md:-mt-12 -mb-12 block' />
+      </div>
+
+      <div className='max-w-7xl w-full mx-auto py-8 px-4 sm:px-6 lg:px-8'>
+        <h2 className='text-4xl font-bold text-center'>
+          <span className='text-[#5e4dff]'>Potencia</span>{" "}
+          tu negocio <br />
+          con Atala<span className='text-[#fe4611]'>y</span>a
+        </h2>
+        <div className="mt-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {benefits.map((benefit, i) => (
+              <div key={i} className="bg-[#f4f8fd] rounded-2xl p-6">
+                <div className="h-12 w-12 bg-[#fe4611]/10 rounded-xl flex items-center justify-center mb-4">
+                  <i className={`mdi ${benefit.icon} text-2xl text-[#fe4611]`}></i>
+                </div>
+                <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
+                <p className="text-gray-600 leading-tight">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className='max-w-7xl w-full mx-auto py-10 px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10'>
+        <div>
+          <h2 className='text-4xl font-bold'>
+            CRM inteligente <br />
+            Gestiona tus {" "}
+            <span className='text-[#5e4dff]'>clientes y ventas</span>
+          </h2>
+          <p className='my-4'>
+            Control total sobre tus clientes y oportunidades de negocio. <br />
+            Con el CRM de Atalaya puedes:
+          </p>
+
+          <div className='flex flex-col gap-4 my-8'>
+            {crmBenefits.map((benefit, i) => (
+              <div key={i} className=' flex gap-4'>
+                <i className='mdi mdi-24px mdi-xml text-[#fe4611]'></i>
+                <div>
+                  <h3 className='text-lg font-bold'>{benefit.title}</h3>
+                  <p className='text-gray-600'>{benefit.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <a href='/register' className='block w-max px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl'>Optimiza tus ventas</a>
+        </div>
+        <img src={CRMImage} alt="" className='w-full h-full mx-auto max-w-lg object-contain object-center' />
+      </div>
+
+      <div className='max-w-7xl w-full mx-auto py-10 px-4 sm:px-6 lg:px-8'>
+        <div className='flex flex-col-reverse md:grid md:grid-cols-2 gap-10'>
+          <img src={ProjectsImage} alt="" className='w-full h-full mx-auto max-w-md object-contain object-center' />
+          <div>
+            <h2 className='text-4xl font-bold'>
+              Gestión de Proyectos <br />
+              Organiza y cumple {" "}
+              <span className='text-[#5e4dff]'>objetivos</span>
+            </h2>
+            <p className='my-4'>
+              Planifica, ejecuta y monitorea tus proyectos de forma eficiente. <br />
+              Con Atalaya puedes gestionar tus proyectos de manera profesional:
+            </p>
+
+            <div className='flex flex-col gap-4 my-8'>
+              {projectsBenefits.map((benefit, i) => (
+                <div key={i} className=' flex gap-4'>
+                  <i className='mdi mdi-24px mdi-xml text-[#fe4611]'></i>
+                  <div>
+                    <h3 className='text-lg font-bold'>{benefit.title}</h3>
+                    <p className='text-gray-600'>{benefit.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <a href='/register' className='block w-max px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl'>Gestiona tus proyectos</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='max-w-7xl w-full mx-auto py-10 px-4 sm:px-6 lg:px-8'>
+        <div className='bg-[#EDF3FB] rounded-2xl p-10'>
+          <div className='max-w-lg w-full mx-auto text-center'>
+            <img src="" alt="" className='aspect-square w-10 h-10 rounded-full block mx-auto mb-4' />
+            <h4 className='text-lg font-bold mb-2'>"Mejoramos nuestra productividad en un 40%"</h4>
+            <p className='text-lg text-gray-600 leading-tight mb-4'>
+              Antes usábamos muchas herramientas separadas,
+              pero con Atalaya todo está centralizado. Ahora trabajamos
+              más rápido y organizados.
+            </p>
+            <div>
+              <span className='block font-bold'>María Gómez</span>
+              <span className='block text-gray-600 text-sm'>Directora de Finanzas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='max-w-7xl w-full mx-auto py-10 px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10'>
+        <div>
+          <h2 className='text-4xl font-bold'>
+            Atalaya Waves <br />
+            Comunicación <span className='text-[#5e4dff]'>interna</span> sin límites
+            
+          </h2>
+          <p className='my-4'>
+            Una herramienta de mensajería pensada para equipos de trabajo. <br />
+            Puedes mejorar en tu empresa:
+          </p>
+
+          <div className='flex flex-col gap-4 my-8'>
+            {wavesBenefits.map((benefit, i) => (
+              <div key={i} className=' flex gap-4'>
+                <i className='mdi mdi-24px mdi-xml text-[#fe4611]'></i>
+                <div>
+                  <h3 className='text-lg font-bold'>{benefit.title}</h3>
+                  <p className='text-gray-600'>{benefit.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <a href='/register' className='block w-max px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl'>Mejora la comunicación</a>
+        </div>
+        <img src={WavesImage} alt="" className='w-full mx-auto max-w-xs h-full object-contain object-center' />
+      </div>
+
+      <div className='max-w-7xl w-full mx-auto py-10 px-4 sm:px-6 lg:px-8'>
+        <div className='bg-[#EDF3FB] rounded-2xl p-10'>
+          <div className='max-w-xl mx-auto text-center'>
+          <h2 className='text-4xl font-bold'>
+            Nuevas herramientas en <span className='text-[#5e4dff]'>camino</span>
+          </h2>
+          <p className='my-4'>
+            Muy pronto, Waves y Tickets revolucionarán la forma en que te comunicas y gestionas el soporte. ¡Prepárate para la próxima gran actualización!
+          </p>
           </div>
         </div>
       </div>
