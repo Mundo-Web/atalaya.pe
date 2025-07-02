@@ -7,6 +7,7 @@ import Global from './Utils/Global';
 import Logout from './actions/Logout';
 import Underline from '../img/home/underline.svg';
 import CurvedArrow from '../img/home/curved-arrow.svg';
+import AllInOnePlace from '../img/home/all-in-one-place.svg';
 import Graphs from '../img/home/graphs.png';
 import CRMImage from '../img/home/crm-image.png';
 import ProjectsImage from '../img/home/projects-image.png';
@@ -146,6 +147,7 @@ const faqs = [
 const Landing = ({ session: sessionDB, services }) => {
   const [session, setSession] = useState(sessionDB);
   const [isOpen, setIsOpen] = useState(false);
+  const [faqOpen, setFaqOpen] = useState(null);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -178,9 +180,9 @@ const Landing = ({ session: sessionDB, services }) => {
                     <img
                       src={`/api/profile/thumbnail/${session.relative_id}`}
                       alt=""
-                      className='w-8 h-8 rounded-full object-center object-cover ring-2 ring-[#00ac9e]'
+                      className='w-8 h-8 rounded-full object-center object-cover ring-2 ring-[#315af3]'
                     />
-                    <span className='text-[#00ac9e]'>
+                    <span className='text-[#315af3]'>
                       {session.name.split(' ')[0]} {session.lastname?.split(' ')?.[0]}
                     </span>
                     <i className={`mdi mdi-chevron-down text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''}`}></i>
@@ -219,12 +221,12 @@ const Landing = ({ session: sessionDB, services }) => {
               <>
                 <li>
                   <a href="/login" className='w-max px-4 py-2 rounded-full hover:bg-gray-100 transition-all flex items-center'>
-                    <i className='mdi mdi-login me-2 text-[#00ac9e]'></i>
+                    <i className='mdi mdi-login me-2 text-[#315af3]'></i>
                     <span className='hidden md:inline-block'>Iniciar sesión</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/register" className='w-max px-4 py-2 bg-[#00ac9e] text-white rounded-full hover:bg-[#009588] transition-all flex items-center'>
+                  <a href="/register" className='w-max px-4 py-2 bg-[#315af3] text-white rounded-full hover:bg-[#009588] transition-all flex items-center'>
                     <i className='mdi mdi-account-plus me-2'></i>
                     <span className='hidden md:inline-block'>Registro</span>
                   </a>
@@ -236,13 +238,13 @@ const Landing = ({ session: sessionDB, services }) => {
       </header>
 
       <div className='relative mt-4 mb-6 w-full h-[3px]' style={{
-        background: 'linear-gradient(to right, transparent, #00ac9e 50%, transparent)'
+        background: 'linear-gradient(to right, transparent, #315af3 50%, transparent)'
       }}></div>
 
       {/* <div className="flex items-center justify-between max-w-7xl mx-auto min-h-[calc(100vh-200px)] py-8 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto grid items-center md:grid-cols-2 gap-12">
           <div className="text-center md:text-start space-y-8 relative">
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#00ac9e] rounded-full opacity-10 blur-3xl"></div>
+            <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#315af3] rounded-full opacity-10 blur-3xl"></div>
             <h1 className="text-6xl font-bold text-gray-900 tracking-tight leading-tight relative">
               Tu espacio 
               <span className="text-amber-500 font-extrabold relative inline-block mx-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-amber-500/30">
@@ -255,7 +257,7 @@ const Landing = ({ session: sessionDB, services }) => {
             <div className="mt-4 relative z-10">
               <a 
                 href={session ? "/home" : "/login"} 
-                className="inline-flex items-center px-8 py-4 text-xl font-medium text-white bg-[#00ac9e] rounded-xl transition-all duration-300 hover:bg-[#009588] hover:scale-105 hover:shadow-lg shadow-md"
+                className="inline-flex items-center px-8 py-4 text-xl font-medium text-white bg-[#315af3] rounded-xl transition-all duration-300 hover:bg-[#009588] hover:scale-105 hover:shadow-lg shadow-md"
               >
                 {session ? (
                   <>
@@ -275,7 +277,7 @@ const Landing = ({ session: sessionDB, services }) => {
               Simplificamos la gestión de tu negocio con tecnología de vanguardia.
               En Atalaya, ofrecemos soluciones integrales que incluyen facturación electrónica, CRM, ERP,
               mensajería instantánea e inteligencia artificial para optimizar la gestión de tu empresa.
-              <span className="block mt-2 font-medium text-[#00ac9e]">
+              <span className="block mt-2 font-medium text-[#315af3]">
                 Nuestra plataforma destaca por su diseño minimalista y facilidad de uso.
               </span>
             </p>
@@ -356,7 +358,7 @@ const Landing = ({ session: sessionDB, services }) => {
           La Plataforma <br />
           <span className='relative text-[#fe4611]'>
             Flexible
-            <img src={Underline} alt={Global.APP_NAME} className='absolute left-0 bottom-1 h-2 right-0 block w-full' />
+            <img src={Underline} alt={Global.APP_NAME} className='absolute left-1/2 -translate-x-1/2 bottom-1 h-2 block w-full' />
           </span> para Gestionar <br />
           tu Negocio
         </h1>
@@ -371,7 +373,13 @@ const Landing = ({ session: sessionDB, services }) => {
           </div>
           <button className='px-6 py-2 border-2 border-[#315af3] text-[#315af3] rounded-xl'>Hablar con ventas</button>
         </div>
-        <img src={Graphs} alt="" className='w-full mt-12 md:-mt-12 -mb-12 block' />
+        <div className='relative'>
+          <img
+            className='absolute right-[7.5%] md:-top-[5%] animate-spin-reverse animate-duration-[10s] w-32 aspect-square'
+            src={AllInOnePlace}
+            alt="Todo lo que necesitas en un solo lugar" />
+          <img src={Graphs} alt="" className='w-full mt-16 md:mt-12 -mb-12 block' />
+        </div>
       </div>
 
       <div className='max-w-7xl w-full mx-auto py-8 px-4 sm:px-6 lg:px-8'>
@@ -478,7 +486,7 @@ const Landing = ({ session: sessionDB, services }) => {
           <h2 className='text-4xl font-bold'>
             Atalaya Waves <br />
             Comunicación <span className='text-[#5e4dff]'>interna</span> sin límites
-            
+
           </h2>
           <p className='my-4'>
             Una herramienta de mensajería pensada para equipos de trabajo. <br />
@@ -503,16 +511,84 @@ const Landing = ({ session: sessionDB, services }) => {
       </div>
 
       <div className='max-w-7xl w-full mx-auto py-10 px-4 sm:px-6 lg:px-8'>
-        <div className='bg-[#EDF3FB] rounded-2xl p-10'>
+        <div className='bg-[#EDF3FB] rounded-2xl p-10 grid gap-10'>
           <div className='max-w-xl mx-auto text-center'>
-          <h2 className='text-4xl font-bold'>
-            Nuevas herramientas en <span className='text-[#5e4dff]'>camino</span>
-          </h2>
-          <p className='my-4'>
-            Muy pronto, Waves y Tickets revolucionarán la forma en que te comunicas y gestionas el soporte. ¡Prepárate para la próxima gran actualización!
-          </p>
+            <h2 className='text-4xl font-bold'>
+              Nuevas herramientas en <span className='text-[#5e4dff]'>camino</span>
+            </h2>
+            <p className='my-4'>
+              Muy pronto, Waves y Tickets revolucionarán la forma en que te comunicas y gestionas el soporte. ¡Prepárate para la próxima gran actualización!
+            </p>
+          </div>
+          <div className='grid md:grid-cols-2 gap-10'>
+            <div className='bg-white p-6 rounded-xl'>
+              <h4 className='text-2xl font-bold leading-tight mb-4'>
+                <span className='block text-[#fe4611]'>Facturación</span>
+                Control financiero
+              </h4>
+              <p className='text-gray-600'>
+                Crea, gestiona y automatiza tu facturación sin complicaciones.
+                Con la herramienta puedes:
+              </p>
+              <hr className='my-4' />
+              <div className='text-gray-600'>
+                <li>Genera y envía facturas en segundos.</li>
+                <li>Recibe pagos sin complicaciones.</li>
+                <li>Notifica vencimientos a tus clientes.</li>
+                <li>Controla ingresos y egresos fácilmente.</li>
+              </div>
+              <hr className='my-4' />
+              <a href='#' className='block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white text-center rounded-xl'>
+                Proximamente
+              </a>
+            </div>
+            <div className='bg-white p-6 rounded-xl'>
+              <h4 className='text-2xl font-bold leading-tight mb-4'>
+                <span className='block text-[#fe4611]'>Tickets</span>
+                Soporte rápido y eficiente
+              </h4>
+              <p className='text-gray-600'>
+                Un sistema de tickets para brindar atención al cliente sin demoras.
+                Con él podrás:
+              </p>
+              <hr className='my-4' />
+              <div className='text-gray-600'>
+                <li>Administra solicitudes con facilidad.</li>
+                <li>Monitorea el estado de cada ticket.</li>
+                <li>Agiliza el soporte con IA.</li>
+                <li>Mejora el tiempo de respuesta.</li>
+              </div>
+              <hr className='my-4' />
+              <a href='#' className='block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white text-center rounded-xl'>
+                Proximamente
+              </a>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className='max-w-7xl w-full mx-auto py-10 mb-10 px-4 sm:px-6 lg:px-8'>
+        <h4 className='text-2xl font-bold text-center text-[#5E4DFF]'>FAQs</h4>
+        <h2 className='text-4xl font-bold text-center'>
+          Todo lo que necesitas <br />
+          saber sobre Atala<span className='text-[#fe4611]'>y</span>a
+        </h2>
+        <div className='grid gap-6 max-w-4xl mt-10 mx-auto'>
+          {
+            faqs.map((faq, index) => {
+              return <div key={index} className='bg-[#F4F8FD] rounded-xl p-6 cursor-pointer' onClick={() => setFaqOpen(faqOpen == index ? null : index)}>
+                <h4 className={`text-lg font-bold flex justify-between items-center`}>
+                  {faq.question}
+                  <i className={`mdi mdi-24px ${faqOpen == index ? 'mdi-close' : 'mdi-star-four-points'} text-[#fe4611]`}></i>
+                </h4>
+                <p className={`text-gray-600 leading-tight transition-all ${faqOpen == index ? 'h-auto mt-2' : 'h-0 overflow-hidden'}`}>{faq.answer}</p>
+              </div>
+            })
+          }
+        </div>
+        <a href='#' className='block w-max px-6 py-2 mt-10 mx-auto border-2 border-[#5E4DFF] bg-[#5E4DFF] text-white text-center rounded-xl'>
+          ¿Tienes más dudas? Contáctanos aquí
+        </a>
       </div>
     </main>
   );
