@@ -238,7 +238,7 @@ const Landing = ({ session: sessionDB, services }) => {
         </nav>
       </header>
 
-      <div className='relative mt-4 mb-6 w-full h-[3px]' style={{
+      <div className='relative mt-4 mb-6 w-full h-[3px] rounded-b-[50%]' style={{
         background: 'linear-gradient(to right, transparent, #315af3 50%, transparent)'
       }}></div>
 
