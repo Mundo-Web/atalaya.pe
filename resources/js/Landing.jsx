@@ -12,6 +12,7 @@ import Graphs from '../img/home/graphs.png';
 import CRMImage from '../img/home/crm-image.png';
 import ProjectsImage from '../img/home/projects-image.png';
 import WavesImage from '../img/home/waves-image.png';
+import { TypeAnimation } from 'react-type-animation';
 
 const benefits = [
   {
@@ -357,7 +358,20 @@ const Landing = ({ session: sessionDB, services }) => {
         <h1 className='text-6xl font-bold text-center my-6'>
           La Plataforma <br />
           <span className='relative text-[#fe4611]'>
-            Flexible
+            <TypeAnimation
+              sequence={[
+                'Flexible', 1000,
+                'Agil', 1000,
+                'Inteligente', 1000,
+                'Escalable', 1000,
+                'Versatil', 1000,
+              ]}
+              speed={250}
+              wrapper="span"
+              cursor={true}
+              repeat={Infinity}
+              cursorClassName='text-[#fe4611] inline-block'
+            />
             <img src={Underline} alt={Global.APP_NAME} className='absolute left-1/2 -translate-x-1/2 bottom-1 h-2 block w-full' />
           </span> para Gestionar <br />
           tu Negocio
@@ -374,10 +388,13 @@ const Landing = ({ session: sessionDB, services }) => {
           <button className='px-6 py-2 border-2 border-[#315af3] text-[#315af3] rounded-xl'>Hablar con ventas</button>
         </div>
         <div className='relative'>
-          <img
-            className='absolute right-[7.5%] md:-top-[5%] animate-spin-reverse animate-duration-[10s] w-32 aspect-square'
-            src={AllInOnePlace}
-            alt="Todo lo que necesitas en un solo lugar" />
+          <div className='absolute right-[7.5%] md:-top-[5%] w-32 h-32'>
+            <img
+              className='animate-spin-reverse animate-duration-[10s] w-full h-full'
+              src={AllInOnePlace}
+              alt="Todo lo que necesitas en un solo lugar" />
+            <i className='mdi mdi-36px mdi-arrow-right text-[#315af3] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'></i>
+          </div>
           <img src={Graphs} alt="" className='w-full mt-16 md:mt-12 -mb-12 block' />
         </div>
       </div>
