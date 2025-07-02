@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import CreateReactScript from './Utils/CreateReactScript';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Global from './Utils/Global';
 import Logout from './actions/Logout';
 import Underline from '../img/home/underline.svg';
@@ -13,6 +11,13 @@ import CRMImage from '../img/home/crm-image.png';
 import ProjectsImage from '../img/home/projects-image.png';
 import WavesImage from '../img/home/waves-image.png';
 import { TypeAnimation } from 'react-type-animation';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import "swiper/css"
+import "swiper/css/autoplay"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
 
 const benefits = [
   {
@@ -91,6 +96,33 @@ const wavesBenefits = [
   {
     "title": "Integración total",
     "description": "Conéctalo con CRM y Proyectos."
+  }
+]
+
+const testimonies = [
+  {
+    "title": "Nuestra relación con los clientes mejoró notablemente",
+    "description": "El CRM de Atalaya nos permite dar seguimiento a cada oportunidad sin perder nada. Ahora entendemos mejor a nuestros clientes y respondemos más rápido.",
+    "author": "Luis Rivas",
+    "profession": "Gerente de Ventas"
+  },
+  {
+    "title": "Organizamos los proyectos de forma clara y colaborativa",
+    "description": "Antes teníamos tareas dispersas en correos y chats. Con Atalaya tenemos visibilidad total de cada etapa del proyecto, y el equipo trabaja en sincronía.",
+    "author": "Andrea Silva",
+    "profession": "Líder de Proyectos"
+  },
+  {
+    "title": "Automatizamos nuestros envíos masivos sin esfuerzo",
+    "description": "Enviar campañas de correos a miles de contactos era lento y caótico. Ahora lo hacemos desde Atalaya con segmentaciones inteligentes y reportes claros.",
+    "author": "Carlos Mendoza",
+    "profession": "Especialista en Marketing"
+  },
+  {
+    "title": "Ahorro de tiempo en tareas repetitivas del CRM",
+    "description": "Con las automatizaciones de Atalaya, tareas como asignar leads o enviar recordatorios ya no consumen tiempo del equipo. Nos enfocamos más en cerrar ventas.",
+    "author": "Valeria Torres",
+    "profession": "Coordinadora Comercial"
   }
 ]
 
@@ -242,117 +274,6 @@ const Landing = ({ session: sessionDB, services }) => {
         background: 'linear-gradient(to right, transparent, #315af3 50%, transparent)'
       }}></div>
 
-      {/* <div className="flex items-center justify-between max-w-7xl mx-auto min-h-[calc(100vh-200px)] py-8 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto grid items-center md:grid-cols-2 gap-12">
-          <div className="text-center md:text-start space-y-8 relative">
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#315af3] rounded-full opacity-10 blur-3xl"></div>
-            <h1 className="text-6xl font-bold text-gray-900 tracking-tight leading-tight relative">
-              Tu espacio 
-              <span className="text-amber-500 font-extrabold relative inline-block mx-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-amber-500/30">
-                DIGITAL
-              </span>
-              <br className='hidden md:block' />
-              en un solo Lugar
-            </h1>
-
-            <div className="mt-4 relative z-10">
-              <a 
-                href={session ? "/home" : "/login"} 
-                className="inline-flex items-center px-8 py-4 text-xl font-medium text-white bg-[#315af3] rounded-xl transition-all duration-300 hover:bg-[#009588] hover:scale-105 hover:shadow-lg shadow-md"
-              >
-                {session ? (
-                  <>
-                    Ver panel
-                    <i className="mdi mdi-view-dashboard ml-2"></i>
-                  </>
-                ) : (
-                  <>
-                    Empecemos
-                    <i className="mdi mdi-arrow-right ml-2"></i>
-                  </>
-                )}
-              </a>
-            </div>
-
-            <p className="mt-8 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Simplificamos la gestión de tu negocio con tecnología de vanguardia.
-              En Atalaya, ofrecemos soluciones integrales que incluyen facturación electrónica, CRM, ERP,
-              mensajería instantánea e inteligencia artificial para optimizar la gestión de tu empresa.
-              <span className="block mt-2 font-medium text-[#315af3]">
-                Nuestra plataforma destaca por su diseño minimalista y facilidad de uso.
-              </span>
-            </p>
-          </div>
-
-          <div className='w-full h-[480px] relative'>
-            <div className="absolute inset-0 pointer-events-none z-10" style={{
-              background: 'linear-gradient(to bottom, white 0%, transparent 25%, transparent 75%, white 100%)'
-            }}></div>
-            <div className="absolute -top-20 -right-20 w-64 h-64 bg-amber-500 rounded-full opacity-10 blur-3xl"></div>
-            <Swiper
-              direction="vertical"
-              slidesPerView={3}
-              spaceBetween={24}
-              centeredSlides={true}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              loop={true}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="relative w-full h-full overflow-hidden"
-              wrapperClass='mt-[150px]'
-            >
-              {services.map((service, index) => (
-                <SwiperSlide key={index}>
-                  {({ isPrev }) => (
-                    <div 
-                      className={`grid grid-cols-4 gap-4 items-center justify-center shadow-xl rounded-2xl w-[380px] h-auto mx-auto px-6 py-4 transition-all duration-500 backdrop-blur-sm ${
-                        isPrev 
-                          ? 'scale-110 bg-white/95 shadow-[#00ac9e]/10' 
-                          : 'scale-90 opacity-50 bg-white/80'
-                      }`}
-                    >
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-[#00ac9e]/10 rounded-xl"></div>
-                        <img
-                          alt={service.name}
-                          src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon-dark.svg`}
-                          className="object-contain h-14 aspect-square mx-auto relative z-10 p-2"
-                          onError={e => e.target.src = '/assets/img/icon.svg'}
-                        />
-                      </div>
-                      <div className='col-span-3'>
-                        <h3 className="text-lg font-semibold text-gray-900">{service.name}</h3>
-                        <p className='line-clamp-2 text-gray-600'>{service.description}</p>
-                        {service.status == 0 ? (
-                          <span className='text-sm bg-red-500/10 text-red-500 px-4 py-1.5 rounded-full mt-2 block w-max font-medium'>
-                            Próximamente
-                            <i className='mdi mdi-timer-sand ms-2'></i>
-                          </span>
-                        ) : (
-                          <a 
-                            href={`//${service.correlative}.${Global.APP_DOMAIN}/home`} 
-                            className='text-sm bg-[#00ac9e]/10 text-[#00ac9e] px-4 py-1.5 rounded-full mt-2 block w-max font-medium hover:bg-[#00ac9e] hover:text-white transition-colors'
-                          >
-                            Vamos allá
-                            <i className='mdi mdi-arrow-top-right ms-2'></i>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-      </div> */}
-
       <div className='max-w-7xl w-full mx-auto py-8 px-4 sm:px-6 lg:px-8'>
         <span className='bg-[#5e4dff] text-white text-xs px-2 py-1 rounded-lg block mx-auto w-max'>Powered by Manuel</span>
         <h1 className='text-6xl font-bold text-center my-6'>
@@ -405,18 +326,44 @@ const Landing = ({ session: sessionDB, services }) => {
           tu negocio <br />
           con Atala<span className='text-[#fe4611]'>y</span>a
         </h2>
-        <div className="mt-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {benefits.map((benefit, i) => (
-              <div key={i} className="bg-[#f4f8fd] rounded-2xl p-6">
-                <div className="h-12 w-12 bg-[#fe4611]/10 rounded-xl flex items-center justify-center mb-4">
-                  <i className={`mdi ${benefit.icon} text-2xl text-[#fe4611]`}></i>
+        <div className="mt-12 relative">
+          <Swiper
+            modules={[Autoplay, Navigation, Pagination]}
+            spaceBetween={24}
+            slidesPerView={1}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+            }}
+            className="py-4"
+          >
+            {[...benefits, ...benefits].map((benefit, i) => (
+              <SwiperSlide key={i}>
+                <div className="bg-[#f4f8fd] rounded-2xl p-6 h-full">
+                  <div className="h-12 w-12 bg-[#fe4611]/10 rounded-xl flex items-center justify-center mb-4">
+                    <i className={`mdi ${benefit.icon} text-2xl text-[#fe4611]`}></i>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600 leading-tight">{benefit.description}</p>
                 </div>
-                <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
-                <p className="text-gray-600 leading-tight">{benefit.description}</p>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
+          
+          <div className="swiper-button-prev -translate-x-7 !text-[#315af3] !w-10 !h-10 !bg-white !rounded-full !shadow-lg after:!text-xl"></div>
+          <div className="swiper-button-next translate-x-7 !text-[#315af3] !w-10 !h-10 !bg-white !rounded-full !shadow-lg after:!text-xl"></div>
         </div>
       </div>
 
@@ -481,20 +428,36 @@ const Landing = ({ session: sessionDB, services }) => {
       </div>
 
       <div className='max-w-7xl w-full mx-auto py-10 px-4 sm:px-6 lg:px-8'>
-        <div className='bg-[#EDF3FB] rounded-2xl p-10'>
-          <div className='max-w-lg w-full mx-auto text-center'>
-            <img src="" alt="" className='aspect-square w-10 h-10 rounded-full block mx-auto mb-4' />
-            <h4 className='text-lg font-bold mb-2'>"Mejoramos nuestra productividad en un 40%"</h4>
-            <p className='text-lg text-gray-600 leading-tight mb-4'>
-              Antes usábamos muchas herramientas separadas,
-              pero con Atalaya todo está centralizado. Ahora trabajamos
-              más rápido y organizados.
-            </p>
-            <div>
-              <span className='block font-bold'>María Gómez</span>
-              <span className='block text-gray-600 text-sm'>Directora de Finanzas</span>
-            </div>
-          </div>
+        <div className='bg-[#EDF3FB] rounded-2xl p-10 relative'>
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            className="py-4"
+          >
+            {testimonies.map((testimony, i) => (
+              <SwiperSlide key={i}>
+                <div className='max-w-lg w-full mx-auto text-center'>
+                  <div className='aspect-square w-10 h-10 rounded-full block mx-auto mb-4 bg-[#315af3] text-white flex items-center justify-center'>
+                    {testimony.author.charAt(0)}
+                  </div>
+                  <h4 className='text-lg font-bold mb-2'>"{testimony.title}"</h4>
+                  <p className='text-lg text-gray-600 leading-tight mb-4'>
+                    {testimony.description}
+                  </p>
+                  <div>
+                    <span className='block font-bold'>{testimony.author}</span>
+                    <span className='block text-gray-600 text-sm'>{testimony.profession}</span>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
 
