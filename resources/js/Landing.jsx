@@ -607,6 +607,93 @@ const Landing = ({ session: sessionDB, services }) => {
           ¿Tienes más dudas? Contáctanos aquí
         </a>
       </div>
+
+      <footer className="max-w-7xl w-full mx-auto py-10 px-4 sm:px-6 lg:px-8">
+        <div className="w-full grid grid-cols-1 md:grid-cols-5 gap-8">
+          <div className='md:col-span-2'>
+            <a href="/" className="transition-transform hover:scale-105">
+              <img src="/assets/img/logo-dark.svg" alt="" style={{ height: '40px' }} />
+            </a>
+            <p className="my-4 w-full">
+              La plataforma todo en uno para gestionar clientes, proyectos, facturación y más. Simplifica tu negocio con herramientas automatizadas.
+            </p>
+            <button className="px-6 py-2 border-2 bg-[#315af3] border-[#315af3] text-white rounded-lg">
+              Empieza a usar Atalaya hoy mismo
+            </button>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Enlaces Rápidos</h4>
+            <ul className="space-y-2">
+              <li><a href="#">Beneficios</a></li>
+              <li><a href="#">Planes y Precios</a></li>
+              <li><a href="#">Preguntas Frecuentes</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Servicios</h4>
+            <ul className="space-y-2">
+              <li>
+                <b className='block'>CRM</b>
+                <span className='block leading-tight truncate'>Gestión de clientes y oportunidades.</span>
+              </li>
+              <li>
+                <b className='block'>Proyectos</b>
+                <span className='block leading-tight truncate'>Organización de tareas y equipos.</span>
+              </li>
+              <li>
+                <b className='block'>Waves</b>
+                <span className='block leading-tight truncate'>Comunicación interna.</span>
+              </li>
+              <li>
+                <b className="block">Facturación <em className='text-sm'>(Próximamente)</em></b>
+                <span className='block leading-tight truncate'>Automatización de pagos y facturas.</span>
+              </li>
+              <li>
+                <b className="block">Tickets <em className='text-sm'>(Próximamente)</em></b>
+                <span className='block leading-tight truncate'>Soporte inteligente.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Derechos y Legal</h4>
+            <ul className="space-y-2">
+              <li><a href="#">Términos y Condiciones</a></li>
+              <li><a href="#">Política de Privacidad</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 mt-10 pt-6">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between">
+            {/* Redes sociales */}
+            <div className="flex gap-4 text-xl text-white">
+              <a href="#" className="hover:opacity-75 w-10 h-10 flex items-center justify-center rounded-full bg-[#5e4dff]">
+                <i className="mdi mdi-24px mdi-facebook"></i>
+              </a>
+              <a href="#" className="hover:opacity-75 w-10 h-10 flex items-center justify-center rounded-full bg-[#5e4dff]">
+                <i className="mdi mdi-24px mdi-instagram"></i>
+              </a>
+              <a href="#" className="hover:opacity-75 w-10 h-10 flex items-center justify-center rounded-full bg-[#5e4dff]">
+                <i className="mdi mdi-24px mdi-youtube"></i>
+              </a>
+              <a href="#" className="hover:opacity-75 w-10 h-10 flex items-center justify-center rounded-full bg-[#5e4dff]">
+                <i className="mdi mdi-24px mdi-twitter"></i>
+              </a>
+              <a href="#" className="hover:opacity-75 w-10 h-10 flex items-center justify-center rounded-full bg-[#5e4dff]">
+                <i className="mdi mdi-24px mdi-tiktok"></i>
+              </a>
+            </div>
+
+            {/* Derechos reservados */}
+            <p className="text-center md:text-right">
+              © 2025 Atalaya. Todos los derechos reservados.
+            </p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 };
