@@ -349,7 +349,7 @@ const Landing = ({ session: sessionDB, services }) => {
                 Elige tu servicio y comienza a gestionar con Atalaya
               </span>
             </div>
-            <button className='px-6 py-2 border-2 border-[#315af3] text-[#315af3] rounded-xl hover:bg-[#315af3] hover:text-white transition-colors'>Hablar con ventas</button>
+            <button className='px-6 py-2 border-2 bg-white border-[#315af3] text-[#315af3] rounded-xl hover:bg-[#315af3] hover:text-white transition-colors'>Hablar con ventas</button>
           </div>
           <div className='relative'>
             <div className='absolute right-[7.5%] md:-top-[5%] w-32 h-32'>
