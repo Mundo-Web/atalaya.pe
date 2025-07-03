@@ -343,8 +343,8 @@ const Landing = ({ session: sessionDB, services }) => {
           <p className='text-center max-w-xl w-full mx-auto'>Automatiza y optimiza tus procesos con nuestras soluciones en CRM, Facturación, Proyectos y más.</p>
           <div className='flex gap-4 my-8 justify-center'>
             <div className='relative'>
-              <a href='/register' className='block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl hover:bg-[#2a4ed8] transition-colors'>¡Registrate Gratis!</a>
-              <span className='font-[Fresca] absolute block w-max -bottom-12 left-6 text-lg -rotate-2'>
+              <a href='/register' className='relative block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl hover:bg-[#2a4ed8] transition-colors z-10'>¡Registrate Gratis!</a>
+              <span className='font-[Fresca] absolute block w-max -bottom-12 left-6 text-lg -rotate-2 z-0'>
                 <img src={CurvedArrow} alt={Global.APP_NAME} className='absolute w-4 -left-6 -top-6 animate-bounce' />
                 Elige tu servicio y comienza a gestionar con Atalaya
               </span>
