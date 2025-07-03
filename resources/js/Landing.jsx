@@ -194,6 +194,45 @@ const Landing = ({ session: sessionDB, services }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#315af3' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: false },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#315af3', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: { enable: true, mode: 'repulse' },
+          onclick: { enable: true, mode: 'push' },
+          resize: true
+        }
+      },
+      retina_detect: true
+    });
+    // var count_particles, stats, update; stats = new Stats();
+    // stats.setMode(0);
+    // stats.domElement.style.position = 'absolute';
+    // stats.domElement.style.left = '0px';
+    // stats.domElement.style.top = '0px';
+    // document.body.appendChild(stats.domElement);
+    // count_particles = document.querySelector('.js-count-particles');
+    // update = function () {
+    //   stats.begin();
+    //   stats.end();
+    //   if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    //     count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    //   }
+    //   requestAnimationFrame(update);
+    // };
+    // requestAnimationFrame(update);
+  }, [null])
+
   return (
     <main className='min-h-screen flex flex-col w-full bg-gradient-to-b from-white via-[#f8fffe] to-white text-[#000938]'>
       <header className='max-w-7xl w-full mx-auto flex justify-between items-center pt-8 px-4 sm:px-6 lg:px-8 relative'>
@@ -270,55 +309,60 @@ const Landing = ({ session: sessionDB, services }) => {
         </nav>
       </header>
 
-      <div className='relative mt-4 mb-6 w-full h-[3px] rounded-b-[50%]' style={{
+      <div className='relative mt-4 w-full h-[3px] rounded-[50%]' style={{
         background: 'linear-gradient(to right, transparent, #315af3 50%, transparent)'
       }}></div>
 
-      <div className='max-w-7xl w-full mx-auto py-8 px-4 sm:px-6 lg:px-8'>
-        <span className='bg-[#5e4dff] text-white text-xs px-2 py-1 rounded-lg block mx-auto w-max'>Powered by Manuel</span>
-        <h1 className='text-6xl font-bold text-center my-6'>
-          La Plataforma <br />
-          <span className='relative text-[#fe4611]'>
-            <TypeAnimation
-              sequence={[
-                'Flexible', 1000,
-                'Agil', 1000,
-                'Inteligente', 1000,
-                'Escalable', 1000,
-                'Versatil', 1000,
-              ]}
-              speed={250}
-              wrapper="span"
-              cursor={true}
-              repeat={Infinity}
-              cursorClassName='text-[#fe4611] inline-block'
-            />
-            <img src={Underline} alt={Global.APP_NAME} className='absolute left-1/2 -translate-x-1/2 bottom-1 h-2 block w-full' />
-          </span> para Gestionar <br />
-          tu Negocio
-        </h1>
-        <p className='text-center max-w-xl w-full mx-auto'>Automatiza y optimiza tus procesos con nuestras soluciones en CRM, Facturación, Proyectos y más.</p>
-        <div className='flex gap-4 my-8 justify-center'>
+      <section className='relative pt-6'>
+        <div id="particles-js" className="absolute inset-0 z-0"></div>
+        <div className='max-w-7xl w-full mx-auto py-8 px-4 sm:px-6 lg:px-8 relative z-10'>
+          {/* Add particles background */}
+
+          <span className='bg-[#5e4dff] text-white text-xs px-2 py-1 rounded-lg block mx-auto w-max'>Powered by Manuel</span>
+          <h1 className='text-6xl font-bold text-center my-6'>
+            La Plataforma <br />
+            <span className='relative text-[#fe4611]'>
+              <TypeAnimation
+                sequence={[
+                  'Flexible', 1000,
+                  'Agil', 1000,
+                  'Inteligente', 1000,
+                  'Escalable', 1000,
+                  'Versatil', 1000,
+                ]}
+                speed={250}
+                wrapper="span"
+                cursor={true}
+                repeat={Infinity}
+                cursorClassName='text-[#fe4611] inline-block'
+              />
+              <img src={Underline} alt={Global.APP_NAME} className='absolute left-1/2 -translate-x-1/2 bottom-1 h-2 block w-full' />
+            </span> para Gestionar <br />
+            tu Negocio
+          </h1>
+          <p className='text-center max-w-xl w-full mx-auto'>Automatiza y optimiza tus procesos con nuestras soluciones en CRM, Facturación, Proyectos y más.</p>
+          <div className='flex gap-4 my-8 justify-center'>
+            <div className='relative'>
+              <a href='/register' className='block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl hover:bg-[#2a4ed8] transition-colors'>¡Registrate Gratis!</a>
+              <span className='font-[Fresca] absolute block w-max -bottom-12 left-6 text-lg -rotate-2'>
+                <img src={CurvedArrow} alt={Global.APP_NAME} className='absolute w-4 -left-6 -top-6 animate-bounce' />
+                Elige tu servicio y comienza a gestionar con Atalaya
+              </span>
+            </div>
+            <button className='px-6 py-2 border-2 border-[#315af3] text-[#315af3] rounded-xl hover:bg-[#315af3] hover:text-white transition-colors'>Hablar con ventas</button>
+          </div>
           <div className='relative'>
-            <a href='/register' className='block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl'>¡Registrate Gratis!</a>
-            <span className='font-[Fresca] absolute block w-max -bottom-12 left-6 text-lg -rotate-2'>
-              <img src={CurvedArrow} alt={Global.APP_NAME} className='absolute w-4 -left-6 -top-6' />
-              Elige tu servicio y comienza a gestionar con Atalaya
-            </span>
+            <div className='absolute right-[7.5%] md:-top-[5%] w-32 h-32'>
+              <img
+                className='animate-spin-reverse animate-duration-[10s] w-full h-full'
+                src={AllInOnePlace}
+                alt="Todo lo que necesitas en un solo lugar" />
+              <i className='mdi mdi-36px mdi-arrow-right text-[#315af3] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'></i>
+            </div>
+            <img src={Graphs} alt="" className='w-full mt-16 md:mt-12 -mb-12 block' />
           </div>
-          <button className='px-6 py-2 border-2 border-[#315af3] text-[#315af3] rounded-xl'>Hablar con ventas</button>
         </div>
-        <div className='relative'>
-          <div className='absolute right-[7.5%] md:-top-[5%] w-32 h-32'>
-            <img
-              className='animate-spin-reverse animate-duration-[10s] w-full h-full'
-              src={AllInOnePlace}
-              alt="Todo lo que necesitas en un solo lugar" />
-            <i className='mdi mdi-36px mdi-arrow-right text-[#315af3] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'></i>
-          </div>
-          <img src={Graphs} alt="" className='w-full mt-16 md:mt-12 -mb-12 block' />
-        </div>
-      </div>
+      </section>
 
       <div className='max-w-7xl w-full mx-auto py-8 px-4 sm:px-6 lg:px-8'>
         <h2 className='text-4xl font-bold text-center'>
@@ -361,7 +405,7 @@ const Landing = ({ session: sessionDB, services }) => {
               </SwiperSlide>
             ))}
           </Swiper>
-          
+
           <div className="swiper-button-prev -translate-x-7 !text-[#315af3] !w-10 !h-10 !bg-white !rounded-full !shadow-lg after:!text-xl"></div>
           <div className="swiper-button-next translate-x-7 !text-[#315af3] !w-10 !h-10 !bg-white !rounded-full !shadow-lg after:!text-xl"></div>
         </div>

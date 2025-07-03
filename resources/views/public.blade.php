@@ -33,6 +33,9 @@
 
     <link href="/lte/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+
     @vite(['resources/css/app.css', 'resources/js/' . $route])
     @inertiaHead
 </head>
