@@ -27,8 +27,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LandingController::class, 'reactView'])->name('Landing.jsx');
-Route::get('/login', [AuthController::class, 'loginView'])->name('Login.jsx');
-Route::get('/register', [AuthController::class, 'registerView'])->name('Register.jsx');
+// Route::get('/login', [AuthController::class, 'loginView'])->name('Login.jsx');
+// Route::get('/register', [AuthController::class, 'registerView'])->name('Register.jsx');
+Route::get('/join/{service?}', [AuthController::class, 'joinView'])->name('Join.jsx');
 Route::get('/recovery', [RecoveryController::class, 'reactView'])->name('Recovery.jsx');
 Route::get('/confirm-email/{token}', [AuthController::class, 'confirmEmailView'])->name('ConfirmEmail.jsx');
 

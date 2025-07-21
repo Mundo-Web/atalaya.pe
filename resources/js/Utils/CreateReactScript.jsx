@@ -1,3 +1,4 @@
+import React from 'react';
 import { createInertiaApp } from '@inertiajs/react'
 import { Cookies, FetchParams } from 'sode-extend-react'
 import Global from './Global';

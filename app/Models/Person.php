@@ -18,6 +18,7 @@ class Person extends Model
         'birthdate',
         'gender',
         'email',
+        'phone_prefix',
         'phone',
         'ubigeo',
         'address',

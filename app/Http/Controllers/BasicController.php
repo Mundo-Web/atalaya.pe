@@ -31,6 +31,34 @@ class BasicController extends Controller
   public $throwMediaError = false;
   public $imageFields = [];
 
+  protected $basicProperties;
+
+  public function __construct()
+  {
+    $sessionJpa = null;
+    if (Auth::check()) {
+      $sessionJpa = User::find(Auth::id());
+      $sessionJpa->getAllPermissions();
+    }
+
+    $this->basicProperties = [
+      'PUBLIC_RSA_KEY' => Controller::$PUBLIC_RSA_KEY,
+      'APP_URL' => env('APP_URL'),
+      'APP_DOMAIN' => env('APP_DOMAIN'),
+      'APP_PROTOCOL' => env('APP_PROTOCOL', 'https'),
+      'global' => [
+        'APP_NAME' => env('APP_NAME'),
+        'APP_DOMAIN' => env('APP_DOMAIN'),
+        'APP_PROTOCOL' => env('APP_PROTOCOL', 'https'),
+        'APP_URL' => env('APP_URL'),
+      ]
+    ];
+  }
+
+  public function getBasicProperties()
+  {
+    return $this->basicProperties;
+  }
   public function media(Request $request, string $uuid)
   {
     try {
@@ -67,18 +95,12 @@ class BasicController extends Controller
 
   public function reactView()
   {
-    $userJpa = User::find(Auth::id());
-    $properties = [
-      'session' => $userJpa,
-      'permissions' => Auth::check() ? $userJpa->getAllPermissions() : [],
-      'PUBLIC_RSA_KEY' => Controller::$PUBLIC_RSA_KEY,
-      'APP_URL' => env('APP_URL'),
-      'APP_DOMAIN' => env('APP_DOMAIN'),
-      'APP_PROTOCOL' => env('APP_PROTOCOL', 'https'),
-      'global' => [
-        'APP_DOMAIN' => \env('APP_DOMAIN')
-      ]
-    ];
+    $properties = $this->basicProperties;
+    if (Auth::check()) {
+      $sessionJpa = User::find(Auth::id());
+      $properties['session'] = $sessionJpa;
+      $properties['permissions'] = $sessionJpa->getAllPermissions();
+    }
     foreach ($this->setReactViewProperties() as $key => $value) {
       $properties[$key] = $value;
     }

@@ -36,6 +36,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('signup', [AuthController::class, 'signup']);
+Route::post('auth/login', [AuthController::class, 'login']);
+Route::post('auth/send-code', [AuthController::class, 'sendCode']);
+Route::post('auth/verify-email', [AuthController::class, 'verifyEmail']);
+Route::post('auth/check', [AuthController::class, 'check']);
+Route::post('auth/register', [AuthController::class, 'register']);
 
 Route::middleware('auth')->group(function () {
     Route::delete('logout', [AuthController::class, 'destroy'])

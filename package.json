@@ -16,7 +16,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
-        "@inertiajs/react": "^1.1.0",
+        "@inertiajs/react": "^2.0.14",
         "@tippyjs/react": "^4.2.6",
         "aos": "^2.3.4",
         "chart.js": "^4.4.3",
@@ -27,9 +27,11 @@
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-google-recaptcha": "^3.1.0",
+        "react-router-dom": "^7.6.3",
         "react-type-animation": "^3.2.0",
         "slick-carousel": "^1.8.1",
         "sode-extend-react": "^1.1.111",
+        "sonner": "^2.0.6",
         "sweetalert2": "^11.11.1",
         "swiper": "^11.2.4"
     }

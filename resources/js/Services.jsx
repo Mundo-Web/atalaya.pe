@@ -148,10 +148,10 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
       <div className='d-flex align-items-center justify-content-center' style={{ minHeight: 'calc(100vh - 135px)' }}>
         <div style={{ width: '100%', maxWidth: '1200px' }}>
           <div className='mx-auto' style={{ width: '280px', marginBottom: '2rem' }}>
-            <SelectFormGroup 
-              eRef={businessRef} 
-              templateResult={businessTemplate} 
-              templateSelection={businessTemplate} 
+            <SelectFormGroup
+              eRef={businessRef}
+              templateResult={businessTemplate}
+              templateSelection={businessTemplate}
               onChange={onBusinessChange}
               className="shadow-sm"
             >
@@ -165,11 +165,11 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
             {services.sort((a, b) => b.status - a.status).map((service, i) => {
               const sbb = servicesByBusiness[service.correlative]
               return (
-                <div 
-                  key={`service-${i}`} 
-                  className="card mb-0" 
-                  style={{ 
-                    width: '100%', 
+                <div
+                  key={`service-${i}`}
+                  className="card mb-0"
+                  style={{
+                    width: '100%',
                     maxWidth: '360px',
                     transition: 'all 0.3s ease',
                     transform: 'translateY(0)',
@@ -188,9 +188,9 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                   <div className="card-body" style={{ padding: '1.5rem' }}>
                     <div className="d-flex justify-content-between align-items-start mb-3">
                       <div className="d-flex align-items-center gap-2">
-                        <img 
-                          src={`//${service.correlative}.${APP_DOMAIN}/assets/img/icon.svg`} 
-                          alt={service.name} 
+                        <img
+                          src={`//${service.correlative}.${APP_DOMAIN}/assets/img/icon.svg`}
+                          alt={service.name}
                           style={{
                             height: '32px',
                             width: '32px',
@@ -198,13 +198,13 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                             padding: '4px',
                             borderRadius: '8px',
                             backgroundColor: 'rgba(0,172,158,0.1)'
-                          }} 
-                          onError={e => e.target.src = '/assets/img/icon.svg'} 
+                          }}
+                          onError={e => e.target.src = '/assets/img/icon.svg'}
                         />
                         <div>
                           <h4 className="mb-0" style={{ fontSize: '1.1rem' }}>
-                            <a href="#" 
-                              className="text-dark d-flex align-items-center gap-2" 
+                            <a href="#"
+                              className="text-dark d-flex align-items-center gap-2"
                               onClick={() => onServiceOpen(service)}
                               style={{ textDecoration: 'none' }}
                             >
@@ -234,10 +234,10 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                     <div className="d-flex align-items-center justify-content-between">
                       {!sbb ? (
                         service.status ? (
-                          <button 
-                            type="button" 
-                            className="btn btn-primary rounded-pill w-100" 
-                            style={{ 
+                          <button
+                            type="button"
+                            className="btn btn-primary rounded-pill w-100"
+                            style={{
                               background: 'linear-gradient(45deg, #00ac9e, #00c9b7)',
                               border: 'none',
                               boxShadow: '0 2px 6px rgba(0,172,158,0.2)'
@@ -267,8 +267,8 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                           <div className="d-flex align-items-center justify-content-between mb-2">
                             <h6 className="mb-0">Equipo</h6>
                             <Tippy content='Gestionar usuarios'>
-                              <button 
-                                className="btn btn-soft-primary btn-sm rounded-circle" 
+                              <button
+                                className="btn btn-soft-primary btn-sm rounded-circle"
                                 style={{ width: '32px', height: '32px', padding: 0 }}
                                 onClick={() => onOpenManagement(sbb)}
                               >
@@ -280,9 +280,9 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
                             {sbb.users.map((user, i) => (
                               <div key={`user-${i}`} className="avatar-group-item mb-0">
                                 <Tippy content={`${user?.person?.name || user?.name} ${user?.person?.lastname || user?.lastname} ${session.id == user.id && '(Tú)'}`}>
-                                  <img 
-                                    src={`/api/profile/thumbnail/${user.relative_id}`} 
-                                    className="rounded-circle" 
+                                  <img
+                                    src={`/api/profile/thumbnail/${user.relative_id}`}
+                                    className="rounded-circle"
                                     alt={`${user.name} ${user.lastname}`}
                                     style={{
                                       width: '32px',

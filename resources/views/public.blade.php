@@ -21,6 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fresca&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -28,6 +29,10 @@
             padding: 0;
             font-family: "Nunito Sans", serif;
             box-sizing: border-box;
+        }
+
+        .font-emoji {
+            font-family: "Noto Color Emoji", sans-serif;
         }
     </style>
 

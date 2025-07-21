@@ -18,6 +18,7 @@ import "swiper/css"
 import "swiper/css/autoplay"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+import ServicesModal from './Reutilizables/Services/ServicesModal';
 
 const benefits = [
   {
@@ -181,6 +182,7 @@ const Landing = ({ session: sessionDB, services }) => {
   const [session, setSession] = useState(sessionDB);
   const [isOpen, setIsOpen] = useState(false);
   const [faqOpen, setFaqOpen] = useState(null);
+  const [serviceModalOpen, setServiceModalOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -189,6 +191,8 @@ const Landing = ({ session: sessionDB, services }) => {
         setIsOpen(false);
       }
     };
+
+    document.title = 'Home | Atalaya'
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -215,27 +219,23 @@ const Landing = ({ session: sessionDB, services }) => {
       },
       retina_detect: true
     });
-    // var count_particles, stats, update; stats = new Stats();
-    // stats.setMode(0);
-    // stats.domElement.style.position = 'absolute';
-    // stats.domElement.style.left = '0px';
-    // stats.domElement.style.top = '0px';
-    // document.body.appendChild(stats.domElement);
-    // count_particles = document.querySelector('.js-count-particles');
-    // update = function () {
-    //   stats.begin();
-    //   stats.end();
-    //   if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-    //     count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-    //   }
-    //   requestAnimationFrame(update);
-    // };
-    // requestAnimationFrame(update);
   }, [null])
 
-  return (
+  useEffect(() => {
+    if (serviceModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [serviceModalOpen]);
+
+  return (<>
     <main className='min-h-screen flex flex-col w-full bg-gradient-to-b from-white via-[#f8fffe] to-white text-[#000938]'>
-      <header className='max-w-7xl w-full mx-auto flex justify-between items-center pt-8 px-4 sm:px-6 lg:px-8 relative'>
+      <header className='max-w-7xl w-full mx-auto flex justify-between items-center pt-8 px-4 sm:px-6 lg:px-8 relative z-50'>
         <a href="/" className="transition-transform hover:scale-105">
           <img src="/assets/img/logo-dark.svg" alt="" style={{ height: '40px' }} />
         </a>
@@ -292,16 +292,18 @@ const Landing = ({ session: sessionDB, services }) => {
             ) : (
               <>
                 <li>
-                  <a href="/login" className='w-max px-4 py-2 rounded-full hover:bg-gray-100 transition-all flex items-center'>
+                  <a href="/join" className='w-max px-4 py-2 rounded-full hover:bg-gray-100 transition-all flex items-center'>
                     <i className='mdi mdi-login me-2 text-[#315af3]'></i>
                     <span className='hidden md:inline-block'>Iniciar sesión</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/register" className='w-max px-4 py-2 bg-[#315af3] text-white rounded-full hover:bg-[#009588] transition-all flex items-center'>
+                  <button
+                    className='w-max px-4 py-2 bg-[#315af3] text-white rounded-full hover:bg-opacity-80 transition-all flex items-center'
+                    onClick={() => setServiceModalOpen(true)}>
                     <i className='mdi mdi-account-plus me-2'></i>
                     <span className='hidden md:inline-block'>Registro</span>
-                  </a>
+                  </button>
                 </li>
               </>
             )}
@@ -343,7 +345,11 @@ const Landing = ({ session: sessionDB, services }) => {
           <p className='text-center max-w-xl w-full mx-auto'>Automatiza y optimiza tus procesos con nuestras soluciones en CRM, Facturación, Proyectos y más.</p>
           <div className='flex gap-4 my-8 justify-center'>
             <div className='relative'>
-              <a href='/register' className='relative block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl hover:bg-[#2a4ed8] transition-colors z-10'>¡Registrate Gratis!</a>
+              <button
+                className='relative block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl hover:bg-[#2a4ed8] transition-colors z-10'
+                onClick={() => setServiceModalOpen(true)}>
+                ¡Registrate Gratis!
+              </button>
               <span className='font-[Fresca] absolute block w-max -bottom-12 left-6 text-lg -rotate-2 z-0'>
                 <img src={CurvedArrow} alt={Global.APP_NAME} className='absolute w-4 -left-6 -top-6 animate-bounce' />
                 Elige tu servicio y comienza a gestionar con Atalaya
@@ -359,7 +365,7 @@ const Landing = ({ session: sessionDB, services }) => {
                 alt="Todo lo que necesitas en un solo lugar" />
               <i className='mdi mdi-36px mdi-arrow-right text-[#315af3] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'></i>
             </div>
-            <img src={Graphs} alt="" className='w-full mt-16 md:mt-12 -mb-12 block' />
+            <img src={Graphs} alt="" className='w-full mt-16 md:mt-12 -mb-12 block aspect-[1216/641]' />
           </div>
         </div>
       </section>
@@ -435,7 +441,7 @@ const Landing = ({ session: sessionDB, services }) => {
             ))}
           </div>
 
-          <a href='/register' className='block w-max px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl'>Optimiza tus ventas</a>
+          <a href='/join/crm' className='block w-max px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl'>Optimiza tus ventas</a>
         </div>
         <img src={CRMImage} alt="" className='w-full h-full mx-auto max-w-lg object-contain object-center' />
       </div>
@@ -702,6 +708,9 @@ const Landing = ({ session: sessionDB, services }) => {
         </div>
       </footer>
     </main>
+
+    <ServicesModal modalOpen={serviceModalOpen} onRequestClose={() => setServiceModalOpen(false)} services={services} />
+  </>
   );
 };
 
