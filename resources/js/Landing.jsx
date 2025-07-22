@@ -327,10 +327,10 @@ const Landing = ({ session: sessionDB, services }) => {
               <TypeAnimation
                 sequence={[
                   'Flexible', 1000,
-                  'Agil', 1000,
+                  'Ágil', 1000,
                   'Inteligente', 1000,
                   'Escalable', 1000,
-                  'Versatil', 1000,
+                  'Versátil', 1000,
                 ]}
                 speed={250}
                 wrapper="span"
@@ -367,9 +367,9 @@ const Landing = ({ session: sessionDB, services }) => {
                 </>
               )}
             </div>
-            <button className='px-6 py-2 border-2 bg-white border-[#315af3] text-[#315af3] rounded-xl hover:bg-[#315af3] hover:text-white transition-colors'>
+            <a href='//wa.me/51934464915' className='px-6 py-2 border-2 bg-white border-[#315af3] text-[#315af3] rounded-xl hover:bg-[#315af3] hover:text-white transition-colors'>
               Hablar con ventas
-            </button>
+            </a>
           </div>
           <div className='relative'>
             <div className='absolute right-[7.5%] md:-top-[5%] w-32 h-32'>
