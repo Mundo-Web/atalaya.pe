@@ -320,7 +320,7 @@ const Landing = ({ session: sessionDB, services }) => {
         <div className='max-w-7xl w-full mx-auto py-8 px-4 sm:px-6 lg:px-8 relative z-10'>
           {/* Add particles background */}
 
-          <span className='bg-[#5e4dff] text-white text-xs px-2 py-1 rounded-lg block mx-auto w-max'>Powered by Manuel</span>
+          <span className='bg-[#5e4dff] text-white text-xs px-2 py-1 rounded-lg block mx-auto w-max'>Powered by MundoWeb</span>
           <h1 className='text-6xl font-bold text-center my-6'>
             La Plataforma <br />
             <span className='relative text-[#fe4611]'>
@@ -345,17 +345,31 @@ const Landing = ({ session: sessionDB, services }) => {
           <p className='text-center max-w-xl w-full mx-auto'>Automatiza y optimiza tus procesos con nuestras soluciones en CRM, Facturación, Proyectos y más.</p>
           <div className='flex gap-4 my-8 justify-center'>
             <div className='relative'>
-              <button
-                className='relative block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl hover:bg-[#2a4ed8] transition-colors z-10'
-                onClick={() => setServiceModalOpen(true)}>
-                ¡Registrate Gratis!
-              </button>
-              <span className='font-[Fresca] absolute block w-max -bottom-12 left-6 text-lg -rotate-2 z-0'>
-                <img src={CurvedArrow} alt={Global.APP_NAME} className='absolute w-4 -left-6 -top-6 animate-bounce' />
-                Elige tu servicio y comienza a gestionar con Atalaya
-              </span>
+              {session ? (
+                <a
+                  href={`//crm.${Global.APP_DOMAIN}`}
+                  className='relative block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl hover:bg-[#2a4ed8] transition-colors z-10'
+                >
+                  Gestiona tus leads
+                </a>
+              ) : (
+                <>
+                  <button
+                    className='relative block px-6 py-2 border-2 border-[#315af3] bg-[#315af3] text-white rounded-xl hover:bg-[#2a4ed8] transition-colors z-10'
+                    onClick={() => setServiceModalOpen(true)}
+                  >
+                    ¡Registrate Gratis!
+                  </button>
+                  <span className='font-[Fresca] absolute block w-max -bottom-12 left-6 text-lg -rotate-2 z-0'>
+                    <img src={CurvedArrow} alt={Global.APP_NAME} className='absolute w-4 -left-6 -top-6 animate-bounce' />
+                    Elige tu servicio y comienza a gestionar con Atalaya
+                  </span>
+                </>
+              )}
             </div>
-            <button className='px-6 py-2 border-2 bg-white border-[#315af3] text-[#315af3] rounded-xl hover:bg-[#315af3] hover:text-white transition-colors'>Hablar con ventas</button>
+            <button className='px-6 py-2 border-2 bg-white border-[#315af3] text-[#315af3] rounded-xl hover:bg-[#315af3] hover:text-white transition-colors'>
+              Hablar con ventas
+            </button>
           </div>
           <div className='relative'>
             <div className='absolute right-[7.5%] md:-top-[5%] w-32 h-32'>
