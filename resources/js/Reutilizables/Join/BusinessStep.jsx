@@ -19,7 +19,7 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
             passwordConfirm: jsEncrypt.encrypt(data.passwordConfirm)
         })
         setLoading(false)
-
+        location.href = '//crm.atalaya.pe/join'
         setStep('usage')
     }
 
