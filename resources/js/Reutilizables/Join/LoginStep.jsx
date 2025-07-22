@@ -23,7 +23,7 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
         if (!data) {
             location.reload()
         } else {
-            location.href = `//${data}.${Global.APP_DOMAIN}/join`
+            location.href = `//${data}.${Global.APP_DOMAIN}/home`
         }
     }
     return <>
