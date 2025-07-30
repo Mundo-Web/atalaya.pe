@@ -36,7 +36,7 @@ class BusinessController extends BasicController
             ->join('users_by_services_by_businesses', 'users_by_services_by_businesses.service_by_business_id', 'services_by_businesses.id')
             ->where('users_by_services_by_businesses.user_id', Auth::user()->id)
             ->where('businesses.owner_id', '!=', Auth::user()->person_id)
-            ->where('status', true)
+            ->where('businesses.status', true)
             ->get();
         return [
             'businesses' => $businesses,
