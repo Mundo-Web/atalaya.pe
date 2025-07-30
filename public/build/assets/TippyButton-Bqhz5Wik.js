@@ -1,0 +1,1 @@
+import{j as t}from"./Accordion-B0xeqd_u.js";import"./index-B80Lgev0.js";import{i as s}from"./tippy-react.esm-PO7soYrD.js";import"./TippyButton-DN-nzi_f.js";const j=({title:r,className:o,onClick:i,children:n,eRef:e,...p})=>t.jsx(s,{content:r,arrow:!0,children:t.jsx("button",{ref:e,className:o,onClick:i,...p,children:n})});export{j as T};

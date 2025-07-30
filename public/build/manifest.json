@@ -1,139 +1,196 @@
 {
-  "_Adminto-!~{00l}~.js": {
-    "file": "Adminto.css",
-    "src": "_Adminto-!~{00l}~.js"
-  },
-  "_Adminto-DDOXlgf7.js": {
-    "file": "assets/Adminto-DDOXlgf7.js",
+  "_Adminto-D364ytFN.js": {
+    "file": "assets/Adminto-D364ytFN.js",
     "name": "Adminto",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Logout-CJCDY4QP.js",
-      "_tippy-D-_-e2ay.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
-    ],
-    "css": [
-      "Adminto.css"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "_Logout-C-aUOij0.js",
+      "_index.esm-X2U-7gJn.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx"
     ]
   },
-  "_AuthRest-DdUOVk18.js": {
-    "file": "assets/AuthRest-DdUOVk18.js",
+  "_AuthRest-CzS3X5Ou.js": {
+    "file": "assets/AuthRest-CzS3X5Ou.js",
     "name": "AuthRest",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "_main-DtAlmsP1.js"
     ]
   },
-  "_BasicRest-BmdWClhg.js": {
-    "file": "assets/BasicRest-BmdWClhg.js",
-    "name": "BasicRest",
+  "_BusinessesRest-Dm1R5PKi.js": {
+    "file": "assets/BusinessesRest-Dm1R5PKi.js",
+    "name": "BusinessesRest",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx"
     ]
   },
-  "_CheckboxFormGroup-98d06PDl.js": {
-    "file": "assets/CheckboxFormGroup-98d06PDl.js",
+  "_CheckboxFormGroup-B6kqgdBb.js": {
+    "file": "assets/CheckboxFormGroup-B6kqgdBb.js",
     "name": "CheckboxFormGroup",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_tippy-D-_-e2ay.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_tippy-react.esm-PO7soYrD.js",
+      "_index-B80Lgev0.js"
     ]
   },
-  "_CreateReactScript-CKGGurXh.js": {
-    "file": "assets/CreateReactScript-CKGGurXh.js",
-    "name": "CreateReactScript"
+  "_CreateReactScript-wxngZ06p.js": {
+    "file": "assets/CreateReactScript-wxngZ06p.js",
+    "name": "CreateReactScript",
+    "imports": [
+      "_index-B80Lgev0.js",
+      "_index.esm-X2U-7gJn.js",
+      "_main-DtAlmsP1.js"
+    ]
   },
-  "_InputFormGroup-BzBhgu10.js": {
-    "file": "assets/InputFormGroup-BzBhgu10.js",
+  "_DxButton-CsjWvhyj.js": {
+    "file": "assets/DxButton-CsjWvhyj.js",
+    "name": "DxButton"
+  },
+  "_InputFormGroup-Bup-dfDc.js": {
+    "file": "assets/InputFormGroup-Bup-dfDc.js",
     "name": "InputFormGroup",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
     ]
   },
   "_JSEncrypt-D3I3x59l.js": {
     "file": "assets/JSEncrypt-D3I3x59l.js",
     "name": "JSEncrypt"
   },
-  "_Logout-CJCDY4QP.js": {
-    "file": "assets/Logout-CJCDY4QP.js",
+  "_Logout-C-aUOij0.js": {
+    "file": "assets/Logout-C-aUOij0.js",
     "name": "Logout",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "_main-DtAlmsP1.js"
     ]
   },
-  "_Modal-DCRA1Tl6.js": {
-    "file": "assets/Modal-DCRA1Tl6.js",
+  "_Modal-DydUDwtE.js": {
+    "file": "assets/Modal-DydUDwtE.js",
     "name": "Modal",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
     ]
   },
-  "_SelectFormGroup-BDv8a3jW.js": {
-    "file": "assets/SelectFormGroup-BDv8a3jW.js",
+  "_SelectFormGroup-Cz52Trm3.js": {
+    "file": "assets/SelectFormGroup-Cz52Trm3.js",
     "name": "SelectFormGroup",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
     ]
   },
-  "_ServicesModal-wU-6iKo4.js": {
-    "file": "assets/ServicesModal-wU-6iKo4.js",
+  "_ServicesModal-NsFMdPvs.js": {
+    "file": "assets/ServicesModal-NsFMdPvs.js",
     "name": "ServicesModal",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_CreateReactScript-wxngZ06p.js"
     ]
   },
-  "_Table-DpImfzoC.js": {
-    "file": "assets/Table-DpImfzoC.js",
+  "_Table-BKtRPVyk.js": {
+    "file": "assets/Table-BKtRPVyk.js",
     "name": "Table",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/Utils/ReactAppend.jsx",
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
     ]
   },
-  "_TextareaFormGroup-DKRWNz7v.js": {
-    "file": "assets/TextareaFormGroup-DKRWNz7v.js",
+  "_TextareaFormGroup-CTgsu98K.js": {
+    "file": "assets/TextareaFormGroup-CTgsu98K.js",
     "name": "TextareaFormGroup",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "_main-DtAlmsP1.js",
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
     ]
   },
-  "_TippyButton-BqUwlI4N.js": {
-    "file": "assets/TippyButton-BqUwlI4N.js",
+  "_TippyButton-Bqhz5Wik.js": {
+    "file": "assets/TippyButton-Bqhz5Wik.js",
     "name": "TippyButton",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_tippy-D-_-e2ay.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx"
     ]
   },
-  "_UsersByServicesByBusinessesRest-BoJAlWt_.js": {
-    "file": "assets/UsersByServicesByBusinessesRest-BoJAlWt_.js",
+  "_UsersByServicesByBusinessesRest-C2BCIvym.js": {
+    "file": "assets/UsersByServicesByBusinessesRest-C2BCIvym.js",
     "name": "UsersByServicesByBusinessesRest",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_BasicRest-BmdWClhg.js"
+      "_main-DtAlmsP1.js",
+      "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx"
     ]
   },
-  "_server.browser-C3bIDRY4.js": {
-    "file": "assets/server.browser-C3bIDRY4.js",
+  "____vite-browser-external_commonjs-proxy-C9-083JZ.js": {
+    "file": "assets/___vite-browser-external_commonjs-proxy-C9-083JZ.js",
+    "name": "___vite-browser-external_commonjs-proxy",
+    "imports": [
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "_index-B80Lgev0.js": {
+    "file": "assets/index-B80Lgev0.js",
+    "name": "index"
+  },
+  "_index-STwnHZb6.js": {
+    "file": "assets/index-STwnHZb6.js",
+    "name": "index",
+    "imports": [
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "_index.esm-X2U-7gJn.js": {
+    "file": "assets/index.esm-X2U-7gJn.js",
+    "name": "index.esm",
+    "imports": [
+      "_index-B80Lgev0.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "_main-DtAlmsP1.js": {
+    "file": "assets/main-DtAlmsP1.js",
+    "name": "main",
+    "imports": [
+      "_index-B80Lgev0.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "_server.browser-bIzDeQez.js": {
+    "file": "assets/server.browser-bIzDeQez.js",
     "name": "server.browser",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "_index-B80Lgev0.js"
     ]
   },
-  "_sweetalert2.esm.all-B0Dix5B2.js": {
-    "file": "assets/sweetalert2.esm.all-B0Dix5B2.js",
-    "name": "sweetalert2.esm.all"
+  "_statuses-image-DRZxZZRY.js": {
+    "file": "assets/statuses-image-DRZxZZRY.js",
+    "name": "statuses-image",
+    "assets": [
+      "password-image.png",
+      "business-image.png",
+      "usage-image.png",
+      "survey-image.png",
+      "invite-team-image.png",
+      "dashboard-image.png",
+      "columns-image.png",
+      "manage-image.png",
+      "statuses-image.png"
+    ]
   },
-  "_tippy-!~{00n}~.js": {
-    "file": "tippy.css",
-    "src": "_tippy-!~{00n}~.js"
-  },
-  "_tippy-D-_-e2ay.js": {
-    "file": "assets/tippy-D-_-e2ay.js",
-    "name": "tippy",
+  "_tippy-react.esm-PO7soYrD.js": {
+    "file": "assets/tippy-react.esm-PO7soYrD.js",
+    "name": "tippy-react.esm",
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
-    ],
-    "css": [
-      "tippy.css"
+      "_index-B80Lgev0.js",
+      "_index-STwnHZb6.js"
     ]
   },
   "resources/css/app.css": {
@@ -206,106 +263,154 @@
     "src": "resources/img/join/usage-image.png"
   },
   "resources/js/Account.jsx": {
-    "file": "assets/Account-DUZsTX3C.js",
+    "file": "assets/Account-CBzYJuAE.js",
     "name": "Account",
     "src": "resources/js/Account.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Adminto-DDOXlgf7.js",
-      "_InputFormGroup-BzBhgu10.js",
-      "_tippy-D-_-e2ay.js",
-      "_Logout-CJCDY4QP.js",
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_Adminto-D364ytFN.js",
+      "_CreateReactScript-wxngZ06p.js",
+      "_InputFormGroup-Bup-dfDc.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "_Logout-C-aUOij0.js",
+      "_main-DtAlmsP1.js",
       "_JSEncrypt-D3I3x59l.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx"
     ]
   },
   "resources/js/Businesses.jsx": {
-    "file": "assets/Businesses-DPETUGgL.js",
+    "file": "assets/Businesses-DizAZSej.js",
     "name": "Businesses",
     "src": "resources/js/Businesses.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_tippy-D-_-e2ay.js",
-      "_BasicRest-BmdWClhg.js",
-      "_Adminto-DDOXlgf7.js",
-      "_Modal-DCRA1Tl6.js",
-      "_InputFormGroup-BzBhgu10.js",
-      "_SelectFormGroup-BDv8a3jW.js",
-      "_CheckboxFormGroup-98d06PDl.js",
-      "_UsersByServicesByBusinessesRest-BoJAlWt_.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js",
-      "_Logout-CJCDY4QP.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_tippy-react.esm-PO7soYrD.js",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_BusinessesRest-Dm1R5PKi.js",
+      "_Adminto-D364ytFN.js",
+      "_Modal-DydUDwtE.js",
+      "_InputFormGroup-Bup-dfDc.js",
+      "_SelectFormGroup-Cz52Trm3.js",
+      "_CheckboxFormGroup-B6kqgdBb.js",
+      "_index.esm-X2U-7gJn.js",
+      "_UsersByServicesByBusinessesRest-C2BCIvym.js",
+      "_main-DtAlmsP1.js",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "_index-STwnHZb6.js",
+      "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
+      "_Logout-C-aUOij0.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
     ]
   },
   "resources/js/ConfirmEmail.jsx": {
-    "file": "assets/ConfirmEmail-BMDw6ZxW.js",
+    "file": "assets/ConfirmEmail-qrMpPJCF.js",
     "name": "ConfirmEmail",
     "src": "resources/js/ConfirmEmail.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_JSEncrypt-D3I3x59l.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_index-B80Lgev0.js",
+      "_JSEncrypt-D3I3x59l.js",
+      "_CreateReactScript-wxngZ06p.js",
+      "_main-DtAlmsP1.js",
+      "_index.esm-X2U-7gJn.js",
+      "_index-STwnHZb6.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
     ]
   },
   "resources/js/DataUsage.jsx": {
-    "file": "assets/DataUsage-DLJt01MW.js",
+    "file": "assets/DataUsage-PFHp3Vdc.js",
     "name": "DataUsage",
     "src": "resources/js/DataUsage.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_index-B80Lgev0.js",
+      "_CreateReactScript-wxngZ06p.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_main-DtAlmsP1.js"
     ]
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-C4ImOMHY.js",
+    "file": "assets/Home-Dxeppe7R.js",
     "name": "Home",
     "src": "resources/js/Home.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Adminto-DDOXlgf7.js",
-      "_Logout-CJCDY4QP.js",
-      "_tippy-D-_-e2ay.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_Adminto-D364ytFN.js",
+      "_CreateReactScript-wxngZ06p.js",
+      "_index.esm-X2U-7gJn.js",
+      "_index-STwnHZb6.js",
+      "_main-DtAlmsP1.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_Logout-C-aUOij0.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx"
     ]
   },
   "resources/js/Join.jsx": {
-    "file": "assets/Join-DOoAD5Tt.js",
+    "file": "assets/Join-CP6q78jk.js",
     "name": "Join",
     "src": "resources/js/Join.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_server.browser-C3bIDRY4.js",
-      "_AuthRest-DdUOVk18.js",
-      "_tippy-D-_-e2ay.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js",
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_statuses-image-DRZxZZRY.js",
+      "_main-DtAlmsP1.js",
+      "_server.browser-bIzDeQez.js",
+      "_AuthRest-CzS3X5Ou.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "_JSEncrypt-D3I3x59l.js",
-      "_ServicesModal-wU-6iKo4.js"
-    ],
-    "assets": [
-      "password-image.png",
-      "business-image.png",
-      "usage-image.png",
-      "survey-image.png",
-      "invite-team-image.png",
-      "dashboard-image.png",
-      "columns-image.png",
-      "manage-image.png",
-      "statuses-image.png"
+      "resources/js/Reutilizables/Join/LoginStep.jsx",
+      "_ServicesModal-NsFMdPvs.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
     ]
   },
   "resources/js/Landing.jsx": {
-    "file": "assets/Landing-BORelgCa.js",
+    "file": "assets/Landing-LtDB9Bb1.js",
     "name": "Landing",
     "src": "resources/js/Landing.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Logout-CJCDY4QP.js",
-      "_ServicesModal-wU-6iKo4.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_Logout-C-aUOij0.js",
+      "_ServicesModal-NsFMdPvs.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_main-DtAlmsP1.js"
     ],
     "css": [
       "Landing.css"
@@ -321,168 +426,844 @@
     ]
   },
   "resources/js/Login.jsx": {
-    "file": "assets/Login-DSj-PbEl.js",
+    "file": "assets/Login-DFOnFeWV.js",
     "name": "Login",
     "src": "resources/js/Login.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
+      "resources/js/components/accordion/Accordion.jsx",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_index-B80Lgev0.js",
       "_JSEncrypt-D3I3x59l.js",
-      "_AuthRest-DdUOVk18.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "_CreateReactScript-wxngZ06p.js",
+      "_AuthRest-CzS3X5Ou.js",
+      "_index.esm-X2U-7gJn.js",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "_main-DtAlmsP1.js",
+      "_index-STwnHZb6.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
     ],
     "css": [
       "Login.css"
     ]
   },
   "resources/js/Permissions.jsx": {
-    "file": "assets/Permissions-9PdJmcq5.js",
+    "file": "assets/Permissions-DDQ-fCWF.js",
     "name": "Permissions",
     "src": "resources/js/Permissions.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Table-DpImfzoC.js",
-      "_TextareaFormGroup-DKRWNz7v.js",
-      "_Adminto-DDOXlgf7.js",
-      "_Modal-DCRA1Tl6.js",
-      "_InputFormGroup-BzBhgu10.js",
-      "_TippyButton-BqUwlI4N.js",
-      "_Logout-CJCDY4QP.js",
-      "_tippy-D-_-e2ay.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_Table-BKtRPVyk.js",
+      "_TextareaFormGroup-CTgsu98K.js",
+      "_Adminto-D364ytFN.js",
+      "_Modal-DydUDwtE.js",
+      "_InputFormGroup-Bup-dfDc.js",
+      "_TippyButton-Bqhz5Wik.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_main-DtAlmsP1.js",
+      "_Logout-C-aUOij0.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx"
     ]
   },
   "resources/js/Profile.jsx": {
-    "file": "assets/Profile-DG--2g62.js",
+    "file": "assets/Profile-6wFKzgoE.js",
     "name": "Profile",
     "src": "resources/js/Profile.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Adminto-DDOXlgf7.js",
-      "_InputFormGroup-BzBhgu10.js",
-      "_tippy-D-_-e2ay.js",
-      "_Logout-CJCDY4QP.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_Adminto-D364ytFN.js",
+      "_CreateReactScript-wxngZ06p.js",
+      "_InputFormGroup-Bup-dfDc.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "_main-DtAlmsP1.js",
+      "_index-STwnHZb6.js",
+      "_Logout-C-aUOij0.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx"
     ]
   },
   "resources/js/Recovery.jsx": {
-    "file": "assets/Recovery-D9IAbUWO.js",
+    "file": "assets/Recovery-B_e1Dlq4.js",
     "name": "Recovery",
     "src": "resources/js/Recovery.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_index-B80Lgev0.js",
+      "_CreateReactScript-wxngZ06p.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_main-DtAlmsP1.js"
     ]
   },
   "resources/js/Register.jsx": {
-    "file": "assets/Register-CsCskz40.js",
+    "file": "assets/Register-ClKYjB5l.js",
     "name": "Register",
     "src": "resources/js/Register.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
+      "resources/js/components/accordion/Accordion.jsx",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_index-B80Lgev0.js",
       "_JSEncrypt-D3I3x59l.js",
-      "_AuthRest-DdUOVk18.js",
-      "_SelectFormGroup-BDv8a3jW.js",
-      "_Modal-DCRA1Tl6.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "_CreateReactScript-wxngZ06p.js",
+      "_AuthRest-CzS3X5Ou.js",
+      "_index.esm-X2U-7gJn.js",
+      "_SelectFormGroup-Cz52Trm3.js",
+      "_Modal-DydUDwtE.js",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "_index-STwnHZb6.js",
+      "_main-DtAlmsP1.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/Reutilizables/Businesses/BusinessCard.jsx": {
+    "file": "assets/BusinessCard-CU3PFosm.js",
+    "name": "BusinessCard",
+    "src": "resources/js/Reutilizables/Businesses/BusinessCard.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx": {
+    "file": "assets/BusinessIWorkCard-CZ9h3uY_.js",
+    "name": "BusinessIWorkCard",
+    "src": "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/AccountStep.jsx": {
+    "file": "assets/AccountStep-DovI4gD-.js",
+    "name": "AccountStep",
+    "src": "resources/js/Reutilizables/Join/AccountStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_server.browser-bIzDeQez.js",
+      "_main-DtAlmsP1.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/BusinessStep.jsx": {
+    "file": "assets/BusinessStep-CvgGgQsN.js",
+    "name": "BusinessStep",
+    "src": "resources/js/Reutilizables/Join/BusinessStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "_server.browser-bIzDeQez.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/ColumnsStep.jsx": {
+    "file": "assets/ColumnsStep-DfrLHpY6.js",
+    "name": "ColumnsStep",
+    "src": "resources/js/Reutilizables/Join/ColumnsStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/DashboardStep.jsx": {
+    "file": "assets/DashboardStep-DfrLHpY6.js",
+    "name": "DashboardStep",
+    "src": "resources/js/Reutilizables/Join/DashboardStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/DropDownContainer.jsx": {
+    "file": "assets/DropDownContainer-HdiJVs_o.js",
+    "name": "DropDownContainer",
+    "src": "resources/js/Reutilizables/Join/DropDownContainer.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_server.browser-bIzDeQez.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/InputContainer.jsx": {
+    "file": "assets/InputContainer-DfrLHpY6.js",
+    "name": "InputContainer",
+    "src": "resources/js/Reutilizables/Join/InputContainer.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/InviteTeamStep.jsx": {
+    "file": "assets/InviteTeamStep-DfrLHpY6.js",
+    "name": "InviteTeamStep",
+    "src": "resources/js/Reutilizables/Join/InviteTeamStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/JoinContainer.jsx": {
+    "file": "assets/JoinContainer-tNGF2bai.js",
+    "name": "JoinContainer",
+    "src": "resources/js/Reutilizables/Join/JoinContainer.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_statuses-image-DRZxZZRY.js",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/JoinThanks.jsx": {
+    "file": "assets/JoinThanks-DfrLHpY6.js",
+    "name": "JoinThanks",
+    "src": "resources/js/Reutilizables/Join/JoinThanks.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/LoginStep.jsx": {
+    "file": "assets/LoginStep-DIoBarna.js",
+    "name": "LoginStep",
+    "src": "resources/js/Reutilizables/Join/LoginStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "_index-STwnHZb6.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/ManageStep.jsx": {
+    "file": "assets/ManageStep-DfrLHpY6.js",
+    "name": "ManageStep",
+    "src": "resources/js/Reutilizables/Join/ManageStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/ProgressBar.jsx": {
+    "file": "assets/ProgressBar-DfrLHpY6.js",
+    "name": "ProgressBar",
+    "src": "resources/js/Reutilizables/Join/ProgressBar.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/StatusesStep.jsx": {
+    "file": "assets/StatusesStep-DfrLHpY6.js",
+    "name": "StatusesStep",
+    "src": "resources/js/Reutilizables/Join/StatusesStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/SurveyStep.jsx": {
+    "file": "assets/SurveyStep-C1GxQ1hd.js",
+    "name": "SurveyStep",
+    "src": "resources/js/Reutilizables/Join/SurveyStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Join/UsageStep.jsx": {
+    "file": "assets/UsageStep-CPICGFQg.js",
+    "name": "UsageStep",
+    "src": "resources/js/Reutilizables/Join/UsageStep.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Reutilizables/Services/ServicesModal.jsx": {
+    "file": "assets/ServicesModal-DfrLHpY6.js",
+    "name": "ServicesModal",
+    "src": "resources/js/Reutilizables/Services/ServicesModal.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
     ]
   },
   "resources/js/Roles.jsx": {
-    "file": "assets/Roles-DTIFDIzl.js",
+    "file": "assets/Roles-CfEgsYgF.js",
     "name": "Roles",
     "src": "resources/js/Roles.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Table-DpImfzoC.js",
-      "_TextareaFormGroup-DKRWNz7v.js",
-      "_Adminto-DDOXlgf7.js",
-      "_Modal-DCRA1Tl6.js",
-      "_CheckboxFormGroup-98d06PDl.js",
-      "_InputFormGroup-BzBhgu10.js",
-      "_TippyButton-BqUwlI4N.js",
-      "_Logout-CJCDY4QP.js",
-      "_tippy-D-_-e2ay.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_Table-BKtRPVyk.js",
+      "_TextareaFormGroup-CTgsu98K.js",
+      "_main-DtAlmsP1.js",
+      "_Adminto-D364ytFN.js",
+      "_Modal-DydUDwtE.js",
+      "_CheckboxFormGroup-B6kqgdBb.js",
+      "_InputFormGroup-Bup-dfDc.js",
+      "_TippyButton-Bqhz5Wik.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_Logout-C-aUOij0.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx"
+    ]
+  },
+  "resources/js/Root/Businesses.jsx": {
+    "file": "assets/Businesses-B_VyE0K7.js",
+    "name": "Businesses",
+    "src": "resources/js/Root/Businesses.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_Adminto-D364ytFN.js",
+      "_Table-BKtRPVyk.js",
+      "_BusinessesRest-Dm1R5PKi.js",
+      "_index-B80Lgev0.js",
+      "_DxButton-CsjWvhyj.js",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_main-DtAlmsP1.js",
+      "_Logout-C-aUOij0.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx"
     ]
   },
   "resources/js/Services.jsx": {
-    "file": "assets/Services-BBebyf-i.js",
+    "file": "assets/Services-CRISnTKk.js",
     "name": "Services",
     "src": "resources/js/Services.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_tippy-D-_-e2ay.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js",
-      "_BasicRest-BmdWClhg.js",
-      "_UsersByServicesByBusinessesRest-BoJAlWt_.js",
-      "_Adminto-DDOXlgf7.js",
-      "_SelectFormGroup-BDv8a3jW.js",
-      "_Modal-DCRA1Tl6.js",
-      "_Logout-CJCDY4QP.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_tippy-react.esm-PO7soYrD.js",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_main-DtAlmsP1.js",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
+      "_UsersByServicesByBusinessesRest-C2BCIvym.js",
+      "_Adminto-D364ytFN.js",
+      "_SelectFormGroup-Cz52Trm3.js",
+      "_Modal-DydUDwtE.js",
+      "_CreateReactScript-wxngZ06p.js",
+      "_index-STwnHZb6.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_Logout-C-aUOij0.js",
+      "_index.esm-X2U-7gJn.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx"
     ]
   },
   "resources/js/Settings.jsx": {
-    "file": "assets/Settings-CjYB7XOn.js",
+    "file": "assets/Settings-B6KOoBEn.js",
     "name": "Settings",
     "src": "resources/js/Settings.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Table-DpImfzoC.js",
-      "_Adminto-DDOXlgf7.js",
-      "_Modal-DCRA1Tl6.js",
-      "_InputFormGroup-BzBhgu10.js",
-      "_TippyButton-BqUwlI4N.js",
-      "_Logout-CJCDY4QP.js",
-      "_tippy-D-_-e2ay.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_Table-BKtRPVyk.js",
+      "_main-DtAlmsP1.js",
+      "_Adminto-D364ytFN.js",
+      "_Modal-DydUDwtE.js",
+      "_InputFormGroup-Bup-dfDc.js",
+      "_TippyButton-Bqhz5Wik.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_Logout-C-aUOij0.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx"
     ]
   },
   "resources/js/Signs.jsx": {
-    "file": "assets/Signs-Cf-4nuJ0.js",
+    "file": "assets/Signs-wyPXjXFu.js",
     "name": "Signs",
     "src": "resources/js/Signs.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
-      "_Adminto-DDOXlgf7.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js",
-      "_BasicRest-BmdWClhg.js",
-      "_tippy-D-_-e2ay.js",
-      "_Modal-DCRA1Tl6.js",
-      "_InputFormGroup-BzBhgu10.js",
-      "_Logout-CJCDY4QP.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_Adminto-D364ytFN.js",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
+      "_tippy-react.esm-PO7soYrD.js",
+      "_Modal-DydUDwtE.js",
+      "_InputFormGroup-Bup-dfDc.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_main-DtAlmsP1.js",
+      "_Logout-C-aUOij0.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx"
     ]
   },
   "resources/js/Terms.jsx": {
-    "file": "assets/Terms-th_Hrp7d.js",
+    "file": "assets/Terms-CCprviW6.js",
     "name": "Terms",
     "src": "resources/js/Terms.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js"
+      "resources/js/components/accordion/Accordion.jsx",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_index-B80Lgev0.js",
+      "_CreateReactScript-wxngZ06p.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_main-DtAlmsP1.js"
     ]
   },
   "resources/js/Users.jsx": {
-    "file": "assets/Users-C5VINKQH.js",
+    "file": "assets/Users-B-pNrcrf.js",
     "name": "Users",
     "src": "resources/js/Users.jsx",
     "isEntry": true,
     "imports": [
-      "_CreateReactScript-CKGGurXh.js",
+      "resources/js/components/accordion/Accordion.jsx",
       "_JSEncrypt-D3I3x59l.js",
-      "_Table-DpImfzoC.js",
-      "_BasicRest-BmdWClhg.js",
-      "_Adminto-DDOXlgf7.js",
-      "_tippy-D-_-e2ay.js",
-      "_server.browser-C3bIDRY4.js",
-      "_Logout-CJCDY4QP.js",
-      "_sweetalert2.esm.all-B0Dix5B2.js"
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-wxngZ06p.js",
+      "_Table-BKtRPVyk.js",
+      "_main-DtAlmsP1.js",
+      "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
+      "_Adminto-D364ytFN.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "_server.browser-bIzDeQez.js",
+      "_DxButton-CsjWvhyj.js",
+      "_index-STwnHZb6.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_Logout-C-aUOij0.js",
+      "_tippy-react.esm-PO7soYrD.js",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx"
+    ]
+  },
+  "resources/js/Utils/CreateReactScript.jsx": {
+    "file": "assets/CreateReactScript-BaRdI4n9.js",
+    "name": "CreateReactScript",
+    "src": "resources/js/Utils/CreateReactScript.jsx",
+    "isEntry": true,
+    "imports": [
+      "_index-B80Lgev0.js",
+      "_index.esm-X2U-7gJn.js",
+      "_main-DtAlmsP1.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/Utils/HtmlContent.jsx": {
+    "file": "assets/HtmlContent-DfrLHpY6.js",
+    "name": "HtmlContent",
+    "src": "resources/js/Utils/HtmlContent.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Utils/Number2Currency.jsx": {
+    "file": "assets/Number2Currency-l0sNRNKZ.js",
+    "name": "Number2Currency",
+    "src": "resources/js/Utils/Number2Currency.jsx",
+    "isEntry": true
+  },
+  "resources/js/Utils/PseudoTippy.jsx": {
+    "file": "assets/PseudoTippy-l0sNRNKZ.js",
+    "name": "PseudoTippy",
+    "src": "resources/js/Utils/PseudoTippy.jsx",
+    "isEntry": true
+  },
+  "resources/js/Utils/ReactAppend.jsx": {
+    "file": "assets/ReactAppend-Da6mr3zD.js",
+    "name": "ReactAppend",
+    "src": "resources/js/Utils/ReactAppend.jsx",
+    "isEntry": true,
+    "imports": [
+      "_index-STwnHZb6.js",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/Utils/SetQuillValue.jsx": {
+    "file": "assets/SetQuillValue-l0sNRNKZ.js",
+    "name": "SetQuillValue",
+    "src": "resources/js/Utils/SetQuillValue.jsx",
+    "isEntry": true
+  },
+  "resources/js/Utils/SetSelectValue.jsx": {
+    "file": "assets/SetSelectValue-l0sNRNKZ.js",
+    "name": "SetSelectValue",
+    "src": "resources/js/Utils/SetSelectValue.jsx",
+    "isEntry": true
+  },
+  "resources/js/components/Adminto.jsx": {
+    "file": "assets/Adminto-Bvd6i7bk.js",
+    "name": "Adminto",
+    "src": "resources/js/components/Adminto.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "_index.esm-X2U-7gJn.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/modals/WhatsAppModal.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/components/DataGrid.jsx": {
+    "file": "assets/DataGrid-DfrLHpY6.js",
+    "name": "DataGrid",
+    "src": "resources/js/components/DataGrid.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/Footer.jsx": {
+    "file": "assets/Footer-DfrLHpY6.js",
+    "name": "Footer",
+    "src": "resources/js/components/Footer.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/Menu.jsx": {
+    "file": "assets/Menu-ctep06Zi.js",
+    "name": "Menu",
+    "src": "resources/js/components/Menu.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "_index.esm-X2U-7gJn.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/components/MenuItem.jsx": {
+    "file": "assets/MenuItem-CU3PFosm.js",
+    "name": "MenuItem",
+    "src": "resources/js/components/MenuItem.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_index.esm-X2U-7gJn.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/components/MenuItemContainer.jsx": {
+    "file": "assets/MenuItemContainer-DfrLHpY6.js",
+    "name": "MenuItemContainer",
+    "src": "resources/js/components/MenuItemContainer.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/Modal.jsx": {
+    "file": "assets/Modal-DfrLHpY6.js",
+    "name": "Modal",
+    "src": "resources/js/components/Modal.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/NavBar.jsx": {
+    "file": "assets/NavBar-Bc60qWgJ.js",
+    "name": "NavBar",
+    "src": "resources/js/components/NavBar.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/components/RightBar.jsx": {
+    "file": "assets/RightBar-Bc60qWgJ.js",
+    "name": "RightBar",
+    "src": "resources/js/components/RightBar.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/components/Table.jsx": {
+    "file": "assets/Table-DfrLHpY6.js",
+    "name": "Table",
+    "src": "resources/js/components/Table.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/accordion/Accordion.jsx": {
+    "file": "assets/Accordion-B0xeqd_u.js",
+    "name": "Accordion",
+    "src": "resources/js/components/accordion/Accordion.jsx",
+    "isEntry": true,
+    "imports": [
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/accordion/AccordionCard.jsx": {
+    "file": "assets/AccordionCard-DfrLHpY6.js",
+    "name": "AccordionCard",
+    "src": "resources/js/components/accordion/AccordionCard.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/dropdown/Dropdown.jsx": {
+    "file": "assets/Dropdown-DfrLHpY6.js",
+    "name": "Dropdown",
+    "src": "resources/js/components/dropdown/Dropdown.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/dropdown/DropdownEnd.jsx": {
+    "file": "assets/DropdownEnd-DfrLHpY6.js",
+    "name": "DropdownEnd",
+    "src": "resources/js/components/dropdown/DropdownEnd.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/dropdown/DropdownItem.jsx": {
+    "file": "assets/DropdownItem-DfrLHpY6.js",
+    "name": "DropdownItem",
+    "src": "resources/js/components/dropdown/DropdownItem.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/dx/DxBox.jsx": {
+    "file": "assets/DxBox-Bjvntgfx.js",
+    "name": "DxBox",
+    "src": "resources/js/components/dx/DxBox.jsx",
+    "isEntry": true,
+    "imports": [
+      "_index-B80Lgev0.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_server.browser-bIzDeQez.js",
+      "_index-STwnHZb6.js"
+    ]
+  },
+  "resources/js/components/dx/DxButton.jsx": {
+    "file": "assets/DxButton-l0sNRNKZ.js",
+    "name": "DxButton",
+    "src": "resources/js/components/dx/DxButton.jsx",
+    "isEntry": true
+  },
+  "resources/js/components/form/CheckboxFormGroup.jsx": {
+    "file": "assets/CheckboxFormGroup-DfrLHpY6.js",
+    "name": "CheckboxFormGroup",
+    "src": "resources/js/components/form/CheckboxFormGroup.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/form/ImageFormGroup.jsx": {
+    "file": "assets/ImageFormGroup-DfrLHpY6.js",
+    "name": "ImageFormGroup",
+    "src": "resources/js/components/form/ImageFormGroup.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/form/InputFormGroup.jsx": {
+    "file": "assets/InputFormGroup-DfrLHpY6.js",
+    "name": "InputFormGroup",
+    "src": "resources/js/components/form/InputFormGroup.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/form/PasswordFormGroup.jsx": {
+    "file": "assets/PasswordFormGroup-DfrLHpY6.js",
+    "name": "PasswordFormGroup",
+    "src": "resources/js/components/form/PasswordFormGroup.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/form/QuillFormGroup.jsx": {
+    "file": "assets/QuillFormGroup-DfrLHpY6.js",
+    "name": "QuillFormGroup",
+    "src": "resources/js/components/form/QuillFormGroup.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/form/SelectAPIFormGroup.jsx": {
+    "file": "assets/SelectAPIFormGroup-Bc60qWgJ.js",
+    "name": "SelectAPIFormGroup",
+    "src": "resources/js/components/form/SelectAPIFormGroup.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "_main-DtAlmsP1.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ]
+  },
+  "resources/js/components/form/SelectFormGroup.jsx": {
+    "file": "assets/SelectFormGroup-DfrLHpY6.js",
+    "name": "SelectFormGroup",
+    "src": "resources/js/components/form/SelectFormGroup.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/form/TextareaFormGroup.jsx": {
+    "file": "assets/TextareaFormGroup-DfrLHpY6.js",
+    "name": "TextareaFormGroup",
+    "src": "resources/js/components/form/TextareaFormGroup.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ]
+  },
+  "resources/js/components/form/TippyButton.jsx": {
+    "file": "assets/TippyButton-DN-nzi_f.js",
+    "name": "TippyButton",
+    "src": "resources/js/components/form/TippyButton.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
+    ],
+    "css": [
+      "TippyButton.css"
+    ]
+  },
+  "resources/js/components/modals/WhatsAppModal.jsx": {
+    "file": "assets/WhatsAppModal-BYoU6ug0.js",
+    "name": "WhatsAppModal",
+    "src": "resources/js/components/modals/WhatsAppModal.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "_main-DtAlmsP1.js",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+    ],
+    "css": [
+      "WhatsAppModal.css"
+    ]
+  },
+  "resources/js/components/svg/Yeti.jsx": {
+    "file": "assets/Yeti-DfrLHpY6.js",
+    "name": "Yeti",
+    "src": "resources/js/components/svg/Yeti.jsx",
+    "isEntry": true,
+    "imports": [
+      "resources/js/components/accordion/Accordion.jsx",
+      "_index-B80Lgev0.js"
     ]
   }
 }
