@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Business;
 use App\Models\Person;
-use App\Models\UsersByServicesByBusiness;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +16,12 @@ class BusinessController extends BasicController
     public $model = Business::class;
     public $softDeletion = true;
     public $reactView = 'Businesses';
+
+    public function setPaginationInstance(string $model)
+    {
+        return $model::with(['owner', 'person', 'creator'])
+            ->where('status', true);
+    }
 
     public function setReactViewProperties()
     {

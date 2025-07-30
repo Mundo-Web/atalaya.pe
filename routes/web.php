@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'reactView'])->name('Profile.jsx');
     Route::get('/account', [AccountController::class, 'reactView'])->name('Account.jsx');
+
+    Route::get('/all-businesses', [BusinessController::class, 'reactView'])->name('Root/Businesses.jsx');
 });
 
 Route::get('/terms', [TermsController::class, 'reactView'])->name('Terms.jsx');

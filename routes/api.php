@@ -73,7 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/business', [BusinessController::class, 'save']);
     Route::put('/business/assign', [BusinessController::class, 'assign']);
     Route::delete('/business/assign', [BusinessController::class, 'assign']);
-    Route::post('/businesses/paginate', [BusinessController::class, 'paginate']);
+    Route::post('/business/paginate', [BusinessController::class, 'paginate']);
     Route::patch('/business/status', [BusinessController::class, 'status']);
     Route::patch('/business/client-status', [BusinessController::class, 'clientStatus']);
     Route::delete('/business/{id}', [BusinessController::class, 'delete']);

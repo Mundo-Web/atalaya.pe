@@ -102,6 +102,10 @@ const Menu = ({ session, can }) => {
               }
             </>
           }
+          {
+            can('businesses', 'root') &&
+            <MenuItem href='/all-businesses'>Empresas</MenuItem>
+          }
         </ul>
 
       </div>
