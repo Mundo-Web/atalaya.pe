@@ -25,7 +25,10 @@ class BusinessController extends BasicController
 
     public function setReactViewProperties()
     {
-        $businesses = Business::with(['person', 'owner', 'contact'])->where('created_by', Auth::user()->id)->where('status', true)->get();
+        $businesses = Business::with(['person', 'owner', 'contact'])
+            ->where('created_by', Auth::user()->id)
+            ->where('status', true)
+            ->get();
         $businessesIWork = Business::select([
             DB::raw('DISTINCT businesses.*'),
             // 'users_by_services_by_businesses.invitation_accepted',
@@ -35,7 +38,10 @@ class BusinessController extends BasicController
             ->join('services_by_businesses', 'services_by_businesses.business_id', 'businesses.id')
             ->join('users_by_services_by_businesses', 'users_by_services_by_businesses.service_by_business_id', 'services_by_businesses.id')
             ->where('users_by_services_by_businesses.user_id', Auth::user()->id)
-            ->where('businesses.owner_id', '!=', Auth::user()->person_id)
+            ->where(function($query) {
+                $query->where('businesses.owner_id', '!=', Auth::user()->person_id)
+                      ->orWhere('businesses.created_by', Auth::user()->id);
+            })
             ->where('businesses.status', true)
             ->get();
         return [
