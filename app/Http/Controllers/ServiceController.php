@@ -15,7 +15,8 @@ class ServiceController extends BasicController
     public function setReactViewProperties()
     {
         $businesses = Business::with('owner', 'contact', 'person')
-            ->where('created_by', Auth::user()->id)->get();
+            ->where('created_by', Auth::user()->id)->get()
+            ->where('status', true);
         $services = Service::all();
         return [
             'businesses' => $businesses,
