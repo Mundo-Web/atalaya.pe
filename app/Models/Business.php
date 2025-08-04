@@ -56,4 +56,17 @@ class Business extends Model
             ->where('users_by_services_by_businesses.user_id', Auth::user()->id)
             ->select('services.*', 'users_by_services_by_businesses.invitation_accepted', 'users_by_services_by_businesses.invitation_token');
     }
+    public function users()
+    {
+        return $this->hasManyThrough(
+            User::class,
+            UsersByServicesByBusiness::class,
+            'services_by_businesses.business_id',
+            'id',
+            'id',
+            'user_id'
+        )
+        ->join('services_by_businesses', 'users_by_services_by_businesses.service_by_business_id', '=', 'services_by_businesses.id')
+        ->select('users.*', 'services_by_businesses.service_id');
+    }
 }

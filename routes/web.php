@@ -9,6 +9,7 @@ use App\Http\Controllers\DataUsageController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecoveryController;
+use App\Http\Controllers\Root\BusinessController as RootBusinessController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TermsController;
 use App\Http\Controllers\UserController;
@@ -47,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'reactView'])->name('Profile.jsx');
     Route::get('/account', [AccountController::class, 'reactView'])->name('Account.jsx');
 
-    Route::get('/all-businesses', [BusinessController::class, 'reactView'])->name('Root/Businesses.jsx');
+    Route::get('/all-businesses', [RootBusinessController::class, 'reactView'])->name('Root/Businesses.jsx');
     Route::get('/all-users', [UserController::class, 'reactView'])->name('Root/Users.jsx');
 });
 
