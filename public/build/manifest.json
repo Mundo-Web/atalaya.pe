@@ -566,7 +566,7 @@
     ]
   },
   "resources/js/Reutilizables/Businesses/RootBusinessCard.jsx": {
-    "file": "assets/RootBusinessCard-Dzmvi0Ff.js",
+    "file": "assets/RootBusinessCard-BWknoPE5.js",
     "name": "RootBusinessCard",
     "src": "resources/js/Reutilizables/Businesses/RootBusinessCard.jsx",
     "isEntry": true,
@@ -575,6 +575,7 @@
       "_index-B80Lgev0.js",
       "_main-DtAlmsP1.js",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
     ]
   },
@@ -781,7 +782,7 @@
     ]
   },
   "resources/js/Root/Businesses.jsx": {
-    "file": "assets/Businesses-UEU5dcil.js",
+    "file": "assets/Businesses-D7yCZOg5.js",
     "name": "Businesses",
     "src": "resources/js/Root/Businesses.jsx",
     "isEntry": true,

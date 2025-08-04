@@ -2,6 +2,7 @@ import Tippy from "@tippyjs/react"
 import Global from "../../Utils/Global"
 import { useState } from "react"
 import UsersByServicesByBusinessesRest from "../../actions/UsersByServicesByBusinessesRest"
+import Swal from "sweetalert2"
 
 const ubsbbRest = new UsersByServicesByBusinessesRest()
 
@@ -9,9 +10,23 @@ const RootBusinessCard = ({ users: usersDB, onStatusClicked, onDeleteClicked, ..
   const [users, setUsers] = useState(usersDB)
 
   const onUserDeleteClicked = async (match_id) => {
+    const { isConfirmed } = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No podrás revertir esta acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    });
+
+    if (!isConfirmed) return;
+
     const result = await ubsbbRest.delete(match_id);
-    if (!result) return
-    setUsers(old => old.filter(user => user.match_id !== match_id))
+    if (!result) return;
+
+    setUsers(old => old.filter(user => user.match_id !== match_id));
   }
 
   return <div key={business.id} className='card mb-0' style={{ width: '420px' }}>
