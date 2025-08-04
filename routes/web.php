@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::redirect('/login', '/join');
 Route::get('/', [LandingController::class, 'reactView'])->name('Landing.jsx');
 // Route::get('/login', [AuthController::class, 'loginView'])->name('Login.jsx');
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/account', [AccountController::class, 'reactView'])->name('Account.jsx');
 
     Route::get('/all-businesses', [BusinessController::class, 'reactView'])->name('Root/Businesses.jsx');
+    Route::get('/all-users', [UserController::class, 'reactView'])->name('Root/Users.jsx');
 });
 
 Route::get('/terms', [TermsController::class, 'reactView'])->name('Terms.jsx');

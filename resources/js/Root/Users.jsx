@@ -2,15 +2,15 @@ import { createRoot } from "react-dom/client";
 import CreateReactScript from "../Utils/CreateReactScript";
 import Adminto from "../components/Adminto";
 import Table from "../components/Table";
-import BusinessesRest from "../actions/BusinessesRest";
 import { useRef } from "react";
 import ReactAppend from "../Utils/ReactAppend";
 import DxButton from "../components/dx/DxButton";
 import Swal from "sweetalert2";
+import UsersRest from "../actions/UsersRest";
 
-const businessesRest = new BusinessesRest()
+const usersRest = new UsersRest()
 
-const Businesses = () => {
+const Users = () => {
     const gridRef = useRef()
 
     const onDeleteClicked = async (id) => {
@@ -26,13 +26,13 @@ const Businesses = () => {
 
         if (!result.isConfirmed) return
 
-        await businessesRest.delete(id);
+        await usersRest.delete(id);
         $(gridRef.current).dxDataGrid('instance').refresh();
     }
 
     return <Table
         gridRef={gridRef}
-        title='Empresas'
+        title='Usuarios'
         toolBar={(container) => {
             container.unshift({
                 widget: 'dxButton', location: 'after',
@@ -43,19 +43,25 @@ const Businesses = () => {
                 }
             });
         }}
-        rest={businessesRest}
+        rest={usersRest}
         columns={[
             {
-                dataField: 'name',
-                caption: 'Empresa'
-            },
-            {
                 dataField: 'person.document_number',
-                caption: 'RUC',
+                caption: 'Documento',
+                cellTemplate: (container, { data }) => {
+                    ReactAppend(container, <>
+                        <span className="badge bg-primary me-1">{data.person?.document_type ?? 'SD'}</span>
+                        {data.person?.document_number ?? '00000000'}
+                    </>)
+                }
             },
             {
-                dataField: 'owner.name',
-                caption: 'Dueño'
+                dataField: 'fullname',
+                caption: 'Usuario'
+            },
+            {
+                dataField: 'email',
+                caption: 'Correo electrónico'
             },
             {
                 dataField: 'creator.name',
@@ -83,10 +89,10 @@ const Businesses = () => {
 }
 
 CreateReactScript((el, properties) => {
-    if (!properties.can('businesses', 'root')) return location.href = '/';
+    if (!properties.can('users', 'root')) return location.href = '/';
     createRoot(el).render(
-        <Adminto {...properties} title='Empresas'>
-            <Businesses {...properties} />
+        <Adminto {...properties} title='Usuarios'>
+            <Users {...properties} />
         </Adminto>
     );
 })
