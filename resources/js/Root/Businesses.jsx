@@ -110,10 +110,10 @@ const Businesses = ({ businesses: businessesDB }) => {
                               style={{
                                 objectFit: 'contain',
                                 objectPosition: 'center',
-                                width: '18px', height: '18px',
+                                width: '20px', height: '20px',
                                 padding: '2px',
-                                bottom: '-4px',
-                                right: '-4px'
+                                bottom: '-6px',
+                                right: '-6px'
                               }}
                             />
                           </Tippy>
