@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PersonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RemainingHistoryController;
 use App\Http\Controllers\Root\BusinessController as RootBusinessController;
@@ -42,6 +43,8 @@ Route::post('auth/send-code', [AuthController::class, 'sendCode']);
 Route::post('auth/verify-email', [AuthController::class, 'verifyEmail']);
 Route::post('auth/check', [AuthController::class, 'check']);
 Route::post('auth/register', [AuthController::class, 'register']);
+
+Route::get('person/search/{documentType}/{documentNumber}', [PersonController::class, 'search']);
 
 Route::middleware('auth')->group(function () {
     Route::delete('logout', [AuthController::class, 'destroy'])

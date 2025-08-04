@@ -11,14 +11,16 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [serviceModalOpen, setServiceModalOpen] = useState(false)
+    const [verifying, setVerifying] = useState(false)
 
     const onLoginSubmit = async (e) => {
         e.preventDefault()
-        console.log({ email, password })
+        setVerifying(true)
         const { status, message, data } = await authRest.login({
             email: jsEncrypt.encrypt(email),
             password: jsEncrypt.encrypt(password)
         })
+        setVerifying(false)
         if (!status) toast(message, { icon: <i className="mdi mdi-alert text-[#FE4611]"></i> })
         if (!data) {
             location.reload()
@@ -42,6 +44,7 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
                         placeholder='correo@ejemplo.com'
                         value={email}
                         onChange={e => setEmail(e.target.value)}
+                        disabled={verifying}
                         required />
                     <InputContainer
                         label='Contraseña'
@@ -50,6 +53,7 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
                         type="password"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
+                        disabled={verifying}
                         required />
                     <div className="flex justify-end">
                         <button type="button" className="text-sm text-gray-600 hover:text-[#4621E1]">
@@ -59,27 +63,16 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
                     <button
                         type="submit"
                         className="w-full block border-2 border-[#4621E1] bg-[#4621E1] hover:bg-opacity-90 transition-colors font-semibold text-white rounded-xl py-2 px-6"
+                        disabled={verifying}
                     >
-                        Iniciar Sesión
+                        {
+                            verifying
+                                ? <><i className="mdi mdi-loading mdi-spin"></i> Verificando</>
+                                : 'Iniciar Sesión'
+                        }
                     </button>
                 </form>
                 <div className="text-center space-y-4">
-                    {/* <div className="relative">
-                    <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div className="relative flex justify-center">
-                        <span className="bg-white px-4 text-sm text-gray-500">O continúa con</span>
-                    </div>
-                </div>
-                <div className="flex justify-center space-x-4">
-                    <button className="p-2 border rounded-lg hover:bg-gray-50">
-                        <i className="mdi mdi-google text-xl"></i>
-                    </button>
-                    <button className="p-2 border rounded-lg hover:bg-gray-50">
-                        <i className="mdi mdi-microsoft text-xl"></i>
-                    </button>
-                </div> */}
                     <button className="text-[#4621E1] hover:underline text-sm" onClick={() => setServiceModalOpen(true)}>
                         ¿No tienes una cuenta? Regístrate
                     </button>

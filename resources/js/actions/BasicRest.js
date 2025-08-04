@@ -1,10 +1,31 @@
 import { Cookies, Fetch, Notify } from "sode-extend-react"
+import { toast } from "sonner";
 
 let controller = new AbortController()
 
 class BasicRest {
   path = null
   hasFiles = false
+
+  simpleGet = async (url, params) => {
+    try {
+      const { status, result } = await Fetch(url, params);
+      if (!status)
+        throw new Error(
+          result?.message || "Ocurrio un error inesperado"
+        );
+      return result.data ?? true;
+    } catch (error) {
+
+      toast.error("¡Error!", {
+        description: error.message,
+        duration: 3000,
+        position: "bottom-right",
+        richColors: true
+      });
+      return null;
+    }
+  };
 
   paginate = async (params) => {
     controller.abort('Nothing')

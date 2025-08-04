@@ -1,10 +1,14 @@
 import { createRoot } from 'react-dom/client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CreateReactScript from './Utils/CreateReactScript'
 import InputContainer from './Reutilizables/Join/InputContainer'
 import DropDownContainer from './Reutilizables/Join/DropDownContainer';
 import AuthRest from './actions/AuthRest';
 import Global from './Utils/Global';
+import PeopleRest from './actions/PeopleRest';
+import { Toaster } from 'sonner';
+
+const peopleRest = new PeopleRest()
 
 const Register = ({ invitation, prefixes = [] }) => {
   const [firstName, setFirstName] = useState('')
@@ -15,6 +19,10 @@ const Register = ({ invitation, prefixes = [] }) => {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
+
+  const [searching, setSearching] = useState(false)
+  const [found, setFound] = useState(false)
+  const [registering, setRegistering] = useState(false)
 
   const onRegisterSubmit = async (e) => {
     e.preventDefault()
@@ -29,13 +37,43 @@ const Register = ({ invitation, prefixes = [] }) => {
       confirmation: passwordConfirm,
     }
 
+    setRegistering(true)
     const result = await AuthRest.signup(request)
+    setRegistering(false)
     if (!result) return
 
     location.href = `//${result}.${Global.APP_DOMAIN}/home`
   }
 
+  const onSearch = async () => {
+    setSearching(true)
+    setFound(false)
+    const result = await peopleRest.search(documentType, documentNumber)
+    setSearching(false)
+    if (!result) return setFound(null)
+
+    setFound(true)
+    setFirstName(result.name)
+    setLastName(result.lastname)
+    setPhonePrefix(result.phone_prefix || '51')
+    setPhone(result.phone)
+  }
+
+  useEffect(() => {
+    setFirstName('')
+    setLastName('')
+    setPhonePrefix('51')
+    setPhone('')
+    const isValidLength = (documentType === 'DNI' && documentNumber.length === 8) ||
+      (documentType === 'CE' && documentNumber.length === 9);
+    if (!isValidLength) return;
+    onSearch()
+  }, [documentType, documentNumber])
+
+  console.log(found)
+
   return (<>
+    <Toaster />
     <main className="text-[#000938] bg-no-repeat bg-cover bg-fixed bg-center" style={{
       // backgroundImage: 'url(/assets/img/background-auth.png)',
     }}>
@@ -70,6 +108,7 @@ const Register = ({ invitation, prefixes = [] }) => {
                       values={['DNI', 'CE']}
                       onChange={(e) => setDocumentType(e.target.value)}
                       required
+                      disabled={registering}
                     />
                     <div className="lg:col-span-2">
                       <InputContainer
@@ -78,6 +117,9 @@ const Register = ({ invitation, prefixes = [] }) => {
                         value={documentNumber}
                         onChange={(e) => setDocumentNumber(e.target.value)}
                         required
+                        disabled={registering}
+                        maxLength={documentType === 'DNI' ? 8 : 9}
+                        minLength={documentType === 'DNI' ? 8 : 9}
                       />
                     </div>
 
@@ -89,6 +131,7 @@ const Register = ({ invitation, prefixes = [] }) => {
                       placeholder='Ingresa tus nombres'
                       value={firstName}
                       onChange={e => setFirstName(e.target.value)}
+                      disabled={registering || found !== null}
                       required />
                     <InputContainer
                       label='Apellidos'
@@ -96,6 +139,7 @@ const Register = ({ invitation, prefixes = [] }) => {
                       placeholder='Ingresa tus apellidos'
                       value={lastName}
                       onChange={e => setLastName(e.target.value)}
+                      disabled={registering || found !== null}
                       required />
                   </div>
                 </div>
@@ -115,6 +159,7 @@ const Register = ({ invitation, prefixes = [] }) => {
                         </>),
                       }))}
                       onChange={(e) => setPhonePrefix(e.target.value)}
+                      disabled={registering}
                       searchable
                     />
                   </div>
@@ -126,6 +171,7 @@ const Register = ({ invitation, prefixes = [] }) => {
                       type='tel'
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
+                      disabled={registering}
                       required />
                   </div>
                 </div>
@@ -143,6 +189,7 @@ const Register = ({ invitation, prefixes = [] }) => {
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      disabled={registering}
                       required
                     />
                     <InputContainer
@@ -151,6 +198,7 @@ const Register = ({ invitation, prefixes = [] }) => {
                       type="password"
                       value={passwordConfirm}
                       onChange={(e) => setPasswordConfirm(e.target.value)}
+                      disabled={registering}
                       required
                     />
                   </div>
@@ -158,8 +206,13 @@ const Register = ({ invitation, prefixes = [] }) => {
                 <button
                   type="submit"
                   className="w-full block border-2 border-[#4621E1] bg-[#4621E1] hover:bg-opacity-90 transition-colors font-semibold text-white rounded-xl py-2 px-6"
+                  disabled={registering}
                 >
-                  Registrarme
+                  {
+                    registering
+                      ? <><i className="mdi mdi-loading mdi-spin"></i> Registrando</>
+                      : 'Registrarme'
+                  }
                 </button>
               </form>
             </div>

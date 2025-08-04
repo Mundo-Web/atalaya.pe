@@ -140,18 +140,21 @@ class AuthController extends BasicController
       DB::beginTransaction();
       try {
         // Create or get existing natural person
-        $naturalPersonJpa = Person::updateOrCreate(
-          [
+        $naturalPersonJpa = Person::where([
+          'document_type' => $request->documentType,
+          'document_number' => $request->documentNumber
+        ])->first();
+
+        if (!$naturalPersonJpa) {
+          $naturalPersonJpa = Person::create([
             'document_type' => $request->documentType,
-            'document_number' => $request->documentNumber
-          ],
-          [
+            'document_number' => $request->documentNumber,
             'name' => $request->name,
             'lastname' => $request->lastname,
             'phone_prefix' => $request->phonePrefix,
             'phone' => $request->phone
-          ]
-        );
+          ]);
+        }
 
         // Create user
         $userJpa = User::create([
@@ -286,6 +289,8 @@ class AuthController extends BasicController
     $prefixes = JSON::parse(File::get('./phone_prefixes.json'));
     $invitation = InvitationEmail::where('invitation_token', $request->token)->first();
 
+    if (!$invitation) return redirect('/');
+
     return Inertia::render('Register', array_merge($this->getBasicProperties(), [
       'APP_PROTOCOL' => env('APP_PROTOCOL', 'https'),
       'PUBLIC_RSA_KEY' => Controller::$PUBLIC_RSA_KEY,
@@ -383,11 +388,13 @@ class AuthController extends BasicController
             'document_number' => $body['document_number'],
             'name' => $body['name'],
             'lastname' => $body['lastname'],
+            'phone_prefix' => $body['phone_prefix'],
+            'phone' => $body['phone'],
           ]);
         }
 
-        $existsUser = User::where('person_id', $personJpa->id)->exists();
-        if ($existsUser) throw new Exception('Ya existe un usuario registrado con ese documento');
+        // $existsUser = User::where('person_id', $personJpa->id)->exists();
+        // if ($existsUser) throw new Exception('Ya existe un usuario registrado con ese documento');
 
         // Create user directly
         $userJpa = User::create([

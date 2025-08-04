@@ -1,7 +1,6 @@
 import { useState } from "react"
 
-const InputContainer = ({ label, children, className, required, icon, type = 'text', placeholder, value, onChange, onKeyDown, invalid, invalidText, disabled }) => {
-
+const InputContainer = ({ label, children, className, required, icon, type = 'text', placeholder, value, onChange, onKeyDown, invalid, invalidText, disabled, maxLength, minLength }) => {
     const [showPassword, setShowPassword] = useState(false)
 
     const onShowPassword = () => {
@@ -13,7 +12,7 @@ const InputContainer = ({ label, children, className, required, icon, type = 'te
     }
 
     return <div className="group relative flex-1">
-        <label className={`flex gap-2 border-2 px-3 py-2 border-[#BEC5FF] rounded-lg bg-white ${invalid ? 'border-[#FE4611]' : 'focus-within:border-[#4621E1]'} focus-within:cursor-text ${disabled ? 'cursor-not-allowed': 'cursor-pointer'} transition-colors ${className}`}>
+        <label className={`flex gap-2 border-2 px-3 py-2 border-[#BEC5FF] rounded-lg bg-white ${invalid ? 'border-[#FE4611]' : 'focus-within:border-[#4621E1]'} focus-within:cursor-text ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} transition-colors ${className}`}>
             {icon && <i className={icon}></i>}
             <div className={`${icon ? "flex-1" : "w-full"} transition-all`}>
                 <span className="block text-xs font-semibold mb-1 select-none">
@@ -28,11 +27,13 @@ const InputContainer = ({ label, children, className, required, icon, type = 'te
                         value={value}
                         onChange={onChange}
                         onKeyDown={onKeyDown}
+                        maxLength={maxLength}
+                        minLength={minLength}
                         required={required}
                         disabled={disabled} />
                     {
                         type == 'password' &&
-                        <button type="button" className="absolute right-0" onClick={onShowPassword}>
+                        <button type="button" className="absolute right-0 select-none" onClick={onShowPassword}>
                             {
                                 showPassword ?
                                     <i className="mdi mdi-eye"></i>
