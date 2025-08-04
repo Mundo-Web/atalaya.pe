@@ -12,6 +12,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RemainingHistoryController;
+use App\Http\Controllers\Root\BusinessController as RootBusinessController;
 use App\Http\Controllers\ServicesByBusinessController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatusController;
@@ -153,4 +154,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/logo/{uuid}', [BusinessController::class, 'full']);
     Route::get('/logo/thumbnail/{uuid}', [BusinessController::class, 'thumbnail']);
+
+    Route::prefix('root')->group(function () {
+        Route::get('/businesses', [RootBusinessController::class, 'paginate']);
+        Route::patch('/businesses/status', [RootBusinessController::class, 'status']);
+        Route::delete('/businesses/{id}', [RootBusinessController::class, 'delete']);
+    });
 });

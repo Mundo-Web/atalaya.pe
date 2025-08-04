@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use SoDe\Extend\JSON;
+use SoDe\Extend\Response;
 
 class BusinessController extends BasicController
 {
