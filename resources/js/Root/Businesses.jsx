@@ -102,8 +102,10 @@ const Businesses = ({ businesses: businessesDB }) => {
                         <div className="position-relative" style={{ width: 'max-content', height: 'max-content' }}>
                           <img src={`/api/profile/thumbnail/${user.relative_id}`} alt="" className="avatar-sm rounded-circle" />
                           <Tippy content={user.service.name}>
-                            <img className="position-absolute bg-white rounded-pill border" src={`//${user.service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`} alt={user.service.name}
+                            <img className="position-absolute bg-white rounded border" src={`//${user.service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`} alt={user.service.name}
                               style={{
+                                objectFit: 'contain',
+                                objectPosition: 'center',
                                 width: '18px', height: '18px',
                                 padding: '2px',
                                 bottom: '-4px',
