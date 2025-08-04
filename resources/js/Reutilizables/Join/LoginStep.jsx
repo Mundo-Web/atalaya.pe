@@ -22,11 +22,8 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
         })
         setVerifying(false)
         if (!status) toast(message, { icon: <i className="mdi mdi-alert text-[#FE4611]"></i> })
-        if (!data) {
-            location.reload()
-        } else {
-            location.href = `//${data}.${Global.APP_DOMAIN}/home`
-        }
+        if (!data) return
+        location.href = `//${data}.${Global.APP_DOMAIN}/home`
     }
     return <>
         <Toaster />
