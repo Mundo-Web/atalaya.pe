@@ -1,6 +1,6 @@
 {
-  "_Adminto-D364ytFN.js": {
-    "file": "assets/Adminto-D364ytFN.js",
+  "_Adminto-Bej9pNZR.js": {
+    "file": "assets/Adminto-Bej9pNZR.js",
     "name": "Adminto",
     "imports": [
       "resources/js/components/accordion/Accordion.jsx",
@@ -272,7 +272,7 @@
     "src": "resources/img/join/usage-image.png"
   },
   "resources/js/Account.jsx": {
-    "file": "assets/Account-CBzYJuAE.js",
+    "file": "assets/Account-B-UY8dF2.js",
     "name": "Account",
     "src": "resources/js/Account.jsx",
     "isEntry": true,
@@ -280,7 +280,7 @@
       "resources/js/components/accordion/Accordion.jsx",
       "_index-B80Lgev0.js",
       "resources/js/Utils/ReactAppend.jsx",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_CreateReactScript-wxngZ06p.js",
       "_InputFormGroup-Bup-dfDc.js",
       "resources/js/components/form/TippyButton.jsx",
@@ -296,7 +296,7 @@
     ]
   },
   "resources/js/Businesses.jsx": {
-    "file": "assets/Businesses-17ocRQDN.js",
+    "file": "assets/Businesses-BeRLvqr6.js",
     "name": "Businesses",
     "src": "resources/js/Businesses.jsx",
     "isEntry": true,
@@ -307,7 +307,7 @@
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-wxngZ06p.js",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_Modal-DydUDwtE.js",
       "_InputFormGroup-Bup-dfDc.js",
       "_SelectFormGroup-Cz52Trm3.js",
@@ -357,7 +357,7 @@
     ]
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-Dxeppe7R.js",
+    "file": "assets/Home-Cd6Di3-x.js",
     "name": "Home",
     "src": "resources/js/Home.jsx",
     "isEntry": true,
@@ -365,7 +365,7 @@
       "resources/js/components/accordion/Accordion.jsx",
       "_index-B80Lgev0.js",
       "resources/js/Utils/ReactAppend.jsx",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_CreateReactScript-wxngZ06p.js",
       "_index.esm-X2U-7gJn.js",
       "_index-STwnHZb6.js",
@@ -457,7 +457,7 @@
     ]
   },
   "resources/js/Permissions.jsx": {
-    "file": "assets/Permissions-DDQ-fCWF.js",
+    "file": "assets/Permissions-DbvhrpCu.js",
     "name": "Permissions",
     "src": "resources/js/Permissions.jsx",
     "isEntry": true,
@@ -468,7 +468,7 @@
       "_CreateReactScript-wxngZ06p.js",
       "_Table-BKtRPVyk.js",
       "_TextareaFormGroup-CTgsu98K.js",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_Modal-DydUDwtE.js",
       "_InputFormGroup-Bup-dfDc.js",
       "_TippyButton-Bqhz5Wik.js",
@@ -484,7 +484,7 @@
     ]
   },
   "resources/js/Profile.jsx": {
-    "file": "assets/Profile-6wFKzgoE.js",
+    "file": "assets/Profile-Dl8UBYYh.js",
     "name": "Profile",
     "src": "resources/js/Profile.jsx",
     "isEntry": true,
@@ -492,7 +492,7 @@
       "resources/js/components/accordion/Accordion.jsx",
       "_index-B80Lgev0.js",
       "resources/js/Utils/ReactAppend.jsx",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_CreateReactScript-wxngZ06p.js",
       "_InputFormGroup-Bup-dfDc.js",
       "_tippy-react.esm-PO7soYrD.js",
@@ -753,7 +753,7 @@
     ]
   },
   "resources/js/Roles.jsx": {
-    "file": "assets/Roles-CfEgsYgF.js",
+    "file": "assets/Roles-DqsDyla7.js",
     "name": "Roles",
     "src": "resources/js/Roles.jsx",
     "isEntry": true,
@@ -765,7 +765,7 @@
       "_Table-BKtRPVyk.js",
       "_TextareaFormGroup-CTgsu98K.js",
       "_main-DtAlmsP1.js",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_Modal-DydUDwtE.js",
       "_CheckboxFormGroup-B6kqgdBb.js",
       "_InputFormGroup-Bup-dfDc.js",
@@ -781,7 +781,7 @@
     ]
   },
   "resources/js/Root/Businesses.jsx": {
-    "file": "assets/Businesses-BHuhNiyN.js",
+    "file": "assets/Businesses-UEU5dcil.js",
     "name": "Businesses",
     "src": "resources/js/Root/Businesses.jsx",
     "isEntry": true,
@@ -789,23 +789,23 @@
       "resources/js/components/accordion/Accordion.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-wxngZ06p.js",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_index-B80Lgev0.js",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
-      "_main-DtAlmsP1.js",
       "_tippy-react.esm-PO7soYrD.js",
       "_UsersByServicesByBusinessesRest-CHc1jz-A.js",
       "_index-STwnHZb6.js",
       "_index.esm-X2U-7gJn.js",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_main-DtAlmsP1.js",
       "_Logout-C-aUOij0.js",
       "resources/js/components/form/TippyButton.jsx",
       "resources/js/components/modals/WhatsAppModal.jsx"
     ]
   },
   "resources/js/Root/Users.jsx": {
-    "file": "assets/Users-D8c8c609.js",
+    "file": "assets/Users-D5a3PwSe.js",
     "name": "Users",
     "src": "resources/js/Root/Users.jsx",
     "isEntry": true,
@@ -813,7 +813,7 @@
       "resources/js/components/accordion/Accordion.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-wxngZ06p.js",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_Table-BKtRPVyk.js",
       "_index-B80Lgev0.js",
       "_DxButton-CsjWvhyj.js",
@@ -831,7 +831,7 @@
     ]
   },
   "resources/js/Services.jsx": {
-    "file": "assets/Services-B62aD2kL.js",
+    "file": "assets/Services-DNHdRpl4.js",
     "name": "Services",
     "src": "resources/js/Services.jsx",
     "isEntry": true,
@@ -845,7 +845,7 @@
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
       "_UsersByServicesByBusinessesRest-CHc1jz-A.js",
       "_UsersRest--a551a2g.js",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_SelectFormGroup-Cz52Trm3.js",
       "_Modal-DydUDwtE.js",
       "_CreateReactScript-wxngZ06p.js",
@@ -858,7 +858,7 @@
     ]
   },
   "resources/js/Settings.jsx": {
-    "file": "assets/Settings-B6KOoBEn.js",
+    "file": "assets/Settings-CT7JqgK7.js",
     "name": "Settings",
     "src": "resources/js/Settings.jsx",
     "isEntry": true,
@@ -869,7 +869,7 @@
       "_CreateReactScript-wxngZ06p.js",
       "_Table-BKtRPVyk.js",
       "_main-DtAlmsP1.js",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "_Modal-DydUDwtE.js",
       "_InputFormGroup-Bup-dfDc.js",
       "_TippyButton-Bqhz5Wik.js",
@@ -884,7 +884,7 @@
     ]
   },
   "resources/js/Signs.jsx": {
-    "file": "assets/Signs-CZVKM4Jh.js",
+    "file": "assets/Signs-B1woXvly.js",
     "name": "Signs",
     "src": "resources/js/Signs.jsx",
     "isEntry": true,
@@ -893,7 +893,7 @@
       "_index-B80Lgev0.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-wxngZ06p.js",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
       "_tippy-react.esm-PO7soYrD.js",
@@ -925,7 +925,7 @@
     ]
   },
   "resources/js/Users.jsx": {
-    "file": "assets/Users-1xwSm2zX.js",
+    "file": "assets/Users-BEp3U6RC.js",
     "name": "Users",
     "src": "resources/js/Users.jsx",
     "isEntry": true,
@@ -938,7 +938,7 @@
       "_Table-BKtRPVyk.js",
       "_main-DtAlmsP1.js",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
-      "_Adminto-D364ytFN.js",
+      "_Adminto-Bej9pNZR.js",
       "resources/js/components/form/TippyButton.jsx",
       "_server.browser-bIzDeQez.js",
       "_DxButton-CsjWvhyj.js",

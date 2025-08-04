@@ -84,27 +84,17 @@ const Menu = ({ session, can }) => {
           <MenuItem href="/account" icon='mdi mdi-account-key'>Mi cuenta</MenuItem>
 
           {
-            can(['people', 'users', 'constants'], 'all', 'list') && <>
+            can(['businesses', 'constants'], 'all', 'list') && <>
               <li className="menu-title">Menus del sistema</li>
-              <MenuItemContainer title='Mantenimiento' icon='mdi mdi-application-cog'>
-                {
-                  can('people', 'all', 'list') &&
-                  <MenuItem href='/people' icon='mdi mdi-account-group'>Personas</MenuItem>
-                }
-                {
-                  can('users', 'all', 'list') &&
-                  <MenuItem href='/users' icon='mdi mdi-account-multiple'>Usuarios</MenuItem>
-                }
-              </MenuItemContainer>
               {
                 can('constants', 'all', 'list') &&
                 <MenuItem href='/constants' icon='mdi mdi-cogs'>Constantes</MenuItem>
               }
+              {
+                can('businesses', 'root') &&
+                <MenuItem href='/all-businesses' icon='mdi mdi-database-cog'>Empresas</MenuItem>
+              }
             </>
-          }
-          {
-            can('businesses', 'root') &&
-            <MenuItem href='/all-businesses'>Empresas</MenuItem>
           }
         </ul>
 
