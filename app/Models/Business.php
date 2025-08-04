@@ -66,7 +66,7 @@ class Business extends Model
             'id',
             'user_id'
         )
-        ->join('services_by_businesses', 'users_by_services_by_businesses.service_by_business_id', '=', 'services_by_businesses.id')
-        ->select('users.*', 'services_by_businesses.service_id');
+            ->join('services_by_businesses', 'users_by_services_by_businesses.service_by_business_id', '=', 'services_by_businesses.id')
+            ->select('users.*', 'services_by_businesses.service_id', 'users_by_services_by_businesses.id AS match_id');
     }
 }
