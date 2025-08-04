@@ -7,6 +7,7 @@ use App\Http\Classes\EmailConfig;
 use App\Http\Services\ReCaptchaService;
 use App\Models\Business;
 use App\Models\Constant;
+use App\Models\InvitationEmail;
 use App\Models\User;
 use App\Models\Person;
 use App\Models\PreUser;
@@ -276,7 +277,7 @@ class AuthController extends BasicController
     ])->rootView('public');
   }
 
-  public function registerView()
+  public function registerView(Request $request)
   {
     if (Auth::check()) return redirect('/home');
 
@@ -284,12 +285,17 @@ class AuthController extends BasicController
     // ->with('PUBLIC_RSA_KEY', Controller::$PUBLIC_RSA_KEY)
     // ...
 
-    return Inertia::render('Register', [
+    $prefixes = JSON::parse(File::get('./phone_prefixes.json'));
+    $invitation = InvitationEmail::where('invitation_token', $request->token)->first();
+
+    return Inertia::render('Register', array_merge($this->getBasicProperties(), [
       'APP_PROTOCOL' => env('APP_PROTOCOL', 'https'),
       'PUBLIC_RSA_KEY' => Controller::$PUBLIC_RSA_KEY,
       'RECAPTCHA_SITE_KEY' => env('RECAPTCHA_SITE_KEY'),
-      'terms' => Constant::value('terms')
-    ])->rootView('public');
+      'terms' => Constant::value('terms'),
+      'prefixes' => $prefixes,
+      'invitation' => $invitation
+    ]))->rootView('public');
   }
 
   public function confirmEmailView(Request $request, string $token)
@@ -347,61 +353,81 @@ class AuthController extends BasicController
         'document_number' => 'required|string|max:9|min:8',
         'name' => 'required|string|max:255',
         'lastname' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string',
         'confirmation' => 'required|string',
-        'captcha' => 'required|string',
-        'terms' => 'required|accepted'
+        // 'captcha' => 'required|string',
+        // 'terms' => 'required|accepted'
       ]);
+
+      $token = basename($request->header('referer'));
+      $invitation = InvitationEmail::with(['service'])
+        ->where('invitation_token', $token)
+        ->first();
+      if (!$invitation) throw new Exception('Token invalido');
 
       $body = $request->all();
 
       if (!isset($request->password) || !isset($request->confirmation)) throw new Exception('Debes ingresar una contraseña para el nuevo usuario');
       if (Controller::decode($request->password) != Controller::decode($request->confirmation)) throw new Exception('Las contraseñas deben ser iguales');
 
-      if (!ReCaptchaService::verify($request->captcha)) throw new Exception('Captcha invalido. Seguro que no eres un robot?');
+      // if (!ReCaptchaService::verify($request->captcha)) throw new Exception('Captcha invalido. Seguro que no eres un robot?');
 
-      $personJpa = Person::select()
-        ->where('document_type', $body['document_type'])
-        ->where('document_number', $body['document_number'])
-        ->first();
+      DB::beginTransaction();
+      try {
+        $personJpa = Person::select()
+          ->where('document_type', $body['document_type'])
+          ->where('document_number', $body['document_number'])
+          ->first();
 
-      if (!$personJpa) {
-        $personJpa = Person::create([
-          'document_type' => $body['document_type'],
-          'document_number' => $body['document_number'],
+        if (!$personJpa) {
+          $personJpa = Person::create([
+            'document_type' => $body['document_type'],
+            'document_number' => $body['document_number'],
+            'name' => $body['name'],
+            'lastname' => $body['lastname'],
+          ]);
+        }
+
+        $existsUser = User::where('person_id', $personJpa->id)->exists();
+        if ($existsUser) throw new Exception('Ya existe un usuario registrado con ese documento');
+
+        // Create user directly
+        $userJpa = User::create([
           'name' => $body['name'],
           'lastname' => $body['lastname'],
+          'email' => $invitation->email,
+          'password' => Controller::decode($body['password']),
+          'person_id' => $personJpa->id,
+          'email_verified_at' => now(),
+          'relative_id' => Crypto::randomUUID()
         ]);
+
+        // Assign default role
+        $userJpa->assignRole('Admin');
+
+        // Create UserByServiceByBusiness with invitation data
+        UsersByServicesByBusiness::create([
+          'user_id' => $userJpa->id,
+          'service_by_business_id' => $invitation->service_by_business_id,
+          'active' => true,
+          'created_by' => $invitation->created_by,
+          'invitation_accepted' => true
+        ]);
+
+        $invitation->delete();
+
+        DB::commit();
+
+        // Log in the user and redirect
+        Auth::login($userJpa);
+
+        $response->status = 200;
+        $response->message = 'Usuario registrado correctamente';
+        $response->data = $invitation->service->correlative;
+      } catch (\Exception $e) {
+        DB::rollback();
+        throw $e;
       }
-
-      $existsUser = User::where('person_id', $personJpa->id)->exists();
-
-      if ($existsUser) throw new Exception('Ya existe un usuario registrado con ese documento');
-
-      $preUserJpa = PreUser::updateOrCreate([
-        'email' => $body['email']
-      ], [
-        'email' => $body['email'],
-        'password' => Controller::decode($body['password']),
-        'person_id' => $personJpa->id,
-        'confirmation_token' => Crypto::randomUUID(),
-        'token' => Crypto::randomUUID(),
-      ]);
-
-      $content = Constant::value('confirm-email');
-      $content = str_replace('{URL_CONFIRM}', env('APP_URL') . '/confirmation/' . $preUserJpa->confirmation_token, $content);
-
-      $mailer = EmailConfig::config();
-      $mailer->Subject = 'Confirmacion - Atalaya';
-      $mailer->Body = $content;
-      $mailer->addAddress($preUserJpa->email);
-      $mailer->isHTML(true);
-      $mailer->send();
-
-      $response->status = 200;
-      $response->message = 'Operacion correcta';
-      $response->data = $preUserJpa->token;
     } catch (\Throwable $th) {
       $response->status = 400;
       $response->message = $th->getMessage();

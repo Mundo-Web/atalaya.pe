@@ -1,189 +1,178 @@
 import { createRoot } from 'react-dom/client'
-import React, { useEffect, useRef, useState } from 'react'
-import JSEncrypt from 'jsencrypt'
+import React, { useState } from 'react'
 import CreateReactScript from './Utils/CreateReactScript'
-import AuthRest from './actions/AuthRest'
-import ReCAPTCHA from 'react-google-recaptcha'
-import { Link } from '@inertiajs/react'
-import SelectFormGroup from './components/form/SelectFormGroup'
-import Modal from './components/Modal'
-import HtmlContent from './Utils/HtmlContent'
-import Swal from 'sweetalert2'
+import InputContainer from './Reutilizables/Join/InputContainer'
+import DropDownContainer from './Reutilizables/Join/DropDownContainer';
+import AuthRest from './actions/AuthRest';
+import Global from './Utils/Global';
 
-const Register = ({ PUBLIC_RSA_KEY, RECAPTCHA_SITE_KEY, token, terms = 'Terminos y condiciones' }) => {
-
-  document.title = 'Registro | Atalaya'
-
-  const jsEncrypt = new JSEncrypt()
-  jsEncrypt.setPublicKey(PUBLIC_RSA_KEY)
-
-  // Estados
-  const [loading, setLoading] = useState(true)
-  const [captchaValue, setCaptchaValue] = useState(null)
-  const [found, setFound] = useState(false)
-
-  const documentTypeRef = useRef()
-  const documentNumberRef = useRef()
-  const nameRef = useRef()
-  const lastnameRef = useRef()
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const confirmationRef = useRef()
-  const termsRef = useRef()
-
-  const termsModalRef = useRef();
-
-  useEffect(() => {
-    setLoading(false)
-  }, [null])
+const Register = ({ invitation, prefixes = [] }) => {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [documentType, setDocumentType] = useState('DNI')
+  const [documentNumber, setDocumentNumber] = useState('')
+  const [phonePrefix, setPhonePrefix] = useState('51')
+  const [phone, setPhone] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
 
   const onRegisterSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
-
-
-    const password = passwordRef.current.value
-    const confirmation = confirmationRef.current.value
-
-    if (password != confirmation) {
-      return Swal.fire({
-        icon: 'warning',
-        title: 'Error',
-        text: 'Las contraseñas no coinciden',
-        confirmButtonText: 'Ok'
-      })
-    }
-
-    if (!captchaValue) return Swal.fire({
-      icon: 'warning',
-      title: 'Error',
-      text: 'Por favor, complete el captcha',
-      confirmButtonText: 'Ok'
-    })
-
-    // if (found) return Swal.fire({
-    //   icon: 'warning',
-    //   title: 'Error',
-    //   text: 'El numero de documento ya esta registrado',
-    //   confirmButtonText: 'Ok'
-    // })
-
     const request = {
-      document_type: $(documentTypeRef.current).val(),
-      document_number: documentNumberRef.current.value,
-      name: nameRef.current.value,
-      lastname: lastnameRef.current.value,
-      email: emailRef.current.value,
-      password: jsEncrypt.encrypt(password),
-      confirmation: jsEncrypt.encrypt(confirmation),
-      terms: termsRef.current.checked,
-      captcha: captchaValue,
-      _token: token
+      name: firstName,
+      lastname: lastName,
+      document_type: documentType,
+      document_number: documentNumber,
+      phone_prefix: phonePrefix,
+      phone: phone,
+      password: password,
+      confirmation: passwordConfirm,
     }
+
     const result = await AuthRest.signup(request)
-    if (!result) return setLoading(false)
+    if (!result) return
 
-    if (result) location.href = `./confirm-email/${result}`;
-    setLoading(false)
-  }
-
-  const onDocumentTypeChange = (e) => {
-    documentNumberRef.current.value = ''
-    setFound(false)
+    location.href = `//${result}.${Global.APP_DOMAIN}/home`
   }
 
   return (<>
-    <div className="account-pages mt-5 mb-5">
-      <div className="container">
-        <div className="row justify-content-center align-items-center" style={{
-          minHeight: 'calc(100vh - 150px)',
-        }}>
-          <div className="col-md-8 col-lg-6 col-xl-4">
-            <div className="text-center">
-              <a href="/">
-                <img src="/assets/img/logo-dark.svg" alt="" height="22" className="mx-auto" style={{ height: '22px' }} />
-              </a>
-              <p className="text-muted mt-2 mb-4">Atalaya by Mundo Web</p>
-            </div>
-            <div className="card">
-              <div className="card-body p-4">
-                <div className="text-center mb-4">
-                  <h4 className="text-uppercase mt-0 font-bold">Registrate</h4>
-                </div>
-                <form onSubmit={onRegisterSubmit} className='row'>
-                  <div className="col-sm-6 mb-2">
-                    <label htmlFor="document_type" className="form-label">Tipo documento <b className="text-danger">*</b></label>
-                    <SelectFormGroup eRef={documentTypeRef} onChange={onDocumentTypeChange} required>
-                      <option value="DNI">DNI - Documento Nacional de Identidad</option>
-                      <option value="CE">CE - Carnet de Extranjeria</option>
-                    </SelectFormGroup>
-                  </div>
-                  <div className="col-sm-6 mb-2">
-                    <label htmlFor="document_number" className="form-label">Numero documento <b className="text-danger">*</b></label>
-                    <input ref={documentNumberRef} className="form-control" type="text" id="document_number" placeholder="Ingrese su documento"
-                      required />
-                  </div>
-                  <div className="col-sm-6 mb-2">
-                    <label htmlFor="name" className="form-label">Nombres <b className="text-danger">*</b></label>
-                    <input ref={nameRef} className="form-control" type="text" id="name" placeholder="Ingrese su nombre"
-                      required />
-                  </div>
-                  <div className="col-sm-6 mb-2">
-                    <label htmlFor="lastname" className="form-label">Apellidos <b className="text-danger">*</b></label>
-                    <input ref={lastnameRef} className="form-control" type="text" id="lastname" placeholder="Ingrese sus apellidos"
-                      required />
-                  </div>
-                  <div className="col-12 mb-2">
-                    <label htmlFor="email" className="form-label">Correo electronico <b className="text-danger">*</b></label>
-                    <input ref={emailRef} className="form-control" type="email" id="email" required
-                      placeholder="Ingrese su correo electronico" />
-                  </div>
-                  <div className="col-sm-6 mb-2">
-                    <label htmlFor="password" className="form-label">Contraseña <b className="text-danger">*</b></label>
-                    <input ref={passwordRef} className="form-control" type="password" required id="password"
-                      placeholder="Ingrese su contraseña" />
-                  </div>
-                  <div className="col-sm-6 mb-3">
-                    <label htmlFor="confirmation" className="form-label">Confirmacion <b className="text-danger">*</b></label>
-                    <input ref={confirmationRef} className="form-control" type="password" required id="confirmation"
-                      placeholder="Confirme su contraseña" />
-                  </div>
-                  <div className="col-12 mb-3">
-                    <div className="form-check mx-auto" style={{ width: 'max-content' }}>
-                      <input ref={termsRef} type="checkbox" className="form-check-input" id="checkbox-signup" required />
-                      <label className="form-check-label" htmlFor="checkbox-signup">
-                        Acepto los
-                        <a
-                          href="#terms" className="ms-1 text-blue" onClick={() => $(termsModalRef.current).modal('show')}>
-                          terminos y condiciones
-                        </a>
-                      </label>
+    <main className="text-[#000938] bg-no-repeat bg-cover bg-fixed bg-center" style={{
+      // backgroundImage: 'url(/assets/img/background-auth.png)',
+    }}>
+      <header className="bg-white shadow-lg">
+        <div className="max-w-7xl w-full mx-auto relative flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8">
+          <a href="/" className="transition-transform hover:scale-105">
+            <img src="/assets/img/logo-dark.svg" alt="" style={{ height: '32px' }} />
+          </a>
+        </div>
+      </header>
+      <section className="relative bg-[#f8f8f8]">
+        <img
+          className='absolute top-0 left-0 w-full h-full z-0'
+          src="/assets/img/background-auth.png"
+        />
+        <div className={` mx-auto flex flex-col md:flex-row z-10 items-center justify-center`}>
+          <div className={`relative h-[calc(100vh-144px)] md:h-[calc(100vh-116px)] overflow-y-auto w-full p-6 md:p-12 z-10  justify-center items-center`}>
+            <div className="bg-white block rounded-xl max-w-lg w-full mx-auto p-6 shadow-lg">
+              <i className="mdi mdi-account mdi-36px w-14 h-14 bg-[#DBE0FF] mx-auto mb-6 rounded-2xl flex items-center justify-center text-[#4621E1]"></i>
+              <h2 className="text-3xl font-bold mb-2 text-center w-full">
+                Registro en Atala<span className="text-[#FE4611]">y</span>a
+              </h2>
+              <p className="text-gray-600 text-center mb-6">Completa tus datos para registrarte</p>
+              <form onSubmit={onRegisterSubmit}>
+                <h4 className='font-bold mb-2'>Datos personales</h4>
+                <div className="space-y-4 mb-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <DropDownContainer
+                      label='Tipo de doc.'
+                      icon="mdi mdi-badge-account-horizontal-outline"
+                      value={documentType}
+                      values={['DNI', 'CE']}
+                      onChange={(e) => setDocumentType(e.target.value)}
+                      required
+                    />
+                    <div className="lg:col-span-2">
+                      <InputContainer
+                        label='Número de documento'
+                        placeholder='00000000'
+                        value={documentNumber}
+                        onChange={(e) => setDocumentNumber(e.target.value)}
+                        required
+                      />
                     </div>
+
                   </div>
-                  <ReCAPTCHA className='m-auto mb-3' sitekey={RECAPTCHA_SITE_KEY} onChange={setCaptchaValue} style={{ display: "block", width: 'max-content' }} />
-                  <div className="mb-0 text-center d-grid">
-                    <button className="btn btn-primary" type="submit" disabled={loading}>
-                      {loading ? <>
-                        <i className='fa fa-spinner fa-spin'></i> Verificando
-                      </> : 'Registrarme'}
-                    </button>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <InputContainer
+                      label='Nombres'
+                      icon='mdi mdi-account'
+                      placeholder='Ingresa tus nombres'
+                      value={firstName}
+                      onChange={e => setFirstName(e.target.value)}
+                      required />
+                    <InputContainer
+                      label='Apellidos'
+                      icon='mdi mdi-account'
+                      placeholder='Ingresa tus apellidos'
+                      value={lastName}
+                      onChange={e => setLastName(e.target.value)}
+                      required />
                   </div>
-                </form>
-              </div>
-            </div>
-            <div className="row mt-3">
-              <div className="col-12 text-center">
-                <p className="text-muted">Ya tienes una cuenta? <a href="/login"
-                  className="text-dark ms-1"><b>Iniciar sesion</b></a></p>
-              </div>
+                </div>
+                <h4 className='font-bold mb-2'>Datos de contacto</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
+                  <div className="lg:col-span-2">
+                    <DropDownContainer
+                      label='Prefijo'
+                      icon="mdi mdi-flag"
+                      value={phonePrefix}
+                      values={prefixes.map((prefix) => ({
+                        value: prefix.realCode,
+                        label: (<>
+                          <span className="font-emoji w-6 inline-block">{prefix.flag}</span>
+                          <span className="font-semibold">{prefix.country}</span>
+                          <span className="text-gray-600 text-xs ms-1">{prefix.beautyCode}</span>
+                        </>),
+                      }))}
+                      onChange={(e) => setPhonePrefix(e.target.value)}
+                      searchable
+                    />
+                  </div>
+                  <div className="lg:col-span-3">
+                    <InputContainer
+                      icon='mdi mdi-phone'
+                      label='Teléfono'
+                      placeholder='000000000'
+                      type='tel'
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      required />
+                  </div>
+                </div>
+                <h4 className='font-bold mb-2'>Datos de inicio de sesión</h4>
+                <div className='space-y-4 mb-6'>
+                  <InputContainer
+                    label='E-mail'
+                    placeholder='correo@ejemplo.com'
+                    value={invitation.email}
+                    disabled />
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <InputContainer
+                      label='Contraseña'
+                      placeholder='••••••••'
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                    <InputContainer
+                      label='Confirmar'
+                      placeholder='••••••••'
+                      type="password"
+                      value={passwordConfirm}
+                      onChange={(e) => setPasswordConfirm(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full block border-2 border-[#4621E1] bg-[#4621E1] hover:bg-opacity-90 transition-colors font-semibold text-white rounded-xl py-2 px-6"
+                >
+                  Registrarme
+                </button>
+              </form>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <Modal modalRef={termsModalRef} title='Terminos y condiciones' size='lg' hideFooter>
-      <HtmlContent html={terms} />
-    </Modal>
+      </section>
+      <footer className="bg-white shadow-lg">
+        <div className="max-w-7xl w-full mx-auto relative flex flex-col md:flex-row gap-2 items-center justify-between py-4 px-4 sm:px-6 lg:px-8 text-sm">
+          <span>{new Date().getFullYear()} &copy; Atalaya | Propiedad de <a href="//mundoweb.pe" target="_blank" className="text-[#fe4611]">MundoWeb</a></span>
+          <span>Powered By MundoWeb</span>
+        </div>
+      </footer>
+    </main>
   </>)
 };
 
