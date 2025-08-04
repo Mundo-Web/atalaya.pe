@@ -18,7 +18,7 @@ class BusinessController extends BasicController
 
     public function setReactViewProperties()
     {
-        $businesses = Business::with(['creator', 'users.service'])
+        $businesses = Business::with(['creator', 'services',  'users.service'])
             ->get();
         return [
             'businesses' => $businesses

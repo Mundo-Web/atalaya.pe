@@ -17,6 +17,9 @@ use SoDe\Extend\Response;
 
 class ServicesByBusinessController extends BasicController
 {
+    public $model = ServicesByBusiness::class;
+    public $softDeletion = false;
+
     public function byBusiness(Request $request, string $businessRuc)
     {
         $response = new Response();

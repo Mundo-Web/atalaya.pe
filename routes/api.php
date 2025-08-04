@@ -147,6 +147,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/services-by-business/{ruc}', [ServicesByBusinessController::class, 'byBusiness']);
     Route::post('/services-by-business', [ServicesByBusinessController::class, 'enableService']);
+    Route::delete('/services-by-business/{id}', [ServicesByBusinessController::class, 'delete']);
 
     Route::post('/users-by-services-by-business', [UsersByServicesByBusinessController::class, 'inviteUser']);
     Route::delete('/users-by-services-by-business/{id}', [UsersByServicesByBusinessController::class, 'delete']);

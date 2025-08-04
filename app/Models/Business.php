@@ -69,4 +69,16 @@ class Business extends Model
             ->join('services_by_businesses', 'users_by_services_by_businesses.service_by_business_id', '=', 'services_by_businesses.id')
             ->select('users.*', 'services_by_businesses.service_id', 'users_by_services_by_businesses.id AS match_id');
     }
+
+    public function services()
+    {
+        return $this->hasManyThrough(
+            Service::class,
+            ServicesByBusiness::class,
+            'business_id',
+            'id',
+            'id',
+            'service_id'
+        )->select('services.*', 'services_by_businesses.id AS match_id');
+    }
 }

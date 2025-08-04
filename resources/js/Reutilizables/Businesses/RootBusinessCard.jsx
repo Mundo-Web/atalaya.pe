@@ -3,11 +3,15 @@ import Global from "../../Utils/Global"
 import { useState } from "react"
 import UsersByServicesByBusinessesRest from "../../actions/UsersByServicesByBusinessesRest"
 import Swal from "sweetalert2"
+import '../../../css/Root/businesses.css'
+import ServicesByBusinessesRest from "../../actions/ServicesByBusinessesRest"
 
 const ubsbbRest = new UsersByServicesByBusinessesRest()
+const sbbRest = new ServicesByBusinessesRest()
 
-const RootBusinessCard = ({ users: usersDB, onStatusClicked, onDeleteClicked, ...business }) => {
-  const [users, setUsers] = useState(usersDB)
+const RootBusinessCard = ({ onStatusClicked, onDeleteClicked, ...business }) => {
+  const [users, setUsers] = useState(business.users)
+  const [services, setServices] = useState(business.services)
 
   const onUserDeleteClicked = async (match_id) => {
     const { isConfirmed } = await Swal.fire({
@@ -27,6 +31,26 @@ const RootBusinessCard = ({ users: usersDB, onStatusClicked, onDeleteClicked, ..
     if (!result) return;
 
     setUsers(old => old.filter(user => user.match_id !== match_id));
+  }
+
+  const onServiceDeleteClicked = async (match_id) => {
+    const { isConfirmed } = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No podrás revertir esta acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    });
+
+    if (!isConfirmed) return;
+
+    const result = await sbbRest.delete(match_id);
+    if (!result) return;
+
+    setServices(old => old.filter(service => service.match_id !== match_id));
   }
 
   return <div key={business.id} className='card mb-0' style={{ width: '420px' }}>
@@ -59,10 +83,27 @@ const RootBusinessCard = ({ users: usersDB, onStatusClicked, onDeleteClicked, ..
         {!business.status && <small className="me-1 text-danger fw-bold">(Deshabilitada)</small>}
         {business.name}
       </h4>
-      <div>
+      <div className="mb-2">
         <span className="d-block">{business.creator?.fullname}</span>
         <small className="text-muted">{business.creator?.email}</small>
       </div>
+      {
+        services?.length > 0 &&
+        <div className="d-flex gap-2">
+          {services?.map(service => <Tippy content={`Eliminar ${service.name} de ${business.name}`}>
+            <div key={service.id} className="hover-container">
+              <img className="avatar-xs"
+                src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
+                onError={(e) => e.target.src = '/assets/img/icon.svg'}
+                alt={service.name}
+                style={{ objectFit: 'contain', objectPosition: 'center' }} />
+              <button className="hover:show btn btn-light btn-xs rounded-pill" onClick={() => onServiceDeleteClicked(service.match_id)}>
+                <i className="mdi mdi-close"></i>
+              </button>
+            </div>
+          </Tippy>)}
+        </div>
+      }
       <div className="d-flex align-items-center gap-2">
         <hr className="flex-grow-1 my-2" />
         <span>{users?.length || 0} usuarios</span>
