@@ -279,11 +279,9 @@ class AuthController extends BasicController
 
   public function registerView(Request $request)
   {
-    if (Auth::check()) return redirect('/home');
-
-    // return view('admin')
-    // ->with('PUBLIC_RSA_KEY', Controller::$PUBLIC_RSA_KEY)
-    // ...
+    if (Auth::check()) {
+      Auth::logout();
+    }
 
     $prefixes = JSON::parse(File::get('./phone_prefixes.json'));
     $invitation = InvitationEmail::where('invitation_token', $request->token)->first();
