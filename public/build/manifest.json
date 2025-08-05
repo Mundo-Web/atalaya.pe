@@ -87,8 +87,8 @@
       "_index-B80Lgev0.js"
     ]
   },
-  "_ServicesByBusinessesRest-2T5kbbkv.js": {
-    "file": "assets/ServicesByBusinessesRest-2T5kbbkv.js",
+  "_ServicesByBusinessesRest-BhOrhVR5.js": {
+    "file": "assets/ServicesByBusinessesRest-BhOrhVR5.js",
     "name": "ServicesByBusinessesRest",
     "imports": [
       "_main-DtAlmsP1.js",
@@ -131,16 +131,16 @@
       "resources/js/components/form/TippyButton.jsx"
     ]
   },
-  "_UsersByServicesByBusinessesRest-BctE8xLO.js": {
-    "file": "assets/UsersByServicesByBusinessesRest-BctE8xLO.js",
+  "_UsersByServicesByBusinessesRest-CeSKXHYN.js": {
+    "file": "assets/UsersByServicesByBusinessesRest-CeSKXHYN.js",
     "name": "UsersByServicesByBusinessesRest",
     "imports": [
       "_main-DtAlmsP1.js",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx"
     ]
   },
-  "_UsersRest-Bx3thcWI.js": {
-    "file": "assets/UsersRest-Bx3thcWI.js",
+  "_UsersRest-BYG-8P9y.js": {
+    "file": "assets/UsersRest-BYG-8P9y.js",
     "name": "UsersRest",
     "imports": [
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx"
@@ -156,6 +156,14 @@
   "_index-B80Lgev0.js": {
     "file": "assets/index-B80Lgev0.js",
     "name": "index"
+  },
+  "_index-BK7CmI7H.js": {
+    "file": "assets/index-BK7CmI7H.js",
+    "name": "index",
+    "imports": [
+      "_index-B80Lgev0.js",
+      "_index-STwnHZb6.js"
+    ]
   },
   "_index-STwnHZb6.js": {
     "file": "assets/index-STwnHZb6.js",
@@ -304,7 +312,7 @@
     ]
   },
   "resources/js/Businesses.jsx": {
-    "file": "assets/Businesses-B6fh3XC6.js",
+    "file": "assets/Businesses-Z2cG1RsL.js",
     "name": "Businesses",
     "src": "resources/js/Businesses.jsx",
     "isEntry": true,
@@ -321,11 +329,11 @@
       "_SelectFormGroup-Cz52Trm3.js",
       "_CheckboxFormGroup-B6kqgdBb.js",
       "_index.esm-X2U-7gJn.js",
-      "_UsersByServicesByBusinessesRest-BctE8xLO.js",
+      "_UsersByServicesByBusinessesRest-CeSKXHYN.js",
       "_main-DtAlmsP1.js",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "_index-STwnHZb6.js",
-      "resources/js/Reutilizables/Join/LoginStep.jsx",
+      "_index-BK7CmI7H.js",
       "_Logout-C-aUOij0.js",
       "resources/js/components/form/TippyButton.jsx",
       "resources/js/components/modals/WhatsAppModal.jsx",
@@ -388,7 +396,7 @@
     ]
   },
   "resources/js/Join.jsx": {
-    "file": "assets/Join-DV5uG19a.js",
+    "file": "assets/Join-C5TIqjSF.js",
     "name": "Join",
     "src": "resources/js/Join.jsx",
     "isEntry": true,
@@ -405,7 +413,7 @@
       "resources/js/components/form/TippyButton.jsx",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "_JSEncrypt-D3I3x59l.js",
-      "resources/js/Reutilizables/Join/LoginStep.jsx",
+      "_index-BK7CmI7H.js",
       "_ServicesModal-NsFMdPvs.js",
       "_index-STwnHZb6.js",
       "_index.esm-X2U-7gJn.js",
@@ -532,7 +540,7 @@
     ]
   },
   "resources/js/Register.jsx": {
-    "file": "assets/Register-BUO8H-qk.js",
+    "file": "assets/Register-C3pzT3QM.js",
     "name": "Register",
     "src": "resources/js/Register.jsx",
     "isEntry": true,
@@ -544,7 +552,7 @@
       "_DropDownContainer-D3XWasLm.js",
       "_AuthRest-CzS3X5Ou.js",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
-      "resources/js/Reutilizables/Join/LoginStep.jsx",
+      "_index-BK7CmI7H.js",
       "_JSEncrypt-D3I3x59l.js",
       "_index-STwnHZb6.js",
       "_index.esm-X2U-7gJn.js",
@@ -566,7 +574,7 @@
     ]
   },
   "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx": {
-    "file": "assets/BusinessIWorkCard-B9yG3aQu.js",
+    "file": "assets/BusinessIWorkCard-CmzstVqU.js",
     "name": "BusinessIWorkCard",
     "src": "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
     "isEntry": true,
@@ -574,13 +582,13 @@
       "resources/js/components/accordion/Accordion.jsx",
       "_index-B80Lgev0.js",
       "_main-DtAlmsP1.js",
-      "resources/js/Reutilizables/Join/LoginStep.jsx",
+      "_index-BK7CmI7H.js",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
       "_index-STwnHZb6.js"
     ]
   },
   "resources/js/Reutilizables/Businesses/RootBusinessCard.jsx": {
-    "file": "assets/RootBusinessCard-BwQT-_5p.js",
+    "file": "assets/RootBusinessCard-CZOfxu3V.js",
     "name": "RootBusinessCard",
     "src": "resources/js/Reutilizables/Businesses/RootBusinessCard.jsx",
     "isEntry": true,
@@ -591,7 +599,7 @@
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
-      "resources/js/Reutilizables/Join/LoginStep.jsx",
+      "_index-BK7CmI7H.js",
       "_index-STwnHZb6.js"
     ],
     "css": [
@@ -699,7 +707,7 @@
     ]
   },
   "resources/js/Reutilizables/Join/LoginStep.jsx": {
-    "file": "assets/LoginStep-DIoBarna.js",
+    "file": "assets/LoginStep-DyCXDvKX.js",
     "name": "LoginStep",
     "src": "resources/js/Reutilizables/Join/LoginStep.jsx",
     "isEntry": true,
@@ -707,8 +715,10 @@
       "resources/js/components/accordion/Accordion.jsx",
       "_index-B80Lgev0.js",
       "_main-DtAlmsP1.js",
-      "_index-STwnHZb6.js",
-      "____vite-browser-external_commonjs-proxy-C9-083JZ.js"
+      "_index-BK7CmI7H.js",
+      "resources/js/Reutilizables/Join/SurveyStep.jsx",
+      "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
+      "_index-STwnHZb6.js"
     ]
   },
   "resources/js/Reutilizables/Join/ManageStep.jsx": {
@@ -801,7 +811,7 @@
     ]
   },
   "resources/js/Root/Businesses.jsx": {
-    "file": "assets/Businesses-Z1Xl1nDB.js",
+    "file": "assets/Businesses-BeuSQ89q.js",
     "name": "Businesses",
     "src": "resources/js/Root/Businesses.jsx",
     "isEntry": true,
@@ -814,9 +824,9 @@
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
       "_tippy-react.esm-PO7soYrD.js",
-      "_UsersByServicesByBusinessesRest-BctE8xLO.js",
+      "_UsersByServicesByBusinessesRest-CeSKXHYN.js",
       "resources/js/Reutilizables/Businesses/RootBusinessCard.jsx",
-      "_ServicesByBusinessesRest-2T5kbbkv.js",
+      "_ServicesByBusinessesRest-BhOrhVR5.js",
       "_index-STwnHZb6.js",
       "_index.esm-X2U-7gJn.js",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
@@ -824,11 +834,11 @@
       "_Logout-C-aUOij0.js",
       "resources/js/components/form/TippyButton.jsx",
       "resources/js/components/modals/WhatsAppModal.jsx",
-      "resources/js/Reutilizables/Join/LoginStep.jsx"
+      "_index-BK7CmI7H.js"
     ]
   },
   "resources/js/Root/Users.jsx": {
-    "file": "assets/Users-CDD4kqma.js",
+    "file": "assets/Users-CbJXpTwh.js",
     "name": "Users",
     "src": "resources/js/Root/Users.jsx",
     "isEntry": true,
@@ -841,7 +851,7 @@
       "_index-B80Lgev0.js",
       "_DxButton-CsjWvhyj.js",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
-      "_UsersRest-Bx3thcWI.js",
+      "_UsersRest-BYG-8P9y.js",
       "_index-STwnHZb6.js",
       "_index.esm-X2U-7gJn.js",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
@@ -851,11 +861,11 @@
       "resources/js/components/form/TippyButton.jsx",
       "resources/js/components/modals/WhatsAppModal.jsx",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
-      "resources/js/Reutilizables/Join/LoginStep.jsx"
+      "_index-BK7CmI7H.js"
     ]
   },
   "resources/js/Services.jsx": {
-    "file": "assets/Services-6OdN_m_N.js",
+    "file": "assets/Services-BI1yWa0a.js",
     "name": "Services",
     "src": "resources/js/Services.jsx",
     "isEntry": true,
@@ -866,9 +876,9 @@
       "resources/js/Utils/ReactAppend.jsx",
       "_main-DtAlmsP1.js",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
-      "_ServicesByBusinessesRest-2T5kbbkv.js",
-      "_UsersByServicesByBusinessesRest-BctE8xLO.js",
-      "_UsersRest-Bx3thcWI.js",
+      "_ServicesByBusinessesRest-BhOrhVR5.js",
+      "_UsersByServicesByBusinessesRest-CeSKXHYN.js",
+      "_UsersRest-BYG-8P9y.js",
       "_Adminto-Bej9pNZR.js",
       "_SelectFormGroup-Cz52Trm3.js",
       "_Modal-DydUDwtE.js",
@@ -876,7 +886,7 @@
       "_index-STwnHZb6.js",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
-      "resources/js/Reutilizables/Join/LoginStep.jsx",
+      "_index-BK7CmI7H.js",
       "_Logout-C-aUOij0.js",
       "_index.esm-X2U-7gJn.js",
       "resources/js/components/form/TippyButton.jsx",
@@ -910,7 +920,7 @@
     ]
   },
   "resources/js/Signs.jsx": {
-    "file": "assets/Signs-DUiYoOsx.js",
+    "file": "assets/Signs-Bs7j-Kk1.js",
     "name": "Signs",
     "src": "resources/js/Signs.jsx",
     "isEntry": true,
@@ -932,7 +942,7 @@
       "_Logout-C-aUOij0.js",
       "resources/js/components/form/TippyButton.jsx",
       "resources/js/components/modals/WhatsAppModal.jsx",
-      "resources/js/Reutilizables/Join/LoginStep.jsx"
+      "_index-BK7CmI7H.js"
     ]
   },
   "resources/js/Terms.jsx": {
@@ -952,7 +962,7 @@
     ]
   },
   "resources/js/Users.jsx": {
-    "file": "assets/Users-BzOXMd2q.js",
+    "file": "assets/Users-DjqBdMyF.js",
     "name": "Users",
     "src": "resources/js/Users.jsx",
     "isEntry": true,
@@ -972,7 +982,7 @@
       "_index-STwnHZb6.js",
       "_index.esm-X2U-7gJn.js",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
-      "resources/js/Reutilizables/Join/LoginStep.jsx",
+      "_index-BK7CmI7H.js",
       "_Logout-C-aUOij0.js",
       "_tippy-react.esm-PO7soYrD.js",
       "resources/js/components/modals/WhatsAppModal.jsx",

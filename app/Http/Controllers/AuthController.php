@@ -341,7 +341,14 @@ class AuthController extends BasicController
         // ->where('active', true)
         ->first();
 
-      return $ubsbb->service->correlative ?? null;
+      if (!$ubsbb) {
+        if (Auth::user()->hasRole('Root')) {
+          return 'main';
+        }
+        Auth::logout();
+        return null;
+      }
+      return $ubsbb->service->correlative;
     });
 
     return response($response->toArray(), $response->status);

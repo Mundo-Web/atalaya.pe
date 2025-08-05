@@ -4,6 +4,7 @@ import InputContainer from "./InputContainer"
 import { toast, Toaster } from "sonner"
 import ServicesModal from "../Services/ServicesModal"
 import Global from "../../Utils/Global"
+import Swal from "sweetalert2"
 
 const authRest = new AuthRest()
 
@@ -25,10 +26,18 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
             setVerifying(false)
             return
         }
-        if (data) {
+        if (data == 'main') {
+            location.href = '/main'
+        } else if (data) {
             location.href = `//${data}.${Global.APP_DOMAIN}/home`
         } else {
-            location.href = '/home'
+            Swal.fire({
+                icon: 'info',
+                title: 'Cuenta sin asignar',
+                text: 'Aún no te han asignado a una empresa. Por favor, espera que te asignen a una.',
+                confirmButtonColor: '#4621E1'
+            })
+            setVerifying(false)
         }
     }
     return <>
