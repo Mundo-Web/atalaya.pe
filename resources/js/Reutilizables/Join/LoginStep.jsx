@@ -27,7 +27,7 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
             return
         }
         if (data == 'main') {
-            location.href = '/main'
+            location.href = '/home'
         } else if (data) {
             location.href = `//${data}.${Global.APP_DOMAIN}/home`
         } else {
