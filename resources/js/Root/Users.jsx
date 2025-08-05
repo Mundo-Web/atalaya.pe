@@ -19,8 +19,8 @@ const Users = () => {
 
     const [businesses, setBusinesses] = useState([])
 
-    const onDeleteClicked = async (id) => {
-        const result = await Swal.fire({
+    const onDeleteClicked = async (userData) => {
+        const initialResult = await Swal.fire({
             title: '¿Estás seguro?',
             text: "¡Esta acción no se puede deshacer!",
             icon: 'warning',
@@ -30,16 +30,28 @@ const Users = () => {
             confirmButtonText: '¡Sí, eliminar!'
         });
 
-        if (!result.isConfirmed) return
+        if (!initialResult.isConfirmed) return;
 
-        await usersRest.delete(id);
+        // If user has businesses, show second confirmation
+        if (userData.businesses_count > 0) {
+            const secondResult = await Swal.fire({
+                title: '¡Atención!',
+                text: "Este usuario tiene empresas asociadas. Al eliminarlo, también se eliminarán todas sus empresas. ¿Estás realmente seguro?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, eliminar todo!'
+            });
+
+            if (!secondResult.isConfirmed) return;
+        }
+
+        const result = await usersRest.delete(userData.id);
+        if (!result) return
+
         $(gridRef.current).dxDataGrid('instance').refresh();
     }
-
-    const onBusinessModalOpen = (id) => {
-        $(modalRef.current).modal('show')
-    }
-
     return <>
         <Table
             gridRef={gridRef}
@@ -98,14 +110,14 @@ const Users = () => {
                             className: 'btn btn-xs btn-soft-danger',
                             title: 'Eliminar',
                             icon: 'fa fa-trash-alt',
-                            onClick: () => onDeleteClicked(data.id)
+                            onClick: () => onDeleteClicked(data)
                         }))
                     }
                 }
             ]}
         />
         <Modal modalRef={modalRef} title="Empresas">
-            <table className="table table-sm mb-0">
+            <table className="table table-sm mb-0 table-bordered">
                 <thead>
                     <th>Empresa</th>
                     <th>Servicios</th>

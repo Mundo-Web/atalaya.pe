@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Root;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
+use App\Models\BusinessSign;
 use App\Models\Person;
 use App\Models\ServicesByBusiness;
 use App\Models\User;
+use App\Models\UsersByServicesByBusiness;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,9 +32,28 @@ class UserController extends BasicController
     {
         DB::beginTransaction();
         $response = Response::simpleTryCatch(function () use ($id) {
-            Business::where('created_by', $id)->update(['created_by' => null]);
+            BusinessSign::query()
+                ->whereIn('business_id', function ($query) use ($id) {
+                    $query->select('id')
+                        ->from('businesses')
+                        ->where('created_by', $id);
+                })->delete();
+            UsersByServicesByBusiness::query()
+                ->where('user_id', $id)
+                ->orWhereIn('service_by_business_id', function ($query) use ($id) {
+                    $query->select('id')
+                        ->from('services_by_businesses')
+                        ->where('created_by', $id);
+                })
+                ->delete();
+            ServicesByBusiness::query()
+                ->whereIn('business_id', function ($query) use ($id) {
+                    $query->select('id')
+                        ->from('businesses')
+                        ->where('created_by', $id);
+                })->delete();
+            Business::where('created_by', $id)->delete();
             Person::where('created_by', $id)->update(['created_by' => null]);
-            ServicesByBusiness::where('created_by', $id)->delete();
 
             $deleted = $this->softDeletion
                 ? $this->model::where('id', $id)

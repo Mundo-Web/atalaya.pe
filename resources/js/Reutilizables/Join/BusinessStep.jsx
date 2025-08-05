@@ -26,6 +26,9 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
             return
         }
         location.href = `//${service}.${Global.APP_DOMAIN}/join`
+        setData({ documentType: 'DNI', phonePrefix: '51' })
+        Session.delete('join-data')
+
         // setStep('usage')
     }
 
