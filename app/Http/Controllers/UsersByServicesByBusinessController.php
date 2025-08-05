@@ -70,6 +70,9 @@ class UsersByServicesByBusinessController extends BasicController
 
   public function acceptInvitation(Request $request, $token)
   {
+    $protocol = env('APP_PROTOCOL');
+    $domain = env('APP_DOMAIN');
+
     try {
       $ubsbb = UsersByServicesByBusiness::with(['service', 'business', 'user'])
         ->where('invitation_token', $token)
@@ -87,12 +90,10 @@ class UsersByServicesByBusinessController extends BasicController
 
       // Redirect to service domain with message
       return redirect()->away(
-        "https://{$ubsbb->service->correlative}." . env('APP_DOMAIN') . 
-        "?message=" . rawurlencode($message)
+        "{$protocol}://{$ubsbb->service->correlative}.{$domain}/home?message=" . rawurlencode($message)
       );
-
     } catch (\Throwable $th) {
-      return redirect()->away("https://" . env('APP_DOMAIN') . "?message=" . rawurlencode($th->getMessage()));
+      return redirect()->away("{$protocol}://{$domain}?message=" . rawurlencode($th->getMessage()));
     }
   }
 
