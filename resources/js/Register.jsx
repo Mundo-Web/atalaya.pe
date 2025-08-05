@@ -45,8 +45,8 @@ const Register = ({ invitation, PUBLIC_RSA_KEY, prefixes = [] }) => {
     setRegistering(true)
     const result = await AuthRest.signup(request)
     if (!result) return setRegistering(false)
-    if (data) location.href = `//${result}.${Global.APP_DOMAIN}/home`
-    else location.href = '/home'
+
+    location.href = `//${result}.${Global.APP_DOMAIN}/home`
   }
 
   const onSearch = async () => {

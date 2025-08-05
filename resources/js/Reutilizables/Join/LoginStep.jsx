@@ -25,7 +25,11 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
             setVerifying(false)
             return
         }
-        location.href = `//${data}.${Global.APP_DOMAIN}/home`
+        if (data) {
+            location.href = `//${data}.${Global.APP_DOMAIN}/home`
+        } else {
+            location.href = '/home'
+        }
     }
     return <>
         <Toaster />
