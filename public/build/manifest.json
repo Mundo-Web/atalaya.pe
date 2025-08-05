@@ -39,8 +39,8 @@
       "_main-DtAlmsP1.js"
     ]
   },
-  "_DropDownContainer-N-HYCNqM.js": {
-    "file": "assets/DropDownContainer-N-HYCNqM.js",
+  "_DropDownContainer-D3XWasLm.js": {
+    "file": "assets/DropDownContainer-D3XWasLm.js",
     "name": "DropDownContainer",
     "imports": [
       "resources/js/components/accordion/Accordion.jsx",
@@ -388,7 +388,7 @@
     ]
   },
   "resources/js/Join.jsx": {
-    "file": "assets/Join-I_6QoaA3.js",
+    "file": "assets/Join-BxvXJeN0.js",
     "name": "Join",
     "src": "resources/js/Join.jsx",
     "isEntry": true,
@@ -399,7 +399,7 @@
       "_CreateReactScript-wxngZ06p.js",
       "_statuses-image-DRZxZZRY.js",
       "_main-DtAlmsP1.js",
-      "_DropDownContainer-N-HYCNqM.js",
+      "_DropDownContainer-D3XWasLm.js",
       "_AuthRest-CzS3X5Ou.js",
       "_tippy-react.esm-PO7soYrD.js",
       "resources/js/components/form/TippyButton.jsx",
@@ -532,7 +532,7 @@
     ]
   },
   "resources/js/Register.jsx": {
-    "file": "assets/Register-oto4Na5t.js",
+    "file": "assets/Register-DnuzQoVG.js",
     "name": "Register",
     "src": "resources/js/Register.jsx",
     "isEntry": true,
@@ -541,7 +541,7 @@
       "resources/js/Utils/ReactAppend.jsx",
       "_index-B80Lgev0.js",
       "_CreateReactScript-wxngZ06p.js",
-      "_DropDownContainer-N-HYCNqM.js",
+      "_DropDownContainer-D3XWasLm.js",
       "_AuthRest-CzS3X5Ou.js",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
       "resources/js/Reutilizables/Join/LoginStep.jsx",

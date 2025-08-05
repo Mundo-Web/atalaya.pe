@@ -33,7 +33,7 @@ const InputContainer = ({ label, children, className, required, icon, type = 'te
                         disabled={disabled} />
                     {
                         type == 'password' &&
-                        <button type="button" className="absolute right-0 select-none" onClick={onShowPassword}>
+                        <button type="button" className="absolute right-0 select-none outline-none" onClick={onShowPassword}>
                             {
                                 showPassword ?
                                     <i className="mdi mdi-eye"></i>
