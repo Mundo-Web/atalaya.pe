@@ -20,9 +20,11 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
             email: jsEncrypt.encrypt(email),
             password: jsEncrypt.encrypt(password)
         })
-        setVerifying(false)
-        if (!status) toast(message, { icon: <i className="mdi mdi-alert text-[#FE4611]"></i> })
-        if (!data) return
+        if (!status) {
+            toast(message, { icon: <i className="mdi mdi-alert text-[#FE4611]"></i> })
+            setVerifying(false)
+            return
+        }
         location.href = `//${data}.${Global.APP_DOMAIN}/home`
     }
     return <>
