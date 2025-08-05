@@ -77,6 +77,7 @@ class UsersByServicesByBusinessController extends BasicController
       if (!$ubsbb) throw new Exception('No tienes invitaciones pendientes');
       $ubsbb->invitation_accepted = true;
       $ubsbb->invitation_token = null;
+      $ubsbb->active = true;
       $ubsbb->save();
       return redirect('/businesses?message=' . rawurlencode("Aceptaste la invitacion a administrar el servicio {$ubsbb->service->name} de la empresa {$ubsbb->business->name}"));
     } catch (\Throwable $th) {

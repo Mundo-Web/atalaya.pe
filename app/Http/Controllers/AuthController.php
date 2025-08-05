@@ -338,7 +338,7 @@ class AuthController extends BasicController
         ->join('businesses', 'businesses.id', 'services_by_businesses.business_id')
         ->where('user_id', Auth::user()->id)
         ->where('services.status', true)
-        ->where('active', true)
+        // ->where('active', true)
         ->first();
 
       return $ubsbb->service->correlative ?? null;
