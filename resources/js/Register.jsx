@@ -7,10 +7,15 @@ import AuthRest from './actions/AuthRest';
 import Global from './Utils/Global';
 import PeopleRest from './actions/PeopleRest';
 import { Toaster } from 'sonner';
+import JSEncrypt from 'jsencrypt';
 
 const peopleRest = new PeopleRest()
 
-const Register = ({ invitation, prefixes = [] }) => {
+const Register = ({ invitation, PUBLIC_RSA_KEY, prefixes = [] }) => {
+
+  const jsEncrypt = new JSEncrypt()
+  jsEncrypt.setPublicKey(PUBLIC_RSA_KEY)
+
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [documentType, setDocumentType] = useState('DNI')
@@ -33,8 +38,8 @@ const Register = ({ invitation, prefixes = [] }) => {
       document_number: documentNumber,
       phone_prefix: phonePrefix,
       phone: phone,
-      password: password,
-      confirmation: passwordConfirm,
+      password: jsEncrypt.encrypt(password),
+      confirmation: jsEncrypt.encrypt(passwordConfirm),
     }
 
     setRegistering(true)
