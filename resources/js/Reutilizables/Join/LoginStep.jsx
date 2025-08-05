@@ -26,6 +26,7 @@ const LoginStep = ({ jsEncrypt, services, setService }) => {
             setVerifying(false)
             return
         }
+        console.log(data)
         if (data == 'main') {
             location.href = '/home'
         } else if (data) {
