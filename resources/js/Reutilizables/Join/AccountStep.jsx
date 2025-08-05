@@ -1,12 +1,14 @@
 import InputContainer from "./InputContainer";
 import DropDownContainer from "./DropDownContainer";
 import AuthRest from "../../actions/AuthRest";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tippy from "@tippyjs/react";
 import 'tippy.js/dist/tippy.css';
 import Swal from "sweetalert2";
+import PeopleRest from "../../actions/PeopleRest";
 
 const authRest = new AuthRest()
+const peopleRest = new PeopleRest()
 
 const AccountStep = ({ data, setData, setStep, setService, jsEncrypt }) => {
 
@@ -15,6 +17,8 @@ const AccountStep = ({ data, setData, setStep, setService, jsEncrypt }) => {
     const [invalid, setInvalid] = useState(null);
     const [invalidText, setInvalidText] = useState('');
     const [verified, setVerified] = useState(data.email)
+
+    const [found, setFound] = useState(false);
 
     const onModalSubmit = async (e) => {
         e.preventDefault()
@@ -116,6 +120,23 @@ const AccountStep = ({ data, setData, setStep, setService, jsEncrypt }) => {
         setData(old => ({ ...old, email: value }))
     }
 
+    const onSearch = async () => {
+        setFound(false)
+        const result = await peopleRest.search(data.documentType, data.documentNumber)
+        if (!result) return setFound(null)
+
+        setFound(true)
+        setData({ ...data, name: result.name, lastname: result.lastname })
+    }
+
+    useEffect(() => {
+        setData(old => ({ ...old, name: '', lastname: '' }))
+        const isValidLength = (data.documentType === 'DNI' && data.documentNumber.length === 8) ||
+            (data.documentType === 'CE' && data.documentNumber.length === 9);
+        if (!isValidLength) return;
+        onSearch()
+    }, [data.documentType, data.documentNumber])
+
     return <>
         <h2 className="text-4xl font-bold mb-2">Crea tu cuenta</h2>
         <p className="text text-gray-600 mb-8">Necesitamos algunos datos para personalizar tu experiencia</p>
@@ -138,6 +159,8 @@ const AccountStep = ({ data, setData, setStep, setService, jsEncrypt }) => {
                         value={data.documentNumber}
                         onChange={(e) => setData({ ...data, documentNumber: e.target.value })}
                         required
+                        maxLength={data.documentType === 'DNI' ? 8 : 9}
+                        minLength={data.documentType === 'DNI' ? 8 : 9}
                         disabled={loading} />
                 </div>
 
@@ -149,14 +172,14 @@ const AccountStep = ({ data, setData, setStep, setService, jsEncrypt }) => {
                     value={data.name}
                     onChange={(e) => setData({ ...data, name: e.target.value })}
                     required
-                    disabled={loading} />
+                    disabled={loading || found !== null} />
                 <InputContainer
                     label='Apellidos'
                     placeholder='Apellido'
                     value={data.lastname}
                     onChange={(e) => setData({ ...data, lastname: e.target.value })}
                     required
-                    disabled={loading} />
+                    disabled={loading || found !== null} />
             </div>
             <div className="relative">
                 <InputContainer

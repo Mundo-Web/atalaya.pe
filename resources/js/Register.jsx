@@ -74,8 +74,6 @@ const Register = ({ invitation, PUBLIC_RSA_KEY, prefixes = [] }) => {
     onSearch()
   }, [documentType, documentNumber])
 
-  console.log(found)
-
   return (<>
     <Toaster />
     <main className="text-[#000938] bg-no-repeat bg-cover bg-fixed bg-center" style={{

@@ -342,7 +342,8 @@ class AuthController extends BasicController
         ->first();
 
       if (!$ubsbb) {
-        if (Auth::user()->hasRole('Root')) {
+        $userJpa = User::find(Auth::id());
+        if ($userJpa->hasRole('Root')) {
           return 'main';
         }
         Auth::logout();
