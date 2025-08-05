@@ -117,7 +117,7 @@ const Users = () => {
                 }
             ]}
         />
-        <Modal modalRef={modalRef} title="Empresas">
+        <Modal modalRef={modalRef} title="Empresas" hideFooter>
             <table className="table table-sm mb-0 table-bordered">
                 <thead>
                     <th>Empresa</th>
