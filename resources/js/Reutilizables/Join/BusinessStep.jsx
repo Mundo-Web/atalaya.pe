@@ -2,6 +2,8 @@ import { useState } from "react"
 import AuthRest from "../../actions/AuthRest"
 import DropDownContainer from "./DropDownContainer"
 import InputContainer from "./InputContainer"
+import { toast, Toaster } from "sonner"
+import Global from "../../Utils/Global"
 
 const authRest = new AuthRest()
 
@@ -13,17 +15,22 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
         e.preventDefault()
 
         setLoading(true)
-        const result = await authRest.register({
+        const { status, message, data: service } = await authRest.register({
             ...data,
             password: jsEncrypt.encrypt(data.password),
             passwordConfirm: jsEncrypt.encrypt(data.passwordConfirm)
         })
-        setLoading(false)
-        location.href = '//crm.atalaya.pe/join'
-        setStep('usage')
+        if (!status) {
+            setLoading(false)
+            toast(message, { icon: <i className="mdi mdi-alert text-red-600" /> })
+            return
+        }
+        location.href = `//${service}.${Global.APP_DOMAIN}/join`
+        // setStep('usage')
     }
 
     return <>
+        <Toaster />
         <h2 className="text-4xl font-bold mb-2">Información de tu empresa</h2>
         <p className="text text-gray-600 mb-8">Completa los datos de tu empresa para personalizar tu experiencia</p>
         <form className="space-y-4 mb-6" onSubmit={onModalSubmit}>
@@ -33,6 +40,7 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
                     placeholder='00000000000'
                     value={data.ruc}
                     onChange={(e) => setData({ ...data, ruc: e.target.value })}
+                    disabled={loading}
                     required />
                 <div className="lg:col-span-2">
                     <InputContainer
@@ -40,6 +48,7 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
                         placeholder='Mi Empresa'
                         value={data.commercialName}
                         onChange={(e) => setData({ ...data, commercialName: e.target.value })}
+                        disabled={loading}
                         required />
                 </div>
             </div>
@@ -48,6 +57,7 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
                 placeholder='Mi Empresa S.A.C.'
                 value={data.businessName}
                 onChange={(e) => setData({ ...data, businessName: e.target.value })}
+                disabled={loading}
                 required />
             <InputContainer
                 icon='mdi mdi-map-marker'
@@ -55,6 +65,7 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
                 placeholder='Av. Empresarial 456, San Isidro'
                 value={data.address}
                 onChange={(e) => setData({ ...data, address: e.target.value })}
+                disabled={loading}
                 required />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <DropDownContainer
@@ -71,6 +82,7 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
                     }))}
                     onChange={(e) => setData({ ...data, phonePrefix: e.target.value })}
                     searchable
+                    disabled={loading}
                 />
                 <div className="lg:col-span-2">
                     <InputContainer
@@ -80,10 +92,21 @@ const BusinessStep = ({ data, setData, setStep, prefixes = [], jsEncrypt }) => {
                         type='tel'
                         value={data.phone}
                         onChange={(e) => setData({ ...data, phone: e.target.value })}
+                        disabled={loading}
                         required />
                 </div>
             </div>
-            <button type="submit" className="w-full !mt-6 bg-[#4621E1] hover:bg-opacity-90 transition-colors text-white rounded-xl py-3">Continuar</button>
+            <button type="submit" className="w-full !mt-6 bg-[#4621E1] hover:bg-opacity-90 transition-colors text-white rounded-xl py-3" disabled={loading}>
+                {
+                    loading
+                        ? <>
+                            <i className="mdi mdi-loading mdi-spin me-1"></i>
+                            Verificando
+                        </>
+                        : 'Continuar'
+                }
+            </button>
+
         </form>
 
         <blockquote className="bg-[#EBEFFF] p-4 rounded-lg mb-6">

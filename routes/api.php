@@ -14,6 +14,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RemainingHistoryController;
 use App\Http\Controllers\Root\BusinessController as RootBusinessController;
+use App\Http\Controllers\Root\UserController as RootUserController;
 use App\Http\Controllers\ServicesByBusinessController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatusController;
@@ -161,7 +162,11 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('root')->group(function () {
         Route::get('/businesses', [RootBusinessController::class, 'paginate']);
+        Route::get('/businesses/by-user/{userId}', [RootBusinessController::class, 'byUser']);
         Route::patch('/businesses/status', [RootBusinessController::class, 'status']);
         Route::delete('/businesses/{id}', [RootBusinessController::class, 'delete']);
+
+        Route::post('/users/paginate', [RootUserController::class, 'paginate']);
+        Route::delete('/users/{id}', [RootUserController::class, 'delete']);
     });
 });

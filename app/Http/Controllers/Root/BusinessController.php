@@ -56,4 +56,16 @@ class BusinessController extends BasicController
 
         return response($response->toArray(), $response->status);
     }
+
+    public function byUser(Request $request, string $id)
+    {
+        $response = Response::simpleTryCatch(function () use ($request, $id) {
+            $businesses = Business::query()
+                ->with(['services', 'users'])
+                ->where('created_by', $id)
+                ->get();
+            return $businesses;
+        });
+        return response($response->toArray(), $response->status);
+    }
 }

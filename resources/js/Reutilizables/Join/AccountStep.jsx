@@ -131,8 +131,8 @@ const AccountStep = ({ data, setData, setStep, setService, jsEncrypt }) => {
 
     useEffect(() => {
         setData(old => ({ ...old, name: '', lastname: '' }))
-        const isValidLength = (data.documentType === 'DNI' && data.documentNumber.length === 8) ||
-            (data.documentType === 'CE' && data.documentNumber.length === 9);
+        const isValidLength = (data.documentType === 'DNI' && data.documentNumber?.length === 8) ||
+            (data.documentType === 'CE' && data.documentNumber?.length === 9);
         if (!isValidLength) return;
         onSearch()
     }, [data.documentType, data.documentNumber])

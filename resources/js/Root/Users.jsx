@@ -2,16 +2,22 @@ import { createRoot } from "react-dom/client";
 import CreateReactScript from "../Utils/CreateReactScript";
 import Adminto from "../components/Adminto";
 import Table from "../components/Table";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ReactAppend from "../Utils/ReactAppend";
 import DxButton from "../components/dx/DxButton";
 import Swal from "sweetalert2";
-import UsersRest from "../actions/UsersRest";
+import UsersRest from "../actions/Root/UsersRest";
+import Modal from "../components/Modal";
+import OpenBusinessesButton from "../Reutilizables/Users/OpenBusinessesButton";
+import Global from "../Utils/Global";
 
 const usersRest = new UsersRest()
 
 const Users = () => {
     const gridRef = useRef()
+    const modalRef = useRef()
+
+    const [businesses, setBusinesses] = useState([])
 
     const onDeleteClicked = async (id) => {
         const result = await Swal.fire({
@@ -30,62 +36,103 @@ const Users = () => {
         $(gridRef.current).dxDataGrid('instance').refresh();
     }
 
-    return <Table
-        gridRef={gridRef}
-        title='Usuarios'
-        toolBar={(container) => {
-            container.unshift({
-                widget: 'dxButton', location: 'after',
-                options: {
-                    icon: 'refresh',
-                    hint: 'Refrescar tabla',
-                    onClick: () => $(gridRef.current).dxDataGrid('instance').refresh()
+    const onBusinessModalOpen = (id) => {
+        $(modalRef.current).modal('show')
+    }
+
+    return <>
+        <Table
+            gridRef={gridRef}
+            title='Usuarios'
+            toolBar={(container) => {
+                container.unshift({
+                    widget: 'dxButton', location: 'after',
+                    options: {
+                        icon: 'refresh',
+                        hint: 'Refrescar tabla',
+                        onClick: () => $(gridRef.current).dxDataGrid('instance').refresh()
+                    }
+                });
+            }}
+            rest={usersRest}
+            pageSize={25}
+            columns={[
+                {
+                    dataField: 'person.document_number',
+                    caption: 'Documento',
+                    width: '120px',
+                    cellTemplate: (container, { data }) => {
+                        ReactAppend(container, <>
+                            <span className="badge bg-primary me-1">{data.person?.document_type ?? 'SD'}</span>
+                            {data.person?.document_number ?? '00000000'}
+                        </>)
+                    }
+                },
+                {
+                    dataField: 'fullname',
+                    caption: 'Usuario'
+                },
+                {
+                    dataField: 'email',
+                    caption: 'Correo electrónico'
+                },
+                {
+                    dataField: 'businesses_count',
+                    caption: 'Empresas',
+                    allowFiltering: false,
+                    cellTemplate: (container, { data }) => {
+                        if (data.businesses_count == 0) return
+                        ReactAppend(container, <OpenBusinessesButton data={data} modalRef={modalRef} setBusinesses={setBusinesses} />)
+                    }
+                },
+                {
+                    caption: 'Roles',
+                    cellTemplate: (container, { data }) => {
+                        container.text(data.roles?.map((role) => role.name).sort().join(', '))
+                    }
+                },
+                {
+                    caption: 'Acciones',
+                    cellTemplate: (container, { data }) => {
+                        container.append(DxButton({
+                            className: 'btn btn-xs btn-soft-danger',
+                            title: 'Eliminar',
+                            icon: 'fa fa-trash-alt',
+                            onClick: () => onDeleteClicked(data.id)
+                        }))
+                    }
                 }
-            });
-        }}
-        rest={usersRest}
-        columns={[
-            {
-                dataField: 'person.document_number',
-                caption: 'Documento',
-                cellTemplate: (container, { data }) => {
-                    ReactAppend(container, <>
-                        <span className="badge bg-primary me-1">{data.person?.document_type ?? 'SD'}</span>
-                        {data.person?.document_number ?? '00000000'}
-                    </>)
-                }
-            },
-            {
-                dataField: 'fullname',
-                caption: 'Usuario'
-            },
-            {
-                dataField: 'email',
-                caption: 'Correo electrónico'
-            },
-            {
-                dataField: 'creator.name',
-                caption: 'Creado por',
-                cellTemplate: (container, { data }) => {
-                    ReactAppend(container, <>
-                        <span className="d-block">{data.creator?.name}</span>
-                        <small className="text-muted">{data.creator?.email}</small>
-                    </>)
-                }
-            },
-            {
-                caption: 'Acciones',
-                cellTemplate: (container, { data }) => {
-                    container.append(DxButton({
-                        className: 'btn btn-xs btn-soft-danger',
-                        title: 'Eliminar',
-                        icon: 'fa fa-trash-alt',
-                        onClick: () => onDeleteClicked(data.id)
-                    }))
-                }
-            }
-        ]}
-    />
+            ]}
+        />
+        <Modal modalRef={modalRef} title="Empresas">
+            <table className="table table-sm mb-0">
+                <thead>
+                    <th>Empresa</th>
+                    <th>Servicios</th>
+                    <th>Usuarios</th>
+                </thead>
+                <tbody>
+                    {businesses.map(business => {
+                        return <tr key={business.id}>
+                            <td>{business.name}</td>
+                            <td>
+                                <div className="d-flex flex-wrap gap-1">
+                                    {business.services?.map(service => {
+                                        return <img className="avatar-xs"
+                                            src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
+                                            onError={(e) => e.target.src = '/assets/img/icon.svg'}
+                                            alt={service.name}
+                                            style={{ objectFit: 'contain', objectPosition: 'center' }} />
+                                    })}
+                                </div>
+                            </td>
+                            <td>{business.users.length}</td>
+                        </tr>
+                    })}
+                </tbody>
+            </table>
+        </Modal>
+    </>
 }
 
 CreateReactScript((el, properties) => {

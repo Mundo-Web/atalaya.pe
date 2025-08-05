@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Person;
 use App\Models\PreUser;
 use App\Models\Service;
+use App\Models\ServicesByBusiness;
 use App\Models\UsersByServicesByBusiness;
 use App\Providers\RouteServiceProvider;
 use Database\Seeders\ServiceSeeder;
@@ -118,6 +119,7 @@ class AuthController extends BasicController
   public function register(Request $request)
   {
     $response = Response::simpleTryCatch(function ($response) use ($request) {
+      $service = basename($request->header('referer'));
       // Check if user exists
       $userExistsJpa = User::where('email', $request->email)->exists();
       if ($userExistsJpa) {
@@ -169,6 +171,17 @@ class AuthController extends BasicController
         // Assign default role
         $userJpa->assignRole('Admin');
 
+        // Check if business already exists
+        $existingBusiness = Business::query()
+          ->join('people', 'people.id', '=', 'businesses.person_id')
+          ->where('people.document_type', 'RUC')
+          ->where('people.document_number', $request->ruc)
+          ->first();
+
+        if ($existingBusiness && $existingBusiness->created_by) {
+          throw new Exception('Esta empresa ya está siendo administrada por otro usuario');
+        }
+
         // Create or get existing legal person
         $legalPersonJpa = Person::updateOrCreate(
           [
@@ -185,20 +198,40 @@ class AuthController extends BasicController
           ]
         );
 
-        // Create company
-        $businessJpa = Business::create([
-          'uuid' => Crypto::randomUUID(),
-          'name' => $request->commercialName,
-          'person_id' => $legalPersonJpa->id,
-          'owner_id' => $naturalPersonJpa->id,
-          'contact_id' => $naturalPersonJpa->id,
+        // Create company if it doesn't exist or update if exists without created_by
+        $businessJpa = Business::updateOrCreate(
+          [
+            'person_id' => $legalPersonJpa->id,
+          ],
+          [
+            'uuid' => Crypto::randomUUID(),
+            'name' => $request->commercialName,
+            'owner_id' => $naturalPersonJpa->id,
+            'contact_id' => $naturalPersonJpa->id,
+            'created_by' => $userJpa->id,
+          ]
+        );
+
+        $matchJpa = ServicesByBusiness::create([
+          'business_id' => $businessJpa->id,
+          'service_id' => Service::query()->where('correlative', $service)->first()->id,
           'created_by' => $userJpa->id,
+        ]);
+
+        UsersByServicesByBusiness::create([
+          'user_id' => $userJpa->id,
+          'service_by_business_id' => $matchJpa->id,
+          'created_by' => $userJpa->id,
+          'invitation_accepted' => true,
+          'active' => true
         ]);
 
         // Create session for new user
         Auth::login($userJpa);
 
         DB::commit();
+
+        return $service;
       } catch (\Exception $e) {
         DB::rollback();
         throw $e;
