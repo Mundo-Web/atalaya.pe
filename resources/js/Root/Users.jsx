@@ -10,6 +10,7 @@ import UsersRest from "../actions/Root/UsersRest";
 import Modal from "../components/Modal";
 import OpenBusinessesButton from "../Reutilizables/Users/OpenBusinessesButton";
 import Global from "../Utils/Global";
+import Tippy from "@tippyjs/react";
 
 const usersRest = new UsersRest()
 
@@ -126,15 +127,20 @@ const Users = () => {
                 <tbody>
                     {businesses.map(business => {
                         return <tr key={business.id}>
-                            <td>{business.name}</td>
+                            <td>
+                                {business.name}
+                                <small className="d-block text-muted">{business.person?.document_number}</small>
+                            </td>
                             <td>
                                 <div className="d-flex flex-wrap gap-1">
                                     {business.services?.map(service => {
-                                        return <img className="avatar-xs"
-                                            src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
-                                            onError={(e) => e.target.src = '/assets/img/icon.svg'}
-                                            alt={service.name}
-                                            style={{ objectFit: 'contain', objectPosition: 'center' }} />
+                                        return <Tippy content={service.name}>
+                                            <img className="avatar-xs"
+                                                src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
+                                                onError={(e) => e.target.src = '/assets/img/icon.svg'}
+                                                alt={service.name}
+                                                style={{ objectFit: 'contain', objectPosition: 'center' }} />
+                                        </Tippy>
                                     })}
                                 </div>
                             </td>

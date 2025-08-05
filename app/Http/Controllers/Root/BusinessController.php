@@ -61,7 +61,7 @@ class BusinessController extends BasicController
     {
         $response = Response::simpleTryCatch(function () use ($request, $id) {
             $businesses = Business::query()
-                ->with(['services', 'users'])
+                ->with(['services', 'users', 'person'])
                 ->where('created_by', $id)
                 ->get();
             return $businesses;
