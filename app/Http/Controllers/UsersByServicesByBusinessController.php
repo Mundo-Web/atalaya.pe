@@ -71,7 +71,7 @@ class UsersByServicesByBusinessController extends BasicController
   public function acceptInvitation(Request $request, $token)
   {
     try {
-      $ubsbb = UsersByServicesByBusiness::with(['service', 'business'])
+      $ubsbb = UsersByServicesByBusiness::with(['service', 'business', 'user'])
         ->where('invitation_token', $token)
         ->first();
       if (!$ubsbb) throw new Exception('No tienes invitaciones pendientes');
@@ -79,9 +79,20 @@ class UsersByServicesByBusinessController extends BasicController
       $ubsbb->invitation_token = null;
       $ubsbb->active = true;
       $ubsbb->save();
-      return redirect('/businesses?message=' . rawurlencode("Aceptaste la invitacion a administrar el servicio {$ubsbb->service->name} de la empresa {$ubsbb->business->name}"));
+
+      $message = "Aceptaste la invitacion a administrar el servicio {$ubsbb->service->name} de la empresa {$ubsbb->business->name}";
+
+      // Start user session
+      Auth::login($ubsbb->user);
+
+      // Redirect to service domain with message
+      return redirect()->away(
+        "https://{$ubsbb->service->correlative}." . env('APP_DOMAIN') . 
+        "?message=" . rawurlencode($message)
+      );
+
     } catch (\Throwable $th) {
-      return redirect('/businesses?message=' . rawurlencode($th->getMessage()));
+      return redirect()->away("https://" . env('APP_DOMAIN') . "?message=" . rawurlencode($th->getMessage()));
     }
   }
 

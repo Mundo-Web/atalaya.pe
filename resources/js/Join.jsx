@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import CreateReactScript from "./Utils/CreateReactScript";
 import JoinContainer from "./Reutilizables/Join/JoinContainer";
-import { Session } from "sode-extend-react";
+import { GET, Session } from "sode-extend-react";
 
 // Step Views
 import AccountStep from "./Reutilizables/Join/AccountStep";
