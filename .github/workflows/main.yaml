@@ -1,0 +1,28 @@
+name: Deploy Atalaya
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Pulling and migrating Atalaya
+        env:
+          SSH_HOST: atalaya.pe
+          SSH_USER: root
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        run: |
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << 'EOF'
+            cd /var/www/atalaya
+            git pull
+            php artisan migrate --force
+            php artisan config:clear
+            php artisan cache:clear
+          EOF
