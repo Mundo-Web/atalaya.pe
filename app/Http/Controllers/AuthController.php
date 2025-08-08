@@ -320,6 +320,11 @@ class AuthController extends BasicController
     }
 
     $prefixes = JSON::parse(File::get('./phone_prefixes.json'));
+
+    // Delete invitations older than 48 hours first
+    InvitationEmail::query()
+      ->where('updated_at', '<', now()->subHours(48))
+      ->delete();
     $invitation = InvitationEmail::where('invitation_token', $request->token)->first();
 
     if (!$invitation) return redirect('/');
