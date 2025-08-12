@@ -1,1 +1,0 @@
-var a=Object.defineProperty;var p=(e,s,t)=>s in e?a(e,s,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[s]=t;var i=(e,s,t)=>p(e,typeof s!="symbol"?s+"":s,t);import{B as r}from"./BusinessIWorkCard-CmzstVqU.js";class B extends r{constructor(){super(...arguments);i(this,"path","root/businesses");i(this,"byUser",t=>this.simpleGet(`/api/${this.path}/by-user/${t}`))}}export{B};

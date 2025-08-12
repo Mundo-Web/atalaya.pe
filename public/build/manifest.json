@@ -21,8 +21,8 @@
       "_main-DtAlmsP1.js"
     ]
   },
-  "_BusinessesRest-CnXtJ3iL.js": {
-    "file": "assets/BusinessesRest-CnXtJ3iL.js",
+  "_BusinessesRest-CvkkDKnD.js": {
+    "file": "assets/BusinessesRest-CvkkDKnD.js",
     "name": "BusinessesRest",
     "imports": [
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx"
@@ -77,8 +77,8 @@
       "_index-B80Lgev0.js"
     ]
   },
-  "_PeopleRest-d9GYX1s_.js": {
-    "file": "assets/PeopleRest-d9GYX1s_.js",
+  "_PeopleRest-CrMOOcWG.js": {
+    "file": "assets/PeopleRest-CrMOOcWG.js",
     "name": "PeopleRest",
     "imports": [
       "resources/js/components/accordion/Accordion.jsx",
@@ -95,8 +95,8 @@
       "_index-B80Lgev0.js"
     ]
   },
-  "_ServicesByBusinessesRest-BhOrhVR5.js": {
-    "file": "assets/ServicesByBusinessesRest-BhOrhVR5.js",
+  "_ServicesByBusinessesRest-C4vVMHm8.js": {
+    "file": "assets/ServicesByBusinessesRest-C4vVMHm8.js",
     "name": "ServicesByBusinessesRest",
     "imports": [
       "_main-DtAlmsP1.js",
@@ -139,8 +139,8 @@
       "resources/js/components/form/TippyButton.jsx"
     ]
   },
-  "_UsersByServicesByBusinessesRest-CeSKXHYN.js": {
-    "file": "assets/UsersByServicesByBusinessesRest-CeSKXHYN.js",
+  "_UsersByServicesByBusinessesRest-BuMJH5bE.js": {
+    "file": "assets/UsersByServicesByBusinessesRest-BuMJH5bE.js",
     "name": "UsersByServicesByBusinessesRest",
     "imports": [
       "_main-DtAlmsP1.js",
@@ -313,7 +313,7 @@
     ]
   },
   "resources/js/Businesses.jsx": {
-    "file": "assets/Businesses-2Wj4fanN.js",
+    "file": "assets/Businesses-CuNSQvbl.js",
     "name": "Businesses",
     "src": "resources/js/Businesses.jsx",
     "isEntry": true,
@@ -330,7 +330,7 @@
       "_SelectFormGroup-Cz52Trm3.js",
       "_CheckboxFormGroup-B6kqgdBb.js",
       "_index.esm-X2U-7gJn.js",
-      "_UsersByServicesByBusinessesRest-CeSKXHYN.js",
+      "_UsersByServicesByBusinessesRest-BuMJH5bE.js",
       "_main-DtAlmsP1.js",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "_index-STwnHZb6.js",
@@ -397,7 +397,7 @@
     ]
   },
   "resources/js/Join.jsx": {
-    "file": "assets/Join-Dpl6loFK.js",
+    "file": "assets/Join-CknXIINW.js",
     "name": "Join",
     "src": "resources/js/Join.jsx",
     "isEntry": true,
@@ -408,7 +408,7 @@
       "_CreateReactScript-wxngZ06p.js",
       "_statuses-image-DRZxZZRY.js",
       "_main-DtAlmsP1.js",
-      "_PeopleRest-d9GYX1s_.js",
+      "_PeopleRest-CrMOOcWG.js",
       "_AuthRest-CzS3X5Ou.js",
       "_tippy-react.esm-PO7soYrD.js",
       "resources/js/components/form/TippyButton.jsx",
@@ -542,7 +542,7 @@
     ]
   },
   "resources/js/Register.jsx": {
-    "file": "assets/Register-BJmvG2B0.js",
+    "file": "assets/Register-C-Vpr7yG.js",
     "name": "Register",
     "src": "resources/js/Register.jsx",
     "isEntry": true,
@@ -551,7 +551,7 @@
       "resources/js/Utils/ReactAppend.jsx",
       "_index-B80Lgev0.js",
       "_CreateReactScript-wxngZ06p.js",
-      "_PeopleRest-d9GYX1s_.js",
+      "_PeopleRest-CrMOOcWG.js",
       "_AuthRest-CzS3X5Ou.js",
       "_index-BK7CmI7H.js",
       "_JSEncrypt-D3I3x59l.js",
@@ -576,7 +576,7 @@
     ]
   },
   "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx": {
-    "file": "assets/BusinessIWorkCard-CmzstVqU.js",
+    "file": "assets/BusinessIWorkCard-BsMRBA8t.js",
     "name": "BusinessIWorkCard",
     "src": "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
     "isEntry": true,
@@ -590,7 +590,7 @@
     ]
   },
   "resources/js/Reutilizables/Businesses/RootBusinessCard.jsx": {
-    "file": "assets/RootBusinessCard-CZOfxu3V.js",
+    "file": "assets/RootBusinessCard-BoxzY95L.js",
     "name": "RootBusinessCard",
     "src": "resources/js/Reutilizables/Businesses/RootBusinessCard.jsx",
     "isEntry": true,
@@ -609,7 +609,7 @@
     ]
   },
   "resources/js/Reutilizables/Join/AccountStep.jsx": {
-    "file": "assets/AccountStep-OzV9X9Z_.js",
+    "file": "assets/AccountStep-CFxLqtUP.js",
     "name": "AccountStep",
     "src": "resources/js/Reutilizables/Join/AccountStep.jsx",
     "isEntry": true,
@@ -790,7 +790,7 @@
     ]
   },
   "resources/js/Reutilizables/Users/OpenBusinessesButton.jsx": {
-    "file": "assets/OpenBusinessesButton-Ixjgt24x.js",
+    "file": "assets/OpenBusinessesButton-BQn4gMwW.js",
     "name": "OpenBusinessesButton",
     "src": "resources/js/Reutilizables/Users/OpenBusinessesButton.jsx",
     "isEntry": true,
@@ -833,7 +833,7 @@
     ]
   },
   "resources/js/Root/Businesses.jsx": {
-    "file": "assets/Businesses-C3FN8Z1x.js",
+    "file": "assets/Businesses-CWUhNhPQ.js",
     "name": "Businesses",
     "src": "resources/js/Root/Businesses.jsx",
     "isEntry": true,
@@ -844,11 +844,11 @@
       "_Adminto-qSKIGh_4.js",
       "_index-B80Lgev0.js",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
-      "_BusinessesRest-CnXtJ3iL.js",
+      "_BusinessesRest-CvkkDKnD.js",
       "_tippy-react.esm-PO7soYrD.js",
-      "_UsersByServicesByBusinessesRest-CeSKXHYN.js",
+      "_UsersByServicesByBusinessesRest-BuMJH5bE.js",
       "resources/js/Reutilizables/Businesses/RootBusinessCard.jsx",
-      "_ServicesByBusinessesRest-BhOrhVR5.js",
+      "_ServicesByBusinessesRest-C4vVMHm8.js",
       "_index-STwnHZb6.js",
       "_index.esm-X2U-7gJn.js",
       "____vite-browser-external_commonjs-proxy-C9-083JZ.js",
@@ -861,7 +861,7 @@
     ]
   },
   "resources/js/Root/Users.jsx": {
-    "file": "assets/Users-DNahADR0.js",
+    "file": "assets/Users-FdXc2Evr.js",
     "name": "Users",
     "src": "resources/js/Root/Users.jsx",
     "isEntry": true,
@@ -876,7 +876,7 @@
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
       "_Modal-DydUDwtE.js",
-      "_BusinessesRest-CnXtJ3iL.js",
+      "_BusinessesRest-CvkkDKnD.js",
       "_tippy-react.esm-PO7soYrD.js",
       "_index-STwnHZb6.js",
       "_index.esm-X2U-7gJn.js",
@@ -889,7 +889,7 @@
     ]
   },
   "resources/js/Services.jsx": {
-    "file": "assets/Services-D8lcnQ6G.js",
+    "file": "assets/Services-DrUZc2H2.js",
     "name": "Services",
     "src": "resources/js/Services.jsx",
     "isEntry": true,
@@ -900,8 +900,8 @@
       "resources/js/Utils/ReactAppend.jsx",
       "_main-DtAlmsP1.js",
       "resources/js/Reutilizables/Join/SurveyStep.jsx",
-      "_ServicesByBusinessesRest-BhOrhVR5.js",
-      "_UsersByServicesByBusinessesRest-CeSKXHYN.js",
+      "_ServicesByBusinessesRest-C4vVMHm8.js",
+      "_UsersByServicesByBusinessesRest-BuMJH5bE.js",
       "resources/js/Reutilizables/Businesses/BusinessIWorkCard.jsx",
       "_Adminto-qSKIGh_4.js",
       "_SelectFormGroup-Cz52Trm3.js",
@@ -943,7 +943,7 @@
     ]
   },
   "resources/js/Signs.jsx": {
-    "file": "assets/Signs-DJFkX40I.js",
+    "file": "assets/Signs-PC9aEdVQ.js",
     "name": "Signs",
     "src": "resources/js/Signs.jsx",
     "isEntry": true,
@@ -985,7 +985,7 @@
     ]
   },
   "resources/js/Users.jsx": {
-    "file": "assets/Users-Uc2PDW65.js",
+    "file": "assets/Users-DHYK---U.js",
     "name": "Users",
     "src": "resources/js/Users.jsx",
     "isEntry": true,

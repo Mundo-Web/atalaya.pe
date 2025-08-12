@@ -6,18 +6,15 @@ let controller = new AbortController()
 class BasicRest {
   path = null
   hasFiles = false
+  showGetNotify = true
 
   simpleGet = async (url, params) => {
     try {
       const { status, result } = await Fetch(url, params);
-      if (!status)
-        throw new Error(
-          result?.message || "Ocurrio un error inesperado"
-        );
+      if (!status) throw new Error(result?.message || "Ocurrio un error inesperado");
       return result.data ?? true;
     } catch (error) {
-
-      toast.error("¡Error!", {
+      this.showGetNotify && toast.error("¡Error!", {
         description: error.message,
         duration: 3000,
         position: "bottom-right",
