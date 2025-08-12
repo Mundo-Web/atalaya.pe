@@ -44,6 +44,7 @@ const DataGrid = ({ gridRef: dataGridRef, rest, columns, toolBar, masterDetail, 
         //   }
         // });
       },
+      hoverStateEnabled: true,
       remoteOperations: true,
       columnResizingMode: "widget",
       allowColumnResizing: true,
