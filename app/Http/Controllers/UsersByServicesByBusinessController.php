@@ -78,6 +78,11 @@ class UsersByServicesByBusinessController extends BasicController
         ->where('invitation_token', $token)
         ->first();
       if (!$ubsbb) throw new Exception('No tienes invitaciones pendientes');
+
+      UsersByServicesByBusiness::query()
+        ->where('user_id', $ubsbb->user->id)
+        ->update(['active'=> false]);
+
       $ubsbb->invitation_accepted = true;
       $ubsbb->invitation_token = null;
       $ubsbb->active = true;
