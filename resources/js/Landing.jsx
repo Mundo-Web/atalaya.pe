@@ -507,7 +507,7 @@ const Landing = ({ session: sessionDB, services }) => {
             {testimonies.map((testimony, i) => (
               <SwiperSlide key={i}>
                 <div className='max-w-lg w-full mx-auto text-center'>
-                  <div className='aspect-square w-10 h-10 rounded-full block mx-auto mb-4 bg-[#315af3] text-white flex items-center justify-center'>
+                  <div className='aspect-square w-10 h-10 rounded-full mx-auto mb-4 bg-[#315af3] text-white flex items-center justify-center'>
                     {testimony.author.charAt(0)}
                   </div>
                   <h4 className='text-lg font-bold mb-2'>"{testimony.title}"</h4>
