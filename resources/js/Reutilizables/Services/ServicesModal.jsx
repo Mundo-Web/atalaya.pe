@@ -35,10 +35,10 @@ const ServicesModal = ({ modalOpen, onRequestClose, services, onServiceClicked }
                                     alt={service.name}
                                     onError={(e) => e.target.src = '/assets/img/logo-dark.svg'}
                                 />
-                                <span className="text-[#315af3] font-bold text-xl">
+                                {/* <span className="text-[#315af3] font-bold text-xl">
                                     S/ {Number2Currency(service.price)}
                                     <span className="text-sm text-gray-500 font-normal">/mes</span>
-                                </span>
+                                </span> */}
                             </div>
 
                             <h4 className="font-bold text-2xl mb-2 text-gray-900">{service.name}</h4>
