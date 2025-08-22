@@ -36,6 +36,11 @@ const CreateReactScript = (render) => {
         'Content-Type': 'application/json',
         'X-Xsrf-Token': decodeURIComponent(Cookies.get('XSRF-TOKEN'))
       }
+
+      $('.modal-backdrop').each(function () {
+          if (!$(this).text()) $(this).remove()
+        })
+
       render(el, { ...properties, can })
     },
   });

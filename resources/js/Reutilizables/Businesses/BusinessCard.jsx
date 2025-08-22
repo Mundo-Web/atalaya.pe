@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "@inertiajs/react"
 
 const BusinessCard = ({ id, name, owner, person }) => {
   return <div key={`business-${id}`} className="card mb-0 border shadow-sm" 

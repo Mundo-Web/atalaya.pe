@@ -11,9 +11,12 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RemainingHistoryController;
 use App\Http\Controllers\Root\BusinessController as RootBusinessController;
+use App\Http\Controllers\Root\PlanController as RootPlanController;
+use App\Http\Controllers\Root\ServiceController as RootServiceController;
 use App\Http\Controllers\Root\UserController as RootUserController;
 use App\Http\Controllers\ServicesByBusinessController;
 use App\Http\Controllers\SettingController;
@@ -165,6 +168,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/businesses/by-user/{userId}', [RootBusinessController::class, 'byUser']);
         Route::patch('/businesses/status', [RootBusinessController::class, 'status']);
         Route::delete('/businesses/{id}', [RootBusinessController::class, 'delete']);
+
+        Route::get('/services', [RootServiceController::class, 'paginate']);
+        Route::get('/services/by-user/{userId}', [RootServiceController::class, 'byUser']);
+        Route::patch('/services/status', [RootServiceController::class, 'status']);
+        Route::delete('/services/{id}', [RootServiceController::class, 'delete']);
+
+        Route::post('/plans', [RootPlanController::class, 'save']);
+    
 
         Route::post('/users/paginate', [RootUserController::class, 'paginate']);
         Route::delete('/users/{id}', [RootUserController::class, 'delete']);

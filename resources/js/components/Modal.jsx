@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ modalRef, title = 'Modal', isStatic = false, size = 'md', children, bodyClass = '', btnCancelText, btnSubmitText, hideFooter, hideButtonSubmit, onSubmit = (e) => { e.preventDefault(); $(modalRef.current).modal('hide') } }) => {
+const Modal = ({ modalRef, title = 'Modal', isStatic = false, size = 'md', children, bodyClass = '', bodyStyle = {}, btnCancelText, btnSubmitText, hideFooter, hideButtonSubmit, onSubmit = (e) => { e.preventDefault(); $(modalRef.current).modal('hide') } }) => {
   const staticProp = isStatic ? { 'data-bs-backdrop': 'static' } : {}
   return (<form className='modal fade' ref={modalRef} tabIndex='-1' aria-hidden='true' {...staticProp} onSubmit={onSubmit} autoComplete='off'>
     <div className={`modal-dialog modal-dialog-centered modal-${size ?? 'md'}`}>
@@ -9,7 +9,7 @@ const Modal = ({ modalRef, title = 'Modal', isStatic = false, size = 'md', child
           <h4 className='modal-title'>{title}</h4>
           <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
         </div>
-        <div className={`modal-body ${bodyClass ?? ''}`} >
+        <div className={`modal-body ${bodyClass ?? ''}`} style={bodyStyle}>
           {children}
         </div>
         {

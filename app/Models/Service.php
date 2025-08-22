@@ -15,4 +15,8 @@ class Service extends Model
         'description',
         'status',
     ];
+
+    public function plans() {
+        return $this->hasMany(Plan::class);
+    }
 }

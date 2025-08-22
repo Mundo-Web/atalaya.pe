@@ -10,6 +10,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecoveryController;
 use App\Http\Controllers\Root\BusinessController as RootBusinessController;
+use App\Http\Controllers\Root\ServiceController as RootServiceController;
 use App\Http\Controllers\Root\UserController as RootUserController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TermsController;
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/all-businesses', [RootBusinessController::class, 'reactView'])->name('Root/Businesses.jsx');
     Route::get('/all-users', [RootUserController::class, 'reactView'])->name('Root/Users.jsx');
+    Route::get('/all-services', [RootServiceController::class, 'reactView'])->name('Root/Services.jsx');
 });
 
 Route::get('/terms', [TermsController::class, 'reactView'])->name('Terms.jsx');
