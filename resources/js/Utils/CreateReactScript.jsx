@@ -37,9 +37,11 @@ const CreateReactScript = (render) => {
         'X-Xsrf-Token': decodeURIComponent(Cookies.get('XSRF-TOKEN'))
       }
 
-      $('.modal-backdrop').each(function () {
+      if (typeof $ != 'undefined') {
+        $('.modal-backdrop').each(function () {
           if (!$(this).text()) $(this).remove()
         })
+      }
 
       render(el, { ...properties, can })
     },
