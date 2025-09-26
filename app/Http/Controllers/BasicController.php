@@ -7,6 +7,7 @@ use App\Models\dxDataGrid;
 use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Routing\ResponseFactory;
@@ -86,6 +87,11 @@ class BasicController extends Controller
   public function setPaginationInstance(string $model)
   {
     return $model::select();
+  }
+
+  public function setPaginationSummary(Request $model, Builder $query)
+  {
+    return [];
   }
 
   public function setReactViewProperties()
@@ -168,6 +174,8 @@ class BasicController extends Controller
           //throw $th;
         }
       }
+
+      $response->summary = $this->setPaginationSummary($request, clone $instance);
 
       $jpas = $request->isLoadingAll
         ? $instance->get()

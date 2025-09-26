@@ -11,12 +11,13 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PersonController;
-use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RemainingHistoryController;
 use App\Http\Controllers\Root\BusinessController as RootBusinessController;
 use App\Http\Controllers\Root\PlanController as RootPlanController;
+use App\Http\Controllers\Root\PlanPaymentController as RootPlanPaymentController;
 use App\Http\Controllers\Root\ServiceController as RootServiceController;
+use App\Http\Controllers\Root\ServicesByBusinessController as RootServicesByBusinessController;
 use App\Http\Controllers\Root\UserController as RootUserController;
 use App\Http\Controllers\ServicesByBusinessController;
 use App\Http\Controllers\SettingController;
@@ -175,7 +176,10 @@ Route::middleware('auth')->group(function () {
         Route::delete('/services/{id}', [RootServiceController::class, 'delete']);
 
         Route::post('/plans', [RootPlanController::class, 'save']);
-    
+        
+        Route::post('/plan-payments/paginate', [RootPlanPaymentController::class, 'paginate']);
+
+        Route::post('/services-by-business', [RootServicesByBusinessController::class, 'save']);
 
         Route::post('/users/paginate', [RootUserController::class, 'paginate']);
         Route::delete('/users/{id}', [RootUserController::class, 'delete']);

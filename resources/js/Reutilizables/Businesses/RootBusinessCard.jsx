@@ -9,7 +9,7 @@ import ServicesByBusinessesRest from "../../actions/ServicesByBusinessesRest"
 const ubsbbRest = new UsersByServicesByBusinessesRest()
 const sbbRest = new ServicesByBusinessesRest()
 
-const RootBusinessCard = ({ onStatusClicked, onDeleteClicked, ...business }) => {
+const RootBusinessCard = ({ onPaymentClicked, onStatusClicked, onDeleteClicked, ...business }) => {
   const [users, setUsers] = useState(business.users)
   const [services, setServices] = useState(business.services)
 
@@ -90,18 +90,35 @@ const RootBusinessCard = ({ onStatusClicked, onDeleteClicked, ...business }) => 
       {
         services?.length > 0 &&
         <div className="d-flex gap-2">
-          {services?.map(service => <Tippy content={`Eliminar ${service.name} de ${business.name}`}>
-            <div key={service.id} className="hover-container">
-              <img className="avatar-xs"
+          {services?.map(service => (
+            <div key={service.id} className="dropdown">
+              <img
+                className="avatar-xs dropdown-toggle"
+                data-bs-toggle="dropdown"
+                style={{ objectFit: 'contain', objectPosition: 'center', cursor: 'pointer' }}
                 src={`//${service.correlative}.${Global.APP_DOMAIN}/assets/img/icon.svg`}
                 onError={(e) => e.target.src = '/assets/img/icon.svg'}
                 alt={service.name}
-                style={{ objectFit: 'contain', objectPosition: 'center' }} />
-              <button className="hover:show btn btn-light btn-xs rounded-pill" onClick={() => onServiceDeleteClicked(service.match_id)}>
-                <i className="mdi mdi-close"></i>
-              </button>
+              />
+              <div className="dropdown-menu">
+                <a className="dropdown-item" href={`//${service.correlative}.${Global.APP_DOMAIN}`} target="_blank">
+                  <i className="mdi mdi-open-in-new me-1"></i>
+                  <span>Abrir {service.name}</span>
+                </a>
+                <button className="dropdown-item" onClick={() => onPaymentClicked(service.match_id)}>
+                  <i className="mdi mdi-cash-multiple me-1"></i>
+                  <span>Ver pagos</span>
+                  {
+                    service.exempt ? <small className="text-muted ms-1">Exonerado</small> : null
+                  }
+                </button>
+                <button className="dropdown-item" onClick={() => onServiceDeleteClicked(service.match_id)}>
+                  <i className="mdi mdi-delete me-1"></i>
+                  <span>Eliminar vinculo</span>
+                </button>
+              </div>
             </div>
-          </Tippy>)}
+          ))}
         </div>
       }
       <div className="d-flex align-items-center gap-2">

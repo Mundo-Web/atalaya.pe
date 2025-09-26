@@ -79,6 +79,6 @@ class Business extends Model
             'id',
             'id',
             'service_id'
-        )->select('services.*', 'services_by_businesses.id AS match_id');
+        )->select('services.*', 'services_by_businesses.id AS match_id', 'services_by_businesses.exempt');
     }
 }

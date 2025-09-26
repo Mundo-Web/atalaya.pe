@@ -98,13 +98,13 @@ const Services = ({ businesses = [], services = [], session, APP_DOMAIN, APP_PRO
   }
 
   const onUserSearch = async () => {
-    const filter = [
+    const filter = [[
       ['email', 'contains', userRef.current.value],
       'or',
       ['name', 'contains', userRef.current.value],
       'or',
       ['lastname', 'contains', userRef.current.value],
-    ]
+    ]]
     if (serviceLoaded?.users?.length) filter.push('and', [
       '!',
       ArrayJoin(serviceLoaded?.users?.map(({ email }) => (['email', '=', email])), 'or')
