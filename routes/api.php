@@ -133,8 +133,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/tables/status', [TableController::class, 'status']);
     Route::delete('/tables/{id}', [TableController::class, 'delete']);
 
-    Route::get('/profile/{uuid}', [ProfileController::class, 'full'])->withoutMiddleware('throttle');
-    Route::get('/profile/thumbnail/{uuid}', [ProfileController::class, 'thumbnail'])->withoutMiddleware('throttle');
+    Route::get('/profile/{uuid}', [ProfileController::class, 'full'])->withoutMiddleware('throttle:api');
+    Route::get('/profile/thumbnail/{uuid}', [ProfileController::class, 'thumbnail'])->withoutMiddleware('throttle:api');
     Route::post('/profile', [ProfileController::class, 'saveProfile']);
     Route::patch('/profile', [ProfileController::class, 'save']);
 
