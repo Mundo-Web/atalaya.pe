@@ -73,7 +73,7 @@ const Users = ({ session }) => {
                 src={`/api/profile/thumbnail/${data.user.relative_id}`}
                 onError={(e) => {
                   e.target.onerror = null
-                  e.target.src = `/api/profile/thumbnail/undefined`;
+                  e.target.src = `/assets/img/user-404.svg`;
                 }}
                 style={{ aspectRatio: 1 }}
                 alt={fullname} />
