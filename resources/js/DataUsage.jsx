@@ -10,7 +10,7 @@ const DataUsage = ({ }) => {
           <div className="p-6 border-b border-gray-200">
             <h1 className="text-2xl font-semibold text-gray-800">Condiciones del Servicio de Atalaya</h1>
           </div>
-          <ScrollArea className="h-[calc(100vh-12rem)] max-h-[32rem] p-6">
+          <div className="h-[calc(100vh-12rem)] max-h-[32rem] p-6 overflow-y-auto">
             <div className="space-y-6 text-gray-600">
               <section>
                 <h2 className="text-lg font-semibold text-gray-800 mb-2">1. Introducción</h2>
@@ -108,7 +108,7 @@ const DataUsage = ({ }) => {
 
               <p className="text-sm text-gray-500 mt-6">Última actualización: {new Date().toLocaleDateString()}</p>
             </div>
-          </ScrollArea>
+          </div>
         </div>
       </div>
     </>

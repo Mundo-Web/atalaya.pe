@@ -688,8 +688,8 @@ const Landing = ({ session: sessionDB, services }) => {
           <div>
             <h4 className="font-semibold text-lg mb-4">Derechos y Legal</h4>
             <ul className="space-y-2">
-              <li><a href="#">Términos y Condiciones</a></li>
-              <li><a href="#">Política de Privacidad</a></li>
+              <li><a href="/terms">Términos y Condiciones</a></li>
+              <li><a href="/data-usage">Política de Privacidad</a></li>
             </ul>
           </div>
         </div>
