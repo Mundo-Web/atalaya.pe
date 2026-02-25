@@ -1,6 +1,6 @@
 const columns = [
     'Lead', 'Responsable', 'Correo',
-    'Teléfono', 'Estado de gestión', 'Estado del lead',
+    'Teléfono', 'Estado de gestión', 'Etiqueta',
     'Origen', 'A través de', 'Fecha de creación'
 ]
 
